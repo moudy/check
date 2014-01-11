@@ -3,3 +3,4 @@
 tmp/
 public/app.js
 public/app.css
+app/assets/js/templates.js

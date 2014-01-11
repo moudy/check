@@ -4,4 +4,7 @@
 , "undef": true
 , "eqeqeq": true
 , "unused": true
+, "globals": {
+    "Em": false
+  }
 }
