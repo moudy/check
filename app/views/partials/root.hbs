@@ -1,0 +1,16 @@
+<div class='content-width'>
+  <a href='#' {{action 'save'}}>save</a>
+  <div class='checklist-container'>
+
+    {{view App.ChecklistHeaderView}}
+
+    <div class='checklist-items-container'>
+      <ul class='checklist-items'>
+        {{each checklist.listItems itemViewClass="App.ListItemView" itemController='listItem'}}
+      </ul>
+      <a {{action 'addItem'}} href='#' class='button'>
+        &#10010; Add Item
+      </a>
+    </div>
+  </div>
+</div>

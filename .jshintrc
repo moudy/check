@@ -6,5 +6,6 @@
 , "unused": true
 , "globals": {
     "Em": false
+  , "DS": false
   }
 }

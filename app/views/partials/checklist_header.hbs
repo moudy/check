@@ -1,0 +1,23 @@
+<div class='checklist-header'>
+  <div class='list-item-title-row property-row'>
+    {{#if view.isEditing-title}}
+      {{view App.TextField valueBinding='checklist.title' property='title' classNames='list-item-title'}}
+    {{else}}
+      <h1 class='list-item-title'>
+        {{checklist.title}}
+        <a {{action 'edit' 'title' target='view'}} class='edit-link' href='#'>&#9998;</a>
+      </h1>
+    {{/if}}
+  </div>
+
+  <div class='list-item-description-row property-row'>
+    {{#if view.isEditing-description}}
+      {{view App.TextArea valueBinding='checklist.description' property='description' classNames='list-item-description'}}
+    {{else}}
+      <p class='list-item-description'>
+        {{checklist.description}}
+        <a {{action 'edit' 'description' target='view'}} class='edit-link' href='#'>&#9998;</a>
+      </p>
+    {{/if}}
+  </div>
+</div>

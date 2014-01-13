@@ -1,0 +1,10 @@
+var App = require('../app').instance;
+
+App.RootView = Em.View.extend({
+
+, actions: {
+    edit: function (property) {
+      this.set('isEditing-'+property, true);
+    }
+  }
+});

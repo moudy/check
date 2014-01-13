@@ -1,5 +1,4 @@
 var path = require('path');
-//var mongoose = require('mongoose');
 var view = require('./view');
 
 exports.configure = function (app) {
@@ -10,6 +9,8 @@ exports.configure = function (app) {
   app.set('view engine', '.hbs');
 
   if ('development' === app.get('env')) {
+    var mongoose = require('mongoose');
+    mongoose.set('debug', true);
     require('node-pow')(app);
     app.set('host', app.get('title')+'.dev');
   } else if ('production' === app.get('env')) {
