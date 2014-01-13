@@ -26,12 +26,11 @@ exports.update = function (req, res) {
 
 exports.del = function (req, res) {
   var id = req.params.id;
-  var attrs = req.body.listItem;
   Checklist.findOne(function (error, checklist) {
     var doc = checklist.listItems.id(id);
     doc.remove();
     checklist.save(function (error_) {
-      res.json({listItem: doc});
+      res.json({listItem: null});
     });
   });
 };

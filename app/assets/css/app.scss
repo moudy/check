@@ -150,6 +150,7 @@ textarea.list-item-description {
   line-height: 26px;
   text-align: center;
   cursor: pointer;
+  @include user-select(none);
 
   &:active {
     background-color: #ddd;
