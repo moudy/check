@@ -27,7 +27,7 @@
   "devDependencies": {
     "node-pow": "0.0.2",
     "browserify-middleware": "~2.2.0",
-    "gulp": "~3.3.1",
+    "gulp": "~3.3.2",
     "gulp-util": "~2.2.9"
   },
   "engines": {

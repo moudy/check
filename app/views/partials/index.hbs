@@ -1,0 +1,12 @@
+<div class='content-width'>
+  <ul>
+    {{#each checklist in model}}
+      <li>
+        <a {{action 'selectChecklist' checklist}} href='#'>{{checklist.title}}</a>
+      </li>
+    {{/each}}
+  </ul>
+  {{#if currentChecklist}}
+    {{view App.ChecklistView}}
+  {{/if}}
+</div>

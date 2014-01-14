@@ -19,10 +19,6 @@ require('./routes');
 require('./controllers');
 
 App.Router.map(function () {
-  this.route('root', {path: '/'});
-  this.resource('checklists', function() {
-    this.route('new');
-  });
 });
 
 Em.$(function() { FastClick.attach(document.body); });
