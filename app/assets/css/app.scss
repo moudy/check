@@ -2,6 +2,7 @@
 @import 'mixins/mixins';
 @import 'variables';
 
+
 // app reset
 ol, ul {
   padding: 0;
@@ -29,150 +30,18 @@ body {
 
 .content-width {
   margin: 0 auto;
-  max-width: 700px;
+  max-width: $content-width;
 }
 
-
-.checklist-header {
-  padding: 10px 20px;
+.content-inset {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-.checklist-description {
-  margin: 0;
-  font-size: 14px;
-  color: #5a5a5a;
-}
-
-
-.checklist-items-container {
-  border: 1px solid #ddd;
-}
-
-.checklist-item {
-  padding: 10px 10px 10px 40px;
-  border-bottom: 1px solid #eee;
-  position: relative;
-  min-height: 51px;
-
-  .checkbox {
-    position: absolute;
-    top: 7px;
-    left: 7px;
-  }
-
-  .edit-link {
-    position: absolute;
-    right: 0;
-    top: 0;
-    display: none;
-  }
-
-  &:hover {
-    .edit-link {
-      display: block;
-    }
-  }
-
-  &.is-active {
-    .list-item-description {
-      display: block;
-    }
-  }
-  &.is-editing {
-    .list-item-description {
-      display: block;
-    }
-    .edit-link {
-      display: block;
-      color: $color-active;
-    }
-  }
-
-  .list-item-description {
-    //display: none;
-  }
-
-
-}
-
-.property-row {
-  position: relative;
-}
-
-.edit-link {
-  font-size: 16px;
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  line-height: 25px;
-  text-align: center;
-  color: $color-text-light;
-  &:active {
-    color: #444;
-  }
-}
-
-.list-item-title {
-  font-size: 16px;
-  font-weight: 700;
-  padding: 4px;
-  margin: 0 0 1px;;
-  display: block;
-  width: 100%;
-  border: 0 none;
-  line-height: 16px;
-}
-input.list-item-title {
-  &:focus { outline: none; }
-  background: #eee;
-}
-
-.list-item-description {
-  margin: 0;
-  font-size: 14px;
-  color: #5a5a5a;
-  width: 100%;
-  border: 0 none;
-  padding: 4px;
-  line-height: 18px;
-}
-
-textarea.list-item-description {
-  &:focus { outline: none; }
-  background: #eee;
-}
-
-.checkbox {
-  border-radius: 4px;
-  border: 3px solid #ddd;
-  width: 29px;
-  height: 29px;
-  line-height: 26px;
-  text-align: center;
-  cursor: pointer;
-  @include user-select(none);
-
-  &:active {
-    background-color: #ddd;
-    border-color: #aaa;
-    .checkmark {
-      color: #aaa;
-    }
-  }
-
-  &.is-checked {
-    border-color: green;
-    background-color: rgb(216, 255, 216);
-    .checkmark {
-      color: green;
-    }
-  }
-
-  .checkmark {
-    color: #ddd;
-    font-size: 14px;
-  }
-}
+@import 'checklist';
+@import 'checklist_description';
+@import 'checklist_item';
+@import 'checkbox';
 
 .button {
   display: block;
@@ -188,4 +57,11 @@ textarea.list-item-description {
   display: inline-block;
   color: red;
   margin-top: 4px;
+}
+
+@media (max-width: $content-width)  {
+  .checklist-items-container {
+    border-right: 0 none;
+    border-left: 0 none;
+  }
 }

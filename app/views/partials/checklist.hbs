@@ -1,10 +1,14 @@
 {{partial 'checklist_header'}}
+{{partial 'checklist_description'}}
 
-<div class='checklist-items-container'>
+<div class='checklist-items-container content-width'>
   <ul class='checklist-items'>
-    {{each currentChecklist.listItems itemViewClass="App.ListItemView" itemController='listItem'}}
+    {{each checklist.listItems itemViewClass="App.ListItemView" itemController='listItem'}}
   </ul>
+  {{#if view.isEditing}}
+
   <a {{action 'addItem'}} href='#' class='button'>
     &#10010; Add Item
   </a>
+  {{/if}}
 </div>

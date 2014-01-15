@@ -1,21 +1,14 @@
-<div class='currentChecklist-header'>
-  <div class='checklist-title-row property-row'>
-    {{#if view.isEditing}}
-      {{view App.TextField valueBinding='currentChecklist.title' classNames='checklist-title'}}
-    {{else}}
-      <h1 class='checklist-title'>
-        {{currentChecklist.title}}
-      </h1>
-    {{/if}}
+<header class='checklist-header'>
+  <div class='content-width content-inset'>
+    <div class='checklist-title-row property-row'>
+      {{#if view.isEditing}}
+        {{view App.TextField valueBinding='checklist.title' classNames='checklist-title'}}
+      {{else}}
+        <h1 class='checklist-title'>
+          {{checklist.title}}
+        </h1>
+      {{/if}}
+    </div>
   </div>
+</header>
 
-  <div class='checklist-description-row property-row'>
-    {{#if view.isEditing}}
-      {{view App.TextArea valueBinding='currentChecklist.description' classNames='checklist-description'}}
-    {{else}}
-      <p class='checklist-description'>
-        {{currentChecklist.description}}
-      </p>
-    {{/if}}
-  </div>
-</div>

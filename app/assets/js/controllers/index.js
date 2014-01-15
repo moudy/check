@@ -1,4 +1,5 @@
 require('./list_item');
+require('./checklist');
 
 var App = require('../app').instance;
 

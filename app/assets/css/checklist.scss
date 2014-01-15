@@ -1,0 +1,43 @@
+@import 'mixins/mixins';
+@import 'variables';
+
+.checklist-container {
+  background: $color-gray-extra-light;
+  @include cover-area();
+  -webkit-overflow-scrolling: touch;
+}
+
+.checklist-header {
+  background: white;
+  border-bottom: 1px solid $color-gray-light;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.no-csspositionsticky {
+  .checklist-header { position: fixed; }
+  .checklist-container { padding-top: 51px; }
+}
+
+.csspositionsticky {
+  .checklist-header {
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+  }
+}
+
+.checklist-title {
+  margin: 0;
+  padding: 0;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+.checklist-items-container {
+  border: 1px solid #ddd;
+  margin-bottom: 80px;
+}

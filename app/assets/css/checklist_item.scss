@@ -1,0 +1,96 @@
+@import 'mixins/mixins';
+
+.checklist-item {
+  padding: 10px 10px 10px 40px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  min-height: 51px;
+  background: white;
+
+  .checkbox {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+  }
+
+  .edit-link {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: none;
+  }
+
+  &:hover {
+    .edit-link {
+      display: block;
+    }
+  }
+
+  &.is-active {
+    .list-item-description {
+      display: block;
+    }
+  }
+  &.is-editing {
+    .list-item-description {
+      display: block;
+    }
+    .edit-link {
+      display: block;
+      color: $color-active;
+    }
+  }
+
+  .list-item-description {
+    //display: none;
+  }
+
+
+}
+
+.property-row {
+  position: relative;
+}
+
+.edit-link {
+  font-size: 16px;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  color: $color-text-light;
+  &:active {
+    color: #444;
+  }
+}
+
+.list-item-title {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 4px;
+  margin: 0 0 1px;;
+  display: block;
+  width: 100%;
+  border: 0 none;
+  line-height: 16px;
+}
+input.list-item-title {
+  &:focus { outline: none; }
+  background: #eee;
+}
+
+.list-item-description {
+  margin: 0;
+  font-size: 14px;
+  color: #5a5a5a;
+  width: 100%;
+  border: 0 none;
+  padding: 4px;
+  line-height: 18px;
+}
+
+textarea.list-item-description {
+  &:focus { outline: none; }
+  background: #eee;
+}

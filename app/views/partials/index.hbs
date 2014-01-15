@@ -6,7 +6,8 @@
       </li>
     {{/each}}
   </ul>
-  {{#if currentChecklist}}
-    {{view App.ChecklistView}}
-  {{/if}}
 </div>
+
+{{#with currentChecklist as checklist}}
+  {{render 'checklist' checklist}}
+{{/with}}
