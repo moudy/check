@@ -1,31 +1,24 @@
-<div {{bind-attr class=':checkbox isCompleted:is-checked'}} {{action 'toggleCompletion'}}>
-  <div class='checkmark'>&#10004;</div>
-</div>
+<div class='checklist-item-checkmark'>&#10004;</div>
 
-<div class='list-item-title-row property-row'>
+<div class='checklist-item-title-row property-row'>
   {{#if view.isEditing}}
     {{view App.TextField valueBinding='title' classNames='list-item-title'}}
   {{else}}
-    <h2 class='list-item-title'>
+    <h2 class='checklist-item-title'>
       {{title}}
     </h2>
   {{/if}}
 </div>
 
-<div class='list-item-description-row property-row'>
+<div class='checklist-item-description-row property-row'>
   {{#if view.isEditing}}
-  {{view App.TextArea valueBinding='description' classNames='list-item-description'}}
+    {{view App.TextArea valueBinding='description' classNames='checklist-item-description'}}
   {{else}}
     {{#if description}}
-    <p class='list-item-description'>
+    <p class='checklist-item-description'>
       {{description}}
     </p>
     {{/if}}
   {{/if}}
 </div>
 
-{{#if view.isEditing}}
-  <a {{action 'delete' this}} class='delete-link' href='#'>Delete Item</a>
-{{/if}}
-
-<a {{action 'edit' target='view'}} class='edit-link' href='#'>&#9998;</a>

@@ -1,9 +1,13 @@
 {{partial 'checklist_header'}}
 {{partial 'checklist_description'}}
 
+<div class='checklist-meta-info'>
+  {{partial 'checklist_status_message'}}
+</div>
+
 <div class='checklist-items-container content-width'>
-  <ul class='checklist-items'>
-    {{each checklist.listItems itemViewClass="App.ListItemView" itemController='listItem'}}
+  <ul class='js-checklist-items checklist-items'>
+    {{each checklist.listItems itemViewClass="App.ChecklistItemView" itemController='checklistItem'}}
   </ul>
   {{#if view.isEditing}}
 
@@ -11,4 +15,8 @@
     &#10010; Add Item
   </a>
   {{/if}}
+</div>
+
+<div class='checklist-meta-info-footer'>
+  {{partial 'checklist_status_message'}}
 </div>

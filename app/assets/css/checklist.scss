@@ -1,5 +1,4 @@
-@import 'mixins/mixins';
-@import 'variables';
+@import 'base';
 
 .checklist-container {
   background: $color-gray-extra-light;
@@ -23,10 +22,7 @@
 
 .csspositionsticky {
   .checklist-header {
-    position: -webkit-sticky;
-    position: -moz-sticky;
-    position: -ms-sticky;
-    position: -o-sticky;
+    @include position-sticky();
   }
 }
 

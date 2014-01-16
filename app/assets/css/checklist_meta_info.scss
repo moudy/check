@@ -1,0 +1,34 @@
+@import 'base';
+
+.checklist-meta-info {
+  background-color: $color-gray-extra-light;
+  line-height: 30px;
+}
+
+.checklist-status-message {
+  font-size:14px;
+  color: $color-text-light-medium;
+}
+
+
+.no-csspositionsticky .checklist-meta-info-footer {
+  @include position(fixed, 0 0px 0px 0px);
+}
+
+.csspositionsticky .checklist-meta-info-footer {
+  @include position-sticky();
+  @include position(0 0px 0px 0px);
+}
+
+.checklist-meta-info-footer {
+  @extend .checklist-meta-info;
+  border-top: 1px solid $color-gray-medium;
+  @include transform(translateY(100%));
+  @include transition-property(transform);
+  @include transition-duration(300ms);
+  @include transition-timing-function(ease-out);
+}
+
+.is-submerged .checklist-meta-info-footer {
+  @include transform(translateY(0%));
+}

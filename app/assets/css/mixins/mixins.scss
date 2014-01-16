@@ -8,3 +8,10 @@
   overflow: $overflow;
   position: $position;
 }
+
+@mixin position-sticky {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+}

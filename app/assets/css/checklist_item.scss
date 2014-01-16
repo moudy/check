@@ -1,4 +1,4 @@
-@import 'mixins/mixins';
+@import 'base';
 
 .checklist-item {
   padding: 10px 10px 10px 40px;
@@ -6,66 +6,48 @@
   position: relative;
   min-height: 51px;
   background: white;
+  cursor: pointer;
 
-  .checkbox {
+
+  .checklist-item-checkmark {
     position: absolute;
-    top: 7px;
-    left: 7px;
+    top: 15px;
+    left: 15px;
+    font-size: 14px;
+    color: $color-text-light;
   }
 
-  .edit-link {
-    position: absolute;
-    right: 0;
-    top: 0;
-    display: none;
+  &:active {
+    @include linear-gradient(0deg, #fff, #f8f8f8 30%, #fff 100%);
   }
 
-  &:hover {
-    .edit-link {
-      display: block;
+  &.is-completed {
+    @include linear-gradient(0deg, #ebffe4, #fff 100%);
+    .checklist-item-checkmark {
+      color: $color-success;
     }
   }
 
   &.is-active {
-    .list-item-description {
-      display: block;
+  }
+}
+
+.no-touch {
+  .checklist-item {
+    &:hover {
+      @include linear-gradient(0deg, #efefef, #f8f8f8 30%, #fff 100%);
+    }
+    &.is-completed:hover {
+      @include linear-gradient(0deg, #ebffe4, #fff 100%);
     }
   }
-  &.is-editing {
-    .list-item-description {
-      display: block;
-    }
-    .edit-link {
-      display: block;
-      color: $color-active;
-    }
-  }
-
-  .list-item-description {
-    //display: none;
-  }
-
-
 }
 
 .property-row {
   position: relative;
 }
 
-.edit-link {
-  font-size: 16px;
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  line-height: 25px;
-  text-align: center;
-  color: $color-text-light;
-  &:active {
-    color: #444;
-  }
-}
-
-.list-item-title {
+.checklist-item-title {
   font-size: 16px;
   font-weight: 700;
   padding: 4px;
@@ -75,12 +57,13 @@
   border: 0 none;
   line-height: 16px;
 }
-input.list-item-title {
+
+input.checklist-item-title {
   &:focus { outline: none; }
   background: #eee;
 }
 
-.list-item-description {
+.checklist-item-description {
   margin: 0;
   font-size: 14px;
   color: #5a5a5a;
@@ -90,7 +73,7 @@ input.list-item-title {
   line-height: 18px;
 }
 
-textarea.list-item-description {
+textarea.checklist-item-description {
   &:focus { outline: none; }
   background: #eee;
 }
