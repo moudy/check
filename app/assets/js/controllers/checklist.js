@@ -21,8 +21,8 @@ App.ChecklistController = Em.ObjectController.extend({
     return this.get('uncompletedCount') === 0;
   }.property('listItems.@each.isCompleted')
 
-, isUnstarted: function () {
-    return this.get('completedCount') === 0;
+, isInProgress: function () {
+    return this.get('completedCount') > 0;
   }.property('listItems.@each.isCompleted')
 
 , statusMessage: function () {
@@ -30,16 +30,32 @@ App.ChecklistController = Em.ObjectController.extend({
       'completedCount'
     , 'uncompletedCount'
     , 'isCompleted'
-    , 'isUnstarted'
+    , 'isInProgress'
     , 'totalCount');
 
     if (status.isCompleted) {
       return 'All '+status.completedCount+' items complete';
-    } else if (status.isUnstarted) {
+    } else if (!status.isInProgress) {
       return status.uncompletedCount+' items';
     } else {
       return +status.completedCount+' of '+status.totalCount + ' complete ('+status.uncompletedCount+' to go)';
     }
   }.property('listItems.@each.isCompleted')
+
+, selectNextItem: function () {
+    this.get('listItems').invoke('set', 'isActive', false);
+    var next = this.get('listItems').find(function (i) {
+      return !i.get('isCompleted');
+    });
+
+    next && next.set('isActive', true);
+
+  }.observes('listItems.@each.isCompleted')
+
+, actions: {
+    clear: function () {
+      this.get('listItems').invoke('set', 'isCompleted', false);
+    }
+  }
 
 });

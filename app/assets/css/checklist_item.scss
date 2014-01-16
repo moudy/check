@@ -8,6 +8,7 @@
   background: white;
   cursor: pointer;
 
+  border-left: 3px solid transparent;
 
   .checklist-item-checkmark {
     position: absolute;
@@ -17,29 +18,23 @@
     color: $color-text-light;
   }
 
-  &:active {
-    @include linear-gradient(0deg, #fff, #f8f8f8 30%, #fff 100%);
-  }
-
   &.is-completed {
-    @include linear-gradient(0deg, #ebffe4, #fff 100%);
-    .checklist-item-checkmark {
-      color: $color-success;
-    }
+    border-left-color: $color-success;
+    .checklist-item-checkmark { color: $color-success; }
+    .checklist-item-title, .checklist-item-description { opacity: 0.5; }
   }
 
   &.is-active {
+    background-color: $color-highlight;
   }
 }
 
 .no-touch {
   .checklist-item {
-    &:hover {
-      @include linear-gradient(0deg, #efefef, #f8f8f8 30%, #fff 100%);
-    }
-    &.is-completed:hover {
-      @include linear-gradient(0deg, #ebffe4, #fff 100%);
-    }
+    &:hover { border-left-color: $color-gray-light; }
+    &:active { border-left-color: $color-gray-medium; }
+    &.is-completed:hover { border-left-color: $color-success; }
+    &.is-completed:active { border-left-color: $color-gray-medium; }
   }
 }
 

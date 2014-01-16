@@ -15,11 +15,6 @@ var ScrollWatcher = Em.Mixin.create({
 , scrollWatcherDidScroll: function() {
     Em.run.debounce(this, function () {
       this.send('scrollWatcherDidScroll', this.get('element.scrollTop'));
-      //this.set('isScrolling', true);
-      //clearTimeout(this._scrollTimer);
-      //this._scrollTimer = setTimeout(function () {
-        //this.set('isScrolling', false);
-      //}.bind(this), 500);
     }, 100);
   }
 

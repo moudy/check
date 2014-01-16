@@ -1,5 +1,6 @@
 {
   "node": true
+, "expr": true
 , "laxcomma": true
 , "undef": true
 , "eqeqeq": true

@@ -42,22 +42,7 @@ body {
 @import 'checklist_description';
 @import 'checklist_meta_info';
 @import 'checklist_item';
-
-.button {
-  display: block;
-  padding: 20px;
-  text-align: center;
-  font-size: 14px;
-  &:hover {
-    background-color: #eee;
-  }
-}
-
-.delete-link {
-  display: inline-block;
-  color: red;
-  margin-top: 4px;
-}
+@import 'buttons';
 
 @media (max-width: $content-width)  {
   .checklist-items-container {
