@@ -23,7 +23,8 @@
     "ember-precompile": "~0.2.4",
     "mongoose": "~3.8.4",
     "forever": "~0.10.11",
-    "uglifyjs": "~2.3.6"
+    "uglifyjs": "~2.3.6",
+    "node-require-directory": "~1.0.2"
   },
   "devDependencies": {
     "node-pow": "0.0.2",
