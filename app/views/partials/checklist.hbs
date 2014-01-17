@@ -5,17 +5,7 @@
   {{partial 'checklist_meta_info'}}
 </div>
 
-<div class='checklist-items-container content-width'>
-  <ul class='js-checklist-items checklist-items'>
-    {{each checklist.listItems itemViewClass="App.ChecklistItemView" itemController='checklistItem'}}
-  </ul>
-  {{#if view.isEditing}}
-
-  <a {{action 'addItem'}} href='#' class='button'>
-    &#10010; Add Item
-  </a>
-  {{/if}}
-</div>
+{{render 'checklistItems' checklist.listItems}}
 
 <div class='checklist-meta-info-footer'>
   {{partial 'checklist_meta_info'}}

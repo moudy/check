@@ -1,3 +1,4 @@
+require('./checklist_items');
 require('./checklist_item');
 require('./checklist');
 

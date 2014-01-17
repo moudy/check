@@ -1,6 +1,7 @@
 var App = require('../app').instance;
 
 App.ChecklistController = Em.ObjectController.extend({
+
   totalCount: function () {
     return this.get('listItems.length');
   }.property('listItems.@each.isCompleted')
@@ -42,18 +43,14 @@ App.ChecklistController = Em.ObjectController.extend({
     }
   }.property('listItems.@each.isCompleted')
 
-, selectNextItem: function () {
-    this.get('listItems').invoke('set', 'isActive', false);
-    var next = this.get('listItems').find(function (i) {
-      return !i.get('isCompleted');
-    });
-
-    next.set('isActive', true);
-  }.observes('listItems.@each.isCompleted')
-
 , actions: {
     clear: function () {
       this.get('listItems').invoke('set', 'isCompleted', false);
+    }
+
+  , toggleEdit: function () {
+      this.toggleProperty('isEditing');
+      this.get('listItems').invoke('toggleProperty', 'isEditing');
     }
   }
 

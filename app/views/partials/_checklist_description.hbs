@@ -1,12 +1,9 @@
 <div class='checklist-description-section'>
   <div class='content-width content-inset'>
-    <div class='checklist-description-row property-row'>
-      {{#if view.isEditing}}
-      {{view App.TextArea valueBinding='checklist.description' classNames='checklist-description'}}
-      {{else}}
-      <p class='checklist-description'>
-        {{checklist.description}}
-      </p>
+    <div class='checklist-description editable-body'>
+      {{checklist.description}}
+      {{#if isEditing}}
+        {{view App.TextArea valueBinding='checklist.description'}}
       {{/if}}
     </div>
   </div>

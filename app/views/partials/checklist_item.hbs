@@ -1,24 +1,18 @@
 <div class='checklist-item-checkmark'>&#10004;</div>
 
-<div class='checklist-item-title-row property-row'>
-  {{#if view.isEditing}}
-    {{view App.TextField valueBinding='title' classNames='list-item-title'}}
-  {{else}}
-    <h2 class='checklist-item-title'>
-      {{title}}
-    </h2>
+<h2 class='checklist-item-title editable-title'>
+  {{title}}
+  {{#if isEditing}}
+    {{view App.TextField valueBinding='title'}}
   {{/if}}
-</div>
+</h2>
 
-<div class='checklist-item-description-row property-row'>
-  {{#if view.isEditing}}
-    {{view App.TextArea valueBinding='description' classNames='checklist-item-description'}}
-  {{else}}
-    {{#if description}}
-    <p class='checklist-item-description'>
-      {{description}}
-    </p>
-    {{/if}}
+{{#if description}}
+<p class='checklist-item-description editable-body'>
+  {{description}}
+  {{#if isEditing}}
+    {{view App.TextArea valueBinding='description'}}
   {{/if}}
-</div>
+</p>
+{{/if}}
 

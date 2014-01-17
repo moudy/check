@@ -2,6 +2,10 @@
 
 @mixin button-base {
   display: inline-block;
+  cursor: pointer;
+  &.is-disabled {
+    cursor: default;
+  }
 }
 
 .button {
@@ -14,8 +18,15 @@
   }
 }
 
+@mixin button-size-default {
+  font-size: 14px;
+}
 
-.button-bare {
+@mixin button-size-medium {
+  font-size: 16px;
+}
+
+@mixin button-bare {
   @include button-base();
   text-transform: capitalize;
   color: $color-text-action;
@@ -23,4 +34,15 @@
   &.is-disabled {
     color: $color-text-light;;
   }
+}
+
+.button-bare {
+  @include button-bare();
+  @include button-size-default();
+}
+
+.button-header-bar {
+  @include button-bare();
+  @include button-size-medium();
+  padding: 14px 20px;
 }

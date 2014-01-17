@@ -7,7 +7,7 @@ App.ChecklistItemView = Em.View.extend({
 
 , classNames: 'checklist-item'
 
-, classNameBindings: ['isEditing', 'controller.isActive', 'controller.isCompleted']
+, classNameBindings: ['controller.isEditing', 'controller.isActive', 'controller.isCompleted']
 
 , click: function () {
     this.get('controller').send('toggleCompletion');

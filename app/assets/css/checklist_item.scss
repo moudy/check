@@ -38,24 +38,13 @@
   }
 }
 
-.property-row {
-  position: relative;
-}
-
 .checklist-item-title {
   font-size: 16px;
   font-weight: 700;
-  padding: 4px;
-  margin: 0 0 1px;;
-  display: block;
-  width: 100%;
-  border: 0 none;
+  padding: 2px 4px 2px 2px;
+  margin: 0 0 1px;
   line-height: 16px;
-}
-
-input.checklist-item-title {
-  &:focus { outline: none; }
-  background: #eee;
+  display: inline-block;
 }
 
 .checklist-item-description {
@@ -63,12 +52,6 @@ input.checklist-item-title {
   font-size: 14px;
   color: #5a5a5a;
   width: 100%;
-  border: 0 none;
-  padding: 4px;
+  padding: 2px;
   line-height: 18px;
-}
-
-textarea.checklist-item-description {
-  &:focus { outline: none; }
-  background: #eee;
 }

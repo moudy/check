@@ -1,14 +1,20 @@
-<header class='checklist-header js-checklist-header'>
+<header class='header-bar js-header-bar'>
   <div class='content-width content-inset'>
-    <div class='checklist-title-row property-row'>
-      {{#if view.isEditing}}
-        {{view App.TextField valueBinding='checklist.title' classNames='checklist-title'}}
-      {{else}}
-        <h1 class='checklist-title'>
-          {{checklist.title}}
-        </h1>
+    <h1 class='checklist-title editable-title'>
+      {{checklist.title}}
+      {{#if isEditing}}
+        {{view App.TextField valueBinding='checklist.title'}}
       {{/if}}
-    </div>
+
+    </h1>
+
+    <a href='#' {{action 'toggleEdit'}} class='button-header-bar right'>
+      {{#if isEditing}}
+        Done
+      {{else}}
+        Edit
+      {{/if}}
+    </a>
   </div>
 </header>
 

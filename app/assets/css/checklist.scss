@@ -6,7 +6,7 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.checklist-header {
+.header-bar {
   background: white;
   border-bottom: 1px solid $color-gray-light;
   top: 0;
@@ -16,21 +16,70 @@
 }
 
 .no-csspositionsticky {
-  .checklist-header { position: fixed; }
+  .header-bar { position: fixed; }
   .checklist-container { padding-top: 51px; }
 }
 
 .csspositionsticky {
-  .checklist-header {
+  .header-bar {
     @include position-sticky();
+  }
+}
+
+.editable-row {
+  input, textarea {
+    display: none;
+  }
+
+  &.is-editing {
+    input, textarea {
+      display: block;
+    }
   }
 }
 
 .checklist-title {
   margin: 0;
-  padding: 0;
-  line-height: 50px;
+  padding: 2px 4px 2px 2px;
   font-size: 20px;
+  display: inline-block;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.editable-title {
+  position: relative;
+
+  input {
+    color: inherit;
+    font: inherit;
+    padding: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: inherit;
+    border: 0 none;
+    background: $color-highlight;
+  }
+}
+.editable-body {
+  position: relative;
+
+  textarea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font: inherit;
+    font-size: inherit;
+    color: inherit;
+    border: 0 none;
+    padding: inherit;
+    resize: none;
+    background-color: $color-highlight;
+  }
 }
 
 .checklist-items-container {

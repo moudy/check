@@ -29,7 +29,6 @@ App.ChecklistView = Em.View.extend(ScrollWatcher, {
 
 , actions: {
     scrollWatcherDidScroll: function (scrollTop) {
-      console.log(arguments, this.get('listTop'), this.get('headerBottom'));
       var threshold = this.get('listTop') - this.get('headerBottom');
       this.set('isSubmerged', scrollTop > threshold);
     }
@@ -37,7 +36,7 @@ App.ChecklistView = Em.View.extend(ScrollWatcher, {
 
 , setMeasurements: function () {
     var listRect = this.$('.js-checklist-items')[0].getBoundingClientRect();
-    var headerRect = this.$('.js-checklist-header')[0].getBoundingClientRect();
+    var headerRect = this.$('.js-header-bar')[0].getBoundingClientRect();
     this.set('headerBottom', headerRect.bottom);
     this.set('listTop', listRect.top);
   }.on('didInsertElement')
