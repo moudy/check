@@ -48,8 +48,7 @@ App.ChecklistController = Em.ObjectController.extend({
       return !i.get('isCompleted');
     });
 
-    next && next.set('isActive', true);
-
+    next.set('isActive', true);
   }.observes('listItems.@each.isCompleted')
 
 , actions: {

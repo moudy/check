@@ -1,10 +1,10 @@
 /* globals document: false */
-var FastClick = require('fastClick');
 require('jquery');
 global.Handlebars = require('handlebars');
 require('./vendor/ember');
 require('./vendor/ember-data');
 require('./templates');
+require('fastClick');
 
 var App = exports.instance = global.App = Em.Application.create();
 
@@ -21,4 +21,3 @@ require('./controllers');
 App.Router.map(function () {
 });
 
-Em.$(function() { FastClick.attach(document.body); });
