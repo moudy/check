@@ -5,5 +5,10 @@ App.ChecklistItemController = Em.ObjectController.extend({
     toggleCompletion: function () {
       this.toggleProperty('isCompleted');
     }
+
+  , save: function () {
+      if (!this.get('model.isDirty')) return;
+      this.get('model').save();
+    }
   }
 });

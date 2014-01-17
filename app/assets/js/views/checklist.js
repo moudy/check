@@ -32,6 +32,10 @@ App.ChecklistView = Em.View.extend(ScrollWatcher, {
       var threshold = this.get('listTop') - this.get('headerBottom');
       this.set('isSubmerged', scrollTop > threshold);
     }
+
+  , childViewDidFocusOut: function () {
+      this.get('controller').send('save');
+    }
   }
 
 , setMeasurements: function () {

@@ -13,28 +13,17 @@
   left: 0;
   right: 0;
   z-index: 10;
+  height: 50px;
 }
 
 .no-csspositionsticky {
   .header-bar { position: fixed; }
-  .checklist-container { padding-top: 51px; }
+  .checklist-container { padding-top: 50px; }
 }
 
 .csspositionsticky {
   .header-bar {
     @include position-sticky();
-  }
-}
-
-.editable-row {
-  input, textarea {
-    display: none;
-  }
-
-  &.is-editing {
-    input, textarea {
-      display: block;
-    }
   }
 }
 
@@ -53,6 +42,7 @@
   input {
     color: inherit;
     font: inherit;
+    line-height: inherit;
     padding: 2px;
     position: absolute;
     top: 0;
@@ -63,6 +53,11 @@
     background: $color-highlight;
   }
 }
+
+// fixes alignment, not sure why this needs to bed here but it works
+.checklist-item-title.editable-title input { top: -1px; }
+
+
 .editable-body {
   position: relative;
 

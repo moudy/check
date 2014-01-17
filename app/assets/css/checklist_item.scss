@@ -27,6 +27,10 @@
   &.is-active {
     background-color: $color-highlight;
   }
+  &.is-editing {
+    background-color: white;
+    cursor: default;
+  }
 }
 
 .no-touch {
@@ -35,6 +39,8 @@
     &:active { border-left-color: $color-gray-medium; }
     &.is-completed:hover { border-left-color: $color-success; }
     &.is-completed:active { border-left-color: $color-gray-medium; }
+    &.is-editing:hover { border-left-color: none; }
+    &.is-editing:active { border-left-color: none; }
   }
 }
 

@@ -52,6 +52,11 @@ App.ChecklistController = Em.ObjectController.extend({
       this.toggleProperty('isEditing');
       this.get('listItems').invoke('toggleProperty', 'isEditing');
     }
+
+  , save: function () {
+      if (!this.get('model.isDirty')) return;
+      this.get('model').save();
+    }
   }
 
 });
