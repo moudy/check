@@ -2,12 +2,8 @@
   <ul>
     {{#each checklist in model}}
       <li>
-        <a {{action 'selectChecklist' checklist}} href='#'>{{checklist.title}}</a>
+        {{#link-to 'checklist' checklist}}{{checklist.title}}{{/link-to}}
       </li>
     {{/each}}
   </ul>
 </div>
-
-{{#with currentChecklist as checklist}}
-  {{render 'checklist' checklist}}
-{{/with}}

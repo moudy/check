@@ -28,3 +28,12 @@ exports.update = function (req, res) {
     });
   });
 };
+
+exports.show = function (req, res) {
+  Checklist.findById(req.params.checklistSlug, function (error, checklist) {
+    res.format({
+      'text/html': function() { res.render('index'); }
+    , 'application/json': function () { res.send({checklist: checklist}); }
+    });
+  });
+};

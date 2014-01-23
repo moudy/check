@@ -1,40 +1,48 @@
 @import 'base';
 
-.checklist-item {
+.checklist-list-item {
   padding: 10px 10px 10px 40px;
-  border-bottom: 1px solid #eee;
   position: relative;
-  min-height: 51px;
   background: white;
   cursor: pointer;
+  width: 100%;
 
-  border-left: 3px solid transparent;
+  border-bottom: 1px solid #eed;
+  border-right: 1px solid #eed;
+  border-left: 3px solid #eed;
 
-  .checklist-item-checkmark {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    font-size: 14px;
-    color: $color-text-light;
+  &:first-child { border-top: 1px solid #eed; }
+
+  &.is-dragging {
+    z-index: 10;
+    @include box-shadow(0 1px 1px #bbb);
   }
 
   &.is-completed {
     border-left-color: $color-success;
-    .checklist-item-checkmark { color: $color-success; }
-    .checklist-item-title, .checklist-item-description { opacity: 0.5; }
+    .checklist-list-item-checkmark { color: $color-success; }
+    .checklist-list-item-title, .checklist-list-item-description { opacity: 0.5; }
   }
 
-  &.is-active {
-    background-color: $color-highlight;
+  &.is-active { background-color: $color-highlight; }
+
+  &:hover {
+    .delete-item { color: $color-text-danger; }
   }
-  &.is-editing {
-    background-color: white;
-    cursor: default;
+
+  .delete-item {
+    color: $color-text-light;
   }
 }
 
+.checklist-container.is-editing .checklist-list-item {
+  background-color: white;
+  cursor: default;
+  .checklist-list-item-title, .checklist-list-item-description { opacity: 1; }
+}
+
 .no-touch {
-  .checklist-item {
+  .checklist-list-item {
     &:hover { border-left-color: $color-gray-light; }
     &:active { border-left-color: $color-gray-medium; }
     &.is-completed:hover { border-left-color: $color-success; }
@@ -44,20 +52,47 @@
   }
 }
 
-.checklist-item-title {
+.checklist-list-item-title {
+  $line-height: 16px;
+  line-height: $line-height;
+  min-height: $line-height;
+  min-width: 20px;
   font-size: 16px;
   font-weight: 700;
   padding: 2px 4px 2px 2px;
   margin: 0 0 1px;
-  line-height: 16px;
   display: inline-block;
+  position: relative;
+
+  .checklist-list-item-checkmark {
+    position: absolute;
+    left: -25px;
+    font-size: 14px;
+    color: $color-text-light;
+  }
+
 }
 
-.checklist-item-description {
+.checklist-list-item-description {
   margin: 0;
   font-size: 14px;
   color: #5a5a5a;
   width: 100%;
   padding: 2px;
-  line-height: 18px;
+  $line-height: 18px;
+  line-height: $line-height;
+  min-height: $line-height;
+}
+
+.button-item-reorder {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: block;
+  width: 40px;
+  height: 100%;
+  background-color: red;
+  user-select: none;
+  cursor: pointer;
 }

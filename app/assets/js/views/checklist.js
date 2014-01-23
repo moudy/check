@@ -25,10 +25,16 @@ App.ChecklistView = Em.View.extend(ScrollWatcher, {
 
 , templateName: 'checklist'
 
-, classNameBindings: 'isSubmerged'
+, classNameBindings: ['isSubmerged', 'controller.isEditing', 'isHidden']
 
 , actions: {
-    scrollWatcherDidScroll: function (scrollTop) {
+    close: function () {
+      this.$().transition({ scale: 1.2, opacity: 0 }, 200, function () {
+        this.controller.transitionToRoute('index');
+      }.bind(this));
+    }
+
+  , scrollWatcherDidScroll: function (scrollTop) {
       var threshold = this.get('listTop') - this.get('headerBottom');
       this.set('isSubmerged', scrollTop > threshold);
     }
@@ -39,7 +45,7 @@ App.ChecklistView = Em.View.extend(ScrollWatcher, {
   }
 
 , setMeasurements: function () {
-    var listRect = this.$('.js-checklist-items')[0].getBoundingClientRect();
+    var listRect = this.$('.js-checklist-list-items')[0].getBoundingClientRect();
     var headerRect = this.$('.js-header-bar')[0].getBoundingClientRect();
     this.set('headerBottom', headerRect.bottom);
     this.set('listTop', listRect.top);

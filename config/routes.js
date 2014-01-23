@@ -5,6 +5,10 @@ exports.configure = function (app) {
   app.get('/', controllers.pages.index);
 
   app.get('/checklists', controllers.checklists.index);
+
+  app.get('/list/:checklistSlug', controllers.checklists.show);
+  app.get('/checklists/:checklistSlug', controllers.checklists.show);
+
   app.post('/checklists', controllers.checklists.create);
   app.put('/checklists/:id', controllers.checklists.update);
   app.post('/listItems', controllers.list_items.create);

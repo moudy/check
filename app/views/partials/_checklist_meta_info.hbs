@@ -1,4 +1,16 @@
 <div class='content-width content-inset checklist-status-message'>
   {{statusMessage}}
-  <a href='#' {{bind-attr class=':button-bare :right isInProgress::is-disabled'}} {{action 'clear'}}>clear</a>
+
+  <a href='#' {{action 'toggleEdit'}} class='control button-bare right'>
+    {{#if isEditing}}
+      Done Editing
+    {{else}}
+      Edit
+    {{/if}}
+  </a>
+
+  {{#if isClearable}}
+    <a href='#' class='control button-bare right' {{action 'clear'}}>clear</a>
+  {{/if}}
+
 </div>

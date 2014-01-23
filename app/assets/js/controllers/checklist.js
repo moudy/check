@@ -26,6 +26,10 @@ App.ChecklistController = Em.ObjectController.extend({
     return this.get('completedCount') > 0;
   }.property('listItems.@each.isCompleted')
 
+, isClearable: function () {
+    return this.get('isInProgress') && !this.get('isEditing');
+  }.property('isInProgress', 'isEditing')
+
 , statusMessage: function () {
     var status = this.getProperties(
       'completedCount'
@@ -39,7 +43,7 @@ App.ChecklistController = Em.ObjectController.extend({
     } else if (!status.isInProgress) {
       return status.uncompletedCount+' items';
     } else {
-      return +status.completedCount+' of '+status.totalCount + ' complete ('+status.uncompletedCount+' to go)';
+      return +status.completedCount+' of '+status.totalCount + ' complete';
     }
   }.property('listItems.@each.isCompleted')
 
@@ -49,8 +53,8 @@ App.ChecklistController = Em.ObjectController.extend({
     }
 
   , toggleEdit: function () {
+      console.log(this.toString());
       this.toggleProperty('isEditing');
-      this.get('listItems').invoke('toggleProperty', 'isEditing');
     }
 
   , save: function () {

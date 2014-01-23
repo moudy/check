@@ -5,18 +5,26 @@ App.ChecklistItemView = Em.View.extend({
 
 , tagName: 'li'
 
-, classNames: 'checklist-item'
+, classNames: 'checklist-list-item'
 
-, classNameBindings: ['controller.isEditing', 'controller.isActive', 'controller.isCompleted']
+, classNameBindings: ['controller.isActive', 'controller.isCompleted']
 
 , click: function () {
-    if (this.get('controller.isEditing')) return;
-    this.get('controller').send('toggleCompletion');
+    var isEditing = this.get('controller.isEditing');
+    if (!isEditing) {
+      this.get('controller').send('toggleCompletion');
+    }
   }
 
 , actions: {
     childViewDidFocusOut: function () {
       this.get('controller').send('save');
+    }
+
+  , deleteItem: function () {
+      this.$().transition({ opacity: 0 }, 300, function () {
+        this.controller.send('deleteItem');
+      }.bind(this));
     }
   }
 

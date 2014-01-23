@@ -4,6 +4,8 @@
   background: $color-gray-extra-light;
   @include cover-area();
   -webkit-overflow-scrolling: touch;
+
+  &.is-hidden { display: none; }
 }
 
 .header-bar {
@@ -55,7 +57,7 @@
 }
 
 // fixes alignment, not sure why this needs to bed here but it works
-.checklist-item-title.editable-title input { top: -1px; }
+.checklist-list-item-title.editable-title input { top: -1px; }
 
 
 .editable-body {
@@ -77,7 +79,10 @@
   }
 }
 
-.checklist-items-container {
-  border: 1px solid #ddd;
+.checklist-list-items-container {
   margin-bottom: 80px;
+}
+
+.checklist-list-items {
+  position: relative;
 }

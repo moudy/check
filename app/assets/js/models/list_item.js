@@ -5,5 +5,6 @@ App.ListItem = DS.Model.extend({
   title: attr('string')
 , description: attr('string')
 , checklistId: attr('string')
+, checklist: DS.belongsTo('checklist', {async:true})
 });
 

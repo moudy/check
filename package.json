@@ -6,9 +6,10 @@
     "start-dev": "supervisor app.js",
     "start": "forever app.js",
     "build-templates": "ember-precompile app/views/partials/*.hbs > app/assets/js/templates.js",
+    "build-js-head": "browserify app/assets/js/head.js | uglifyjs -mc > public/head.js",
     "build-js": "npm run build-templates && browserify app/assets/js/app.js | uglifyjs -mc > public/app.js",
     "build-css": "mkdir -p tmp && node-sass app/assets/css/app.scss tmp/app.css && cleancss tmp/app.css > public/app.css",
-    "postinstall": "npm run build-js & npm run build-css"
+    "postinstall": "npm run build-js-head & npm run build-js & npm run build-css"
   },
   "dependencies": {
     "express": "3.4.4",
@@ -24,7 +25,8 @@
     "mongoose": "~3.8.4",
     "forever": "~0.10.11",
     "uglifyjs": "~2.3.6",
-    "node-require-directory": "~1.0.2"
+    "node-require-directory": "~1.0.2",
+    "jquery-replace-class": "0.0.1"
   },
   "devDependencies": {
     "node-pow": "0.0.2",
@@ -39,14 +41,24 @@
   "browser": {
     "jquery": "./app/assets/js/vendor/jquery.js",
     "fastClick": "./app/assets/js/vendor/fastclick.js",
-    "Ember": "./app/assets/js/vendor/ember.js"
+    "Ember": "./app/assets/js/vendor/ember.js",
+    "jquery.transit": "./app/assets/js/vendor/jquery.transit.js",
+    "Modernizr": "./app/assets/js/vendor/modernizr.js"
   },
   "browserify-shim": {
     "jquery": {
       "exports": "$"
     },
+    "jquery.transit": {
+      "depends": [
+        "jquery"
+      ]
+    },
     "fastClick": {
       "exports": "FastClick"
+    },
+    "Modernizr": {
+      "exports": "Mondernizr"
     }
   },
   "browserify": {

@@ -5,7 +5,11 @@ exports.configure = function (app) {
 
   if ('development' === app.get('env')) {
     app.use(require('./middleware/sass'));
-    app.use('/app.js', require('./middleware/browserify'), {
+    app.use('/head.js', require('./middleware/head'), {
+      noParse: ['Modernizr']
+    , insertGlobals:true
+    });
+    app.use('/app.js', require('./middleware/app'), {
       noParse: ['Ember', 'jquery']
     , insertGlobals:true
     });

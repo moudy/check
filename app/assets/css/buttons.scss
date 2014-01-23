@@ -18,26 +18,27 @@
   }
 }
 
-@mixin button-size-default {
-  font-size: 14px;
-}
-
-@mixin button-size-medium {
-  font-size: 16px;
-}
+@mixin button-size-default { font-size: 14px; }
+@mixin button-size-medium { font-size: 16px; }
+@mixin button-color-default { color: $color-text-action; }
+@mixin button-color-danger { color: $color-text-danger; }
 
 @mixin button-bare {
   @include button-base();
   text-transform: capitalize;
-  color: $color-text-action;
 
-  &.is-disabled {
-    color: $color-text-light;;
-  }
+  &.is-disabled { color: $color-text-light; }
 }
 
 .button-bare {
   @include button-bare();
+  @include button-color-default();
+  @include button-size-default();
+}
+
+.button-bare-danger {
+  @include button-bare();
+  @include button-color-danger();
   @include button-size-default();
 }
 

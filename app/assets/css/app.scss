@@ -50,7 +50,7 @@ body {
 @import 'buttons';
 
 @media (max-width: $content-width)  {
-  .checklist-items-container {
+  .checklist-list-item {
     border-right: 0 none;
     border-left: 0 none;
   }

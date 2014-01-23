@@ -1,5 +1,5 @@
-/* globals document: false */
 require('jquery');
+require('jquery.transit');
 global.Handlebars = require('handlebars');
 require('./vendor/ember');
 require('./vendor/ember-data');
@@ -19,5 +19,6 @@ require('./routes');
 require('./controllers');
 
 App.Router.map(function () {
+  this.route('checklist', {path: '/list/:checklistSlug'});
 });
 
