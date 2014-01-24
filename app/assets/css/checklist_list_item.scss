@@ -1,0 +1,98 @@
+@import 'base';
+
+.checklist-list-item {
+  padding: 10px 10px 10px 40px;
+  position: relative;
+  background: white;
+  cursor: pointer;
+  width: 100%;
+
+  border-bottom: 1px solid $color-gray-light;
+  border-right: 1px solid $color-gray-light;
+  border-left: 3px solid $color-gray-light;
+
+  &:first-child { border-top: 1px solid $color-gray-light; }
+
+  &.is-dragging {
+    z-index: 10;
+    @include box-shadow(0 1px 1px #bbb);
+  }
+
+  &.is-completed {
+    border-left-color: $color-success;
+    .checklist-list-item-checkmark { color: $color-success; }
+    .checklist-list-item-title, .checklist-list-item-description { opacity: 0.5; }
+  }
+
+  &.is-active { background-color: $color-highlight; }
+
+  &:hover {
+    .delete-item { color: $color-text-danger; }
+  }
+
+  .delete-item {
+    color: $color-text-light;
+    position: absolute;
+    top: 9px;
+    right: 0;
+  }
+}
+
+.checklist-container.is-editing .checklist-list-item {
+  background-color: white;
+  cursor: default;
+  .checklist-list-item-title, .checklist-list-item-description { opacity: 1; }
+}
+
+.no-touch {
+  .checklist-list-item {
+    &:hover { border-left-color: $color-gray-light; }
+    &:active { border-left-color: $color-gray-medium; }
+    &.is-completed:hover { border-left-color: $color-success; }
+    &.is-completed:active { border-left-color: $color-gray-medium; }
+    &.is-editing:hover { border-left-color: none; }
+    &.is-editing:active { border-left-color: none; }
+  }
+}
+
+.checklist-list-item-title {
+  @include h2();
+  min-width: 47px;
+  margin: 0;
+  padding: 2px;
+  display: inline-block;
+  position: relative;
+  min-height: 34px;
+
+  .checklist-list-item-checkmark {
+    position: absolute;
+    left: -25px;
+    font-size: 14px;
+    color: $color-text-light;
+  }
+
+}
+
+.checklist-list-item-description {
+  margin: 3px 0 0 0 ;
+  font-size: 14px;
+  color: #5a5a5a;
+  width: 100%;
+  padding: 2px;
+  $line-height: 18px;
+  line-height: $line-height;
+  min-height: $line-height + 4px;
+}
+
+.button-item-reorder {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: block;
+  width: 40px;
+  height: 100%;
+  background-color: red;
+  user-select: none;
+  cursor: pointer;
+}

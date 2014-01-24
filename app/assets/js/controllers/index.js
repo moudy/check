@@ -1,6 +1,6 @@
 require('./checklist_items');
 require('./checklist_item');
-require('./checklist');
+require('./checklists_show');
 
 var App = require('../app').instance;
 

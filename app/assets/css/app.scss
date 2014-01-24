@@ -23,15 +23,21 @@ input:focus, textarea:focus {
   outline-offset: -2px;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 // \app reset
 
 body {
-  padding: 100px 0;
-  color: #333;
-  background-color: #fff;
+  color: $color-text-default;
+  background-color: $color-gray-extra-light;
   font: 13px Helvetica, arial, freesans, clean, sans-serif;
   line-height: 1.4;
 }
+
+input, textarea { border-radius: 4px; }
 
 .content-width {
   margin: 0 auto;
@@ -43,14 +49,16 @@ body {
   padding-right: 10px;
 }
 
+@import 'app_header';
 @import 'checklist';
 @import 'checklist_description';
 @import 'checklist_meta_info';
 @import 'checklist_item';
+@import 'checklist_list_item';
 @import 'buttons';
 
 @media (max-width: $content-width)  {
-  .checklist-list-item {
+  .checklist-list-item, .checklist-item {
     border-right: 0 none;
     border-left: 0 none;
   }

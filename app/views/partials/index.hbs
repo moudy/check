@@ -1,9 +1,14 @@
 <div class='content-width'>
-  <ul>
-    {{#each checklist in model}}
-      <li>
-        {{#link-to 'checklist' checklist}}{{checklist.title}}{{/link-to}}
-      </li>
-    {{/each}}
-  </ul>
+  <div class='checklists-container'>
+    <ul class='checklists'>
+      {{#each}}
+        <li>
+          {{#link-to 'checklists.show' this class='checklist-item'}}
+            <h2 class='checklist-item-title'>{{title}}</h2>
+            <span class='checklist-item-list-count right'>{{listItems.length}}</span>
+          {{/link-to}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
 </div>

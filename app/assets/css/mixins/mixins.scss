@@ -1,3 +1,4 @@
+@import '../variables';
 @import '../vendor/bourbon/bourbon';
 
 @mixin cover-area($position: fixed, $overflow: scroll) {
@@ -15,3 +16,10 @@
   position: -ms-sticky;
   position: -o-sticky;
 }
+
+@mixin h2 {
+  color: $color-text-default;
+  font-size: 16px;
+  font-weight: 700;
+}
+

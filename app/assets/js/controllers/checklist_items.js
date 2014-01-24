@@ -11,7 +11,7 @@ App.ChecklistItemsController = Em.ArrayController.extend({
       return !i.get('isCompleted');
     });
 
-    next.set('isActive', true);
+    next && next.set('isActive', true);
   }.observes('@each.isCompleted')
 
 , actions: {

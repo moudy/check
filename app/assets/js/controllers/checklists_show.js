@@ -1,6 +1,6 @@
 var App = require('../app').instance;
 
-App.ChecklistController = Em.ObjectController.extend({
+App.ChecklistsShowController = Em.ObjectController.extend({
 
   totalCount: function () {
     return this.get('listItems.length');

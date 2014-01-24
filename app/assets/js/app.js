@@ -19,6 +19,9 @@ require('./routes');
 require('./controllers');
 
 App.Router.map(function () {
-  this.route('checklist', {path: '/list/:checklistSlug'});
+  this.resource('checklists', {path: '/list'}, function () {
+    this.route('show', {path: '/:checklistSlug', controller: 'checklistsShow'});
+    this.route('new');
+  });
 });
 

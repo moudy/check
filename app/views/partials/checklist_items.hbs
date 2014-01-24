@@ -1,10 +1,10 @@
-<div class='checklist-list-items-container content-width'>
-  <ul class='js-checklist-list-items checklist-list-items'>
-    {{each itemViewClass="App.ChecklistItemView"}}
-  </ul>
-  {{#if isEditing}}
-    <a {{action 'addItem'}} href='#' class='button'>
-      &#43; Add Item
-    </a>
-  {{/if}}
+<ul class='js-checklist-list-items checklist-list-items'>
+  {{each itemViewClass="App.ChecklistItemView"}}
+</ul>
+{{#if isEditing}}
+<div class='checklist-add-item-container'>
+  <a {{action 'addItem'}} href='#' class='button-bare'>
+    &#43; Add Item
+  </a>
 </div>
+{{/if}}

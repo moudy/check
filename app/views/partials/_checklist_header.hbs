@@ -1,11 +1,10 @@
 <header class='header-bar js-header-bar'>
   <div class='content-width content-inset'>
     <h1 class='checklist-title editable-title'>
-      {{title}}
+      {{title}}&nbsp;
       {{#if isEditing}}
-        {{view App.TextField valueBinding='title'}}
+        {{view App.TextField valueBinding='title' placeholder='List title'}}
       {{/if}}
-
     </h1>
 
     <a href='#' {{action 'close' target=view}} class='control button-header-bar right'>

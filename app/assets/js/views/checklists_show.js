@@ -20,7 +20,7 @@ var ScrollWatcher = Em.Mixin.create({
 
 });
 
-App.ChecklistView = Em.View.extend(ScrollWatcher, {
+App.ChecklistsShowView = Em.View.extend(ScrollWatcher, {
   classNames: 'checklist-container'
 
 , templateName: 'checklist'
