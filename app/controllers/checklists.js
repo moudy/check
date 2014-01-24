@@ -37,3 +37,12 @@ exports.show = function (req, res) {
     });
   });
 };
+
+exports.del = function (req, res) {
+  Checklist.findByIdAndRemove(req.params.id, function () {
+    res.format({
+      'text/html': function() { res.render('index'); }
+    , 'application/json': function () { res.send({checklist: null}); }
+    });
+  });
+};

@@ -25,7 +25,11 @@ App.ChecklistsShowView = Em.View.extend(ScrollWatcher, {
 
 , templateName: 'checklist'
 
-, classNameBindings: ['isSubmerged', 'controller.isEditing', 'isHidden']
+, classNameBindings: [
+    'isSubmerged'
+  , 'controller.isPendingDeletion:dim-list'
+  , 'controller.isEditing'
+  ]
 
 , actions: {
     close: function () {

@@ -7,6 +7,10 @@
 
 {{render 'checklistItems' listItems}}
 
+{{#if isEditing}}
+  {{view App.ChecklistDeleteView}}
+{{/if}}
+
 <div class='checklist-meta-info-footer'>
   {{partial 'checklist_meta_info'}}
 </div>

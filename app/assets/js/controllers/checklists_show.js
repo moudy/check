@@ -61,6 +61,21 @@ App.ChecklistsShowController = Em.ObjectController.extend({
       if (!this.get('model.isDirty')) return;
       this.get('model').save();
     }
+
+  , deleteList: function () {
+      this.set('isPendingDeletion', true);
+    }
+
+  , cancelDeleteList: function () {
+      this.set('isPendingDeletion', false);
+    }
+
+  , confirmDeleteList: function () {
+      var model = this.get('model');
+      model.deleteRecord();
+      model.save();
+      this.transitionToRoute('index');
+    }
   }
 
 });

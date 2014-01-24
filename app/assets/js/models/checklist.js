@@ -7,9 +7,11 @@ App.ChecklistSerializer = DS.RESTSerializer.extend({
     var listItems = [];
 
     checklists.forEach(function(checklist) {
-      var lis = checklist.listItems;
-      listItems = listItems.concat(lis);
-      checklist.listItems = lis.map(function (li) { return li.id; });
+      if(checklist && checklist.listItems) {
+        var lis = checklist.listItems;
+        listItems = listItems.concat(lis);
+        checklist.listItems = lis.map(function (li) { return li.id; });
+      }
     });
 
     payload = {
@@ -21,11 +23,14 @@ App.ChecklistSerializer = DS.RESTSerializer.extend({
   }
 
 , extractSingle: function(store, type, payload, id, requestType) {
-    var listItems = payload.checklist.listItems,
-    listItemIds = listItems.mapProperty('id');
+    var listItems, listItemIds;
+    if (payload.checklist) {
+      listItems = payload.checklist.listItems;
+      listItemIds = listItems.mapProperty('id');
 
-    payload.listItems = listItems;
-    payload.checklist.listItems = listItemIds;
+      payload.listItems = listItems;
+      payload.checklist.listItems = listItemIds;
+    }
 
     return this._super(store, type, payload, id, requestType);
   }
