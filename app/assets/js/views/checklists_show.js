@@ -31,6 +31,18 @@ App.ChecklistsShowView = Em.View.extend(ScrollWatcher, {
   , 'controller.isEditing'
   ]
 
+, setMeasurements: function () {
+    var listRect = this.$('.js-checklist-list-items')[0].getBoundingClientRect();
+    var headerRect = this.$('.js-header-bar')[0].getBoundingClientRect();
+    this.set('headerBottom', headerRect.bottom);
+    this.set('listTop', listRect.top);
+  }.on('didInsertElement')
+
+, autoFocus: function () {
+    var c = this.get('controller');
+    if (c.get('isNew') && c.get('isEditing')) this.$('.checklist-title input').focus();
+  }.on('didInsertElement')
+
 , actions: {
     close: function () {
       this.$().transition({ scale: 1.2, opacity: 0 }, 200, function () {
@@ -47,12 +59,5 @@ App.ChecklistsShowView = Em.View.extend(ScrollWatcher, {
       this.get('controller').send('save');
     }
   }
-
-, setMeasurements: function () {
-    var listRect = this.$('.js-checklist-list-items')[0].getBoundingClientRect();
-    var headerRect = this.$('.js-header-bar')[0].getBoundingClientRect();
-    this.set('headerBottom', headerRect.bottom);
-    this.set('listTop', listRect.top);
-  }.on('didInsertElement')
 
 });
