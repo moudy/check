@@ -13,6 +13,7 @@ if (global.history && global.history.pushState) {
 }
 
 require('./mixins');
+require('./application_adapter');
 require('./views');
 require('./models');
 require('./routes');

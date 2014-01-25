@@ -6,12 +6,14 @@ App.ChecklistItemsController = Em.ArrayController.extend({
 , isEditingBinding: Em.Binding.oneWay('parentController.isEditing')
 
 , selectNextItem: function () {
-    this.invoke('set', 'isActive', false);
-    var next = this.find(function (i) {
-      return !i.get('isCompleted');
-    });
+    Em.run.once(this, function () {
+      this.invoke('set', 'isActive', false);
+      var next = this.find(function (i) {
+        return !i.get('isCompleted');
+      });
 
-    next && next.set('isActive', true);
+      next && next.set('isActive', true);
+    });
   }.observes('@each.isCompleted')
 
 , actions: {
@@ -19,7 +21,6 @@ App.ChecklistItemsController = Em.ArrayController.extend({
       var checklistId = this.get('parentController.model.id');
       var listItem = this.store.createRecord('listItem', {checklistId: checklistId});
       this.pushObject(listItem);
-      listItem.save();
     }
   }
 

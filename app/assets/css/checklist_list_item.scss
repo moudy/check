@@ -13,11 +13,6 @@
 
   &:first-child { border-top: 1px solid $color-gray-light; }
 
-  &.is-dragging {
-    z-index: 10;
-    @include box-shadow(0 1px 1px #bbb);
-  }
-
   &.is-completed {
     border-left-color: $color-success;
     .checklist-list-item-checkmark { color: $color-success; }
@@ -26,9 +21,7 @@
 
   &.is-active { background-color: $color-highlight; }
 
-  &:hover {
-    .delete-item { color: $color-text-danger; }
-  }
+  .delete-item:hover { color: $color-text-danger; }
 
   .delete-item {
     color: $color-text-light;

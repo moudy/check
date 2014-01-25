@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start-dev": "supervisor app.js",
+    "dev": "nodemon --ignore tmp/ --ignore node_modules/ --ignore public/ --ignore app/assets/ app.js",
     "start": "forever app.js",
     "build-templates": "ember-precompile app/views/partials/*.hbs > app/assets/js/templates.js",
     "build-js-head": "browserify app/assets/js/head.js | uglifyjs -mc > public/head.js",
@@ -26,7 +26,8 @@
     "forever": "~0.10.11",
     "uglifyjs": "~2.3.6",
     "node-require-directory": "~1.0.2",
-    "jquery-replace-class": "0.0.1"
+    "jquery-replace-class": "0.0.1",
+    "nodemon": "~1.0.13"
   },
   "devDependencies": {
     "node-pow": "0.0.2",

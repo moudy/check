@@ -24,4 +24,6 @@ App.ChecklistItemController = Em.ObjectController.extend({
       model.save();
     }
   }
+
 });
+

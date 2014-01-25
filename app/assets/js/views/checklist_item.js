@@ -16,6 +16,10 @@ App.ChecklistItemView = Em.View.extend({
     }
   }
 
+, autoFocus: function () {
+    if (this.get('controller.isNew')) this.$('input').focus();
+  }.on('didInsertElement')
+
 , actions: {
     childViewDidFocusOut: function () {
       this.get('controller').send('save');
