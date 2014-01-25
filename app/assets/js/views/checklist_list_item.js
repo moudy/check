@@ -1,7 +1,7 @@
 var App = require('../app').instance;
 
-App.ChecklistItemView = Em.View.extend({
-  templateName: 'checklist_item'
+App.ChecklistListItemView = Em.View.extend({
+  templateName: 'checklist_list_item'
 
 , tagName: 'li'
 

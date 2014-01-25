@@ -1,6 +1,6 @@
 var App = require('../app').instance;
 
-App.ChecklistItemController = Em.ObjectController.extend({
+App.ChecklistListItemController = Em.ObjectController.extend({
 
   isEditingBinding: Em.Binding.oneWay('parentController.isEditing')
 

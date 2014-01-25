@@ -1,4 +1,16 @@
+@import 'base';
+
 .app-header {
   background-color: white;
-  padding: 20px;
+  border-bottom: 1px solid $color-gray-light;
+
+  .control { line-height: 50px; }
+  .tagline { font-size: 16px; }
+}
+
+.app-logo {
+  font-size: 20px;
+  color: $color-success;
+  padding: 0 20px;
+  display: inline-block;
 }

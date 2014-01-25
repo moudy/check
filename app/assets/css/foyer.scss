@@ -1,0 +1,63 @@
+@import 'base';
+
+$hero-offset: 90px;
+
+.foyer-heading {
+  margin: 0 0 10px;
+}
+
+.foyer-hero {
+  background: $color-gray-dark;
+  @include background-image( radial-gradient(#444, #222) );
+  padding-top: 30px;
+
+  .checklist-title { color: white; }
+  .checklist-description { color: $color-gray-medium; }
+}
+
+.foyer-checklist {
+  width: 500px;
+  margin: 0 auto (-$hero-offset);
+  position: relative;
+  z-index: 1;
+
+  .checklist-list-items {
+    margin-top: 30px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  }
+}
+
+.foyer-signup-container {
+  background: $color-gray-light;
+  padding: $hero-offset 0 40px 0;
+  position: relative;
+}
+
+.signup-form {
+  margin: 0 auto;
+  max-width: 250px;
+
+}
+
+.signup-form-group {
+  margin-bottom: 10px;
+}
+
+.foyer-manifesto-container {
+  padding: 40px;
+}
+
+.foyer-book-tagline {
+  font-size: 16px;
+  margin: 20px 0 20px;
+  color: $color-text-light-medium;
+}
+
+.foyer-book-link {
+  display: inline-block;
+  max-width: 200px;
+  padding: 10px;
+  @include transform(rotate(-5deg));
+  -webkit-backface-visibility: hidden;
+  img { width: 100%; }
+}

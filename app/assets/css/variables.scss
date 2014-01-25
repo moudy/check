@@ -1,11 +1,12 @@
 $color-gray-extra-light: #f8f8f8;
 $color-gray-light: #eee;
 $color-gray-medium: #ddd;
+$color-gray-dark: #333;
 $color-active: #09F;
 $color-success: #00f300;
 $color-highlight: #feffe7;
 
-$color-text-default: #333;
+$color-text-default: $color-gray-dark;
 $color-text-light: #ddd;
 $color-text-light-medium: #a7a7a7;
 $color-text-action: $color-active;
