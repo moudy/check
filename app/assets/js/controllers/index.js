@@ -6,10 +6,7 @@ var App = require('../app').instance;
 
 App.IndexController = Em.ArrayController.extend({
 
-  actions: {
-    selectChecklist: function (checklist) {
-      this.set('currentChecklist', checklist);
-    }
-  }
+  sortProperties: ['title']
+, sortAscending: true
 
 });
