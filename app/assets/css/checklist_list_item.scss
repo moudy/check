@@ -1,7 +1,7 @@
 @import 'base';
 
 .checklist-list-item {
-  padding: 10px 10px 10px 40px;
+  padding: 7px 10px 7px 40px;
   position: relative;
   background: white;
   cursor: pointer;
@@ -55,11 +55,12 @@
   padding: 2px;
   display: inline-block;
   position: relative;
-  min-height: 34px;
+  height: 26px;
 
   .checklist-list-item-checkmark {
     position: absolute;
     left: -25px;
+    top: 4px;
     font-size: 14px;
     color: $color-text-light;
   }
