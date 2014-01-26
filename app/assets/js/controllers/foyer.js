@@ -5,7 +5,7 @@ var listItems = [
 , {title:'Create an Account', isActive:true}
 , {title:'Make your first list'}
 , {title:'Share your list with others'}
-, {title:'Adapt someone else\'s list to fit your needs'}
+, {title:'Adapt someone else\'s list'}
 ];
 
 App.FoyerController = Em.Controller.extend({

@@ -61,13 +61,5 @@ input, textarea { border-radius: 4px; }
 @import 'checklist_list_item';
 @import 'checklist_delete';
 @import 'buttons';
+@import 'media_queries';
 
-@media (max-width: $content-width)  {
-  .checklist-list-item, .checklist-item {
-    border-right: 0 none;
-    border-left: 0 none;
-  }
-  .foyer-checklist {
-    width: 100%;
-  }
-}

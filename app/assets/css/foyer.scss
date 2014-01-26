@@ -16,14 +16,14 @@ $hero-offset: 90px;
 }
 
 .foyer-checklist {
-  width: 500px;
   margin: 0 auto (-$hero-offset);
   position: relative;
   z-index: 1;
 
   .checklist-list-items {
-    margin-top: 30px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    margin: 30px auto 0;
+    max-width: 330px;
   }
 }
 

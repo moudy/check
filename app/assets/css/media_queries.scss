@@ -1,0 +1,8 @@
+@import 'base';
+
+@media (max-width: $content-width)  {
+  .checklist-list-item, .checklist-item {
+    border-right: 0 none;
+    border-left: 0 none;
+  }
+}
