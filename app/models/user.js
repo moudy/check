@@ -24,4 +24,18 @@ UserSchema.set('toJSON', {virtuals: true});
   UserSchema.plugin.apply(UserSchema, plugin);
 });
 
+// over-riding passport-local-mongoose method so this can use findByWhatever
+UserSchema.statics.authenticate = function() {
+  var self = this;
+
+  return function(identifier, password, cb) {
+    console.log('finding whatever', arguments);
+    self.findOneByWhatever(identifier, function(err, user) {
+      if (err) return cb(err);
+      if (user) return user.authenticate(password, cb);
+      return cb(null, false, { message: 'Could not find user' });
+    });
+  };
+};
+
 module.exports = mongoose.model('User', UserSchema, 'users');
