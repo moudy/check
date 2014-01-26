@@ -1,7 +1,6 @@
 var Checklist = require('../models/checklist');
 
 exports.index = function (req, res) {
-  Checklist.update({}, { userId:"52e56ce339e7f71100c5e5b8"},  { multi: true }, function () {});
   var userId = req.user.id;
   Checklist.find({userId:userId}, function (error, checklists) {
     res.json({
