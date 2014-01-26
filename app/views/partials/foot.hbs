@@ -1,2 +1,9 @@
+<script>
+  window.DATA = {};
+  {{#if currentUser}}
+    window.DATA.currentUser = {{{currentUser}}};
+  {{/if}}
+
+</script>
 <script src='/app.js'></script>
 

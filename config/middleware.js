@@ -1,5 +1,15 @@
 var express = require('express');
 var path = require('path');
+var passport = require('passport');
+var User = require('../app/models/user');
+var expressSession = require('./middleware/express_session');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var user = require('./middleware/user');
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 exports.configure = function (app) {
 
@@ -14,11 +24,19 @@ exports.configure = function (app) {
     , insertGlobals:true
     });
   }
+  app.use(express.compress());
   app.use(express.favicon(path.join(__dirname, '..', 'public/favicon.ico')));
-  app.use(express.logger('dev'));
+  app.use(express.static(path.join(__dirname, '..', 'public')));
   app.use(express.json());
   app.use(express.urlencoded());
   app.use(express.methodOverride());
+  app.use(express.cookieParser('checkmate'));
+  app.use(expressSession);
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(express.logger('dev'));
+
+  if ('development' === app.get('env')) app.use(require('../lib/body_logger'));
 
   app.use(function (req, res, next) {
     res.locals.ENV = {};
@@ -26,13 +44,8 @@ exports.configure = function (app) {
     next();
   });
 
-  app.use(express.static(path.join(__dirname, '..', 'public')));
+  app.use(user);
   app.use(app.router);
 
-  if ('development' === app.get('env')) {
-    app.use(express.errorHandler());
-    //var mongoose = require('mongoose');
-    //mongoose.set('debug', true);
-  }
-
+  if ('development' === app.get('env')) app.use(express.errorHandler());
 };

@@ -1,6 +1,7 @@
 var Checklist = require('../models/checklist');
 
 exports.index = function (req, res) {
+  //var userId = req.user.id;
   Checklist.find(function (error, checklists) {
     res.json({
       checklists: checklists

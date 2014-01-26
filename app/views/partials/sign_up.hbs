@@ -1,14 +1,16 @@
 <div class='signup-form'>
-  <div class='signup-form-group'>
-    {{input type='text' value=username placeholder='Pick a username' class='input'}}
-  </div>
-  <div class='signup-form-group'>
-    {{input type='email' value=email placeholder='Your email' class='input'}}
-  </div>
-  <div class='signup-form-group'>
-    {{input type='password' value=password placeholder='Create a password' class='input'}}
-  </div>
-  <div class='signup-form-group'>
-    <a href='#' class='button-bare'>Signup</a>
-  </div>
+  <form {{action 'signUp' on='submit'}} method='post'>
+    <div {{bind-attr class=':signup-form-group errors.username:has-error'}}>
+      {{input type='text' value=username placeholder='Pick a username' class='input-block'}}
+    </div>
+    <div {{bind-attr class=':signup-form-group errors.email:has-error'}}>
+      {{input type='email' value=email placeholder='Your email' class='input-block'}}
+    </div>
+    <div {{bind-attr class=':signup-form-group errors.password:has-error'}}>
+      {{input type='password' value=password placeholder='Create a password' class='input-block'}}
+    </div>
+    <div class='signup-form-group'>
+      <button href='#' class='button-bare'>Signup</button>
+    </div>
+  </form>
 </div>

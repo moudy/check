@@ -1,7 +1,9 @@
 var requireDirectory = require('node-require-directory');
 var controllers = requireDirectory('app/controllers');
+var passport = require('passport');
 
 exports.configure = function (app) {
+
   app.get('/', controllers.pages.index);
 
   app.get('/checklists', controllers.checklists.index);
@@ -16,4 +18,12 @@ exports.configure = function (app) {
   app.post('/checklists/:checklistId/list-items', controllers.list_items.create);
   app.put('/checklists/:checklistId/list-items/:id', controllers.list_items.update);
   app.delete('/checklists/:checklistId/list-items/:id', controllers.list_items.del);
+
+  app.get('/:id', controllers.users.show);
+  app.get('/users/:id', controllers.users.show);
+  app.post('/users', controllers.users.create);
+  app.put('/users/:id', controllers.users.update);
+
+  app.post('/sessions', passport.authenticate('local'), controllers.sessions.create);
+  app.delete('/sessions', controllers.sessions.del);
 };

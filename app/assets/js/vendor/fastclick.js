@@ -1,9 +1,9 @@
-/* 
+/*
  https://github.com/JamesHight/emberjs-touch
 
  Copyright (c) 2012 by:
 
- * James Hight 
+ * James Hight
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -19,16 +19,17 @@
 */
 
 
-(function(){
-	var touch = {		
+(function(isTouch){
+  if (!isTouch) return;
+	var touch = {
 		start: false, // has the touchstart event been triggered and is it still a valid click event?
 		// starting coordinates of touch event
-		x: null, 
+		x: null,
 		y: null,
 		enabled: true
 	};
-	
-	
+
+
 	// Temporarily disable touch to prevent duplicate clicks
 	function disableTouch() {
 		if (touch.enabled) {
@@ -42,16 +43,16 @@
 	Ember.EventDispatcher.reopen({
 		setupHandler: function(rootElement, event, eventName) {
 			if (!touch.enabled) return;
-			
+
 			var self = this,
 				moved;
-			rootElement.delegate('.ember-view', event + '.ember', function(evt, triggeringManager) {		
+			rootElement.delegate('.ember-view', event + '.ember', function(evt, triggeringManager) {
 				// Track touch events to see how far the user's finger has moved
 				// If it is > 20 it will not trigger a click event
 
 				switch(evt.type) {
 					// Remember our starting point
-					case 'touchstart':					
+					case 'touchstart':
 						touch.start = true;
 						touch.x = evt.originalEvent.touches[0].clientX;
 						touch.y = evt.originalEvent.touches[0].clientY;
@@ -61,7 +62,7 @@
 					// Monitor touchmove in case the user moves their finger away and then back to the original starting point
 					case 'touchmove':
 						if (touch.start) {
-							moved = Math.max(Math.abs(evt.originalEvent.touches[0].clientX - touch.x), 
+							moved = Math.max(Math.abs(evt.originalEvent.touches[0].clientX - touch.x),
 											Math.abs(evt.originalEvent.touches[0].clientY - touch.y));
 							if (moved > 20)
 								touch.start = false;
@@ -71,25 +72,25 @@
 					// Check end point
 					case 'touchend':
 						if (touch.start) {
-							moved = Math.max(Math.abs(evt.originalEvent.changedTouches[0].clientX - touch.x), 
+							moved = Math.max(Math.abs(evt.originalEvent.changedTouches[0].clientX - touch.x),
 										Math.abs(evt.originalEvent.changedTouches[0].clientY - touch.y));
 							if (moved < 20) {
-								evt.preventDefault();			
+								evt.preventDefault();
 								evt.stopImmediatePropagation();
-								// All tests have passed, trigger click event		
+								// All tests have passed, trigger click event
 								if (touch.enabled) {
 									setTimeout(function(){
 										$(evt.target).click();
-									}, 50);										
-								}									
+									}, 50);
+								}
 							}
 							touch.start = false;
-						}							
+						}
 						break;
 				}
 
 				// END touch code
-				
+
 				var view = Ember.View.views[this.id],
 				result = true, manager = null;
 
@@ -99,10 +100,10 @@
 					if (eventName == 'click') {
 						if (touch.enabled)
 							disableTouch();
-						else 
-							return false;							
+						else
+							return false;
 					}
-					result = self._dispatchEvent(manager, evt, eventName, view);						
+					result = self._dispatchEvent(manager, evt, eventName, view);
 				} else if (view) {
 					result = self._bubbleEvent(view,evt,eventName);
 				} else {
@@ -122,11 +123,11 @@
 						disableTouch();
 					else
 						return false;
-					
-					return handler(evt);						
+
+					return handler(evt);
 				}
 			});
 		}
 	});
-})();
+})(Modernizr.touch);
 

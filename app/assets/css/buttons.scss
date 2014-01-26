@@ -30,6 +30,9 @@
 
 @mixin button-bare {
   text-transform: capitalize;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 0 none;
 
   &.is-disabled { color: $color-text-light; }
 }

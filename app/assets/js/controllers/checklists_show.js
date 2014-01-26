@@ -73,7 +73,7 @@ App.ChecklistsShowController = Em.ObjectController.extend({
   , confirmDeleteList: function () {
       var model = this.get('model');
       model.deleteRecord();
-      model.save();
+      if (model.get('id')) model.save();
       this.transitionToRoute('index');
     }
   }

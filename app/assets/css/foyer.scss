@@ -36,10 +36,12 @@ $hero-offset: 90px;
 .signup-form {
   margin: 0 auto;
   max-width: 250px;
-
 }
 
 .signup-form-group {
+  &.has-error {
+    input { background-color: $color-highlight; }
+  }
   margin-bottom: 10px;
 }
 

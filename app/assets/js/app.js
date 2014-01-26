@@ -24,5 +24,6 @@ App.Router.map(function () {
     this.route('show', {path: '/:checklistSlug', controller: 'checklistsShow'});
     this.route('new');
   });
+  this.route('signout');
 });
 
