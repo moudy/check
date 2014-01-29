@@ -52,6 +52,10 @@
 
 .checklist-list-item-description {
   padding: 1px 15px;
+  pre {
+    overflow-y: scroll;
+    white-space: pre;
+  }
 }
 
 /*.button-item-reorder {*/
