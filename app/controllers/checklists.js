@@ -32,8 +32,7 @@ exports.update = function (req, res) {
 };
 
 exports.show = function (req, res) {
-  var userId = req.user.id;
-  Checklist.findOne({_id:req.params.checklistSlug, userId:userId}, function (error, checklist) {
+  Checklist.findOne({_id:req.params.checklistSlug}, function (error, checklist) {
     res.format({
       'text/html': function() { res.render('index'); }
     , 'application/json': function () { res.send({checklist: checklist}); }
