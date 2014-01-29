@@ -13,11 +13,10 @@ exports.create = function (req, res) {
   var attrs = req.body.checklist;
   delete attrs.listItems;
   var userId = req.user.id;
-  attrs.useId = userId;
+  attrs.userId = userId;
   Checklist.create(attrs, function (error, checklist) {
-    res.json({
-      checklist: checklist
-    });
+    if (error) return res.json(500, error.errors);
+    res.json({ checklist: checklist });
   });
 };
 
