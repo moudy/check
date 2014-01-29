@@ -18,7 +18,7 @@ App.ChecklistListItemView = Em.View.extend({
 
 , autoFocus: function () {
     var c = this.get('controller');
-    if (c.get('isNew') && c.get('isEditing')) this.$('input').focus();
+    if (c.get('isNew') && c.get('isEditing')) this.$('textarea').focus();
   }.on('didInsertElement')
 
 , actions: {
