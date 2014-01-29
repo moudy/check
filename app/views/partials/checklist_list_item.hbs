@@ -1,21 +1,12 @@
-<h2 class='checklist-list-item-title editable-title'>
-  <span class='checklist-list-item-checkmark'>&#10004;</span>
-  {{title}}&nbsp;
-  {{#if isEditing}}
-    {{view App.TextField valueBinding='title' placeholder='Name'}}
-  {{/if}}
-</h2>
 {{#if isEditing}}
 <a href='#' {{action 'deleteItem' target='view'}} class='button-bare-danger delete-item'>&#x2715;</a>
 {{/if}}
-{{#if showDescription}}
 <div class='checklist-list-item-description editable-body'>
-  {{description}}
   {{#if isEditing}}
     {{view App.TextArea valueBinding='description'}}
   {{/if}}
+  {{markdown description}}
 </div>
-{{/if}}
 {{#if isEditing}}
 {{! <span href='#' class='button-item-reorder'></span> }}
 {{/if}}

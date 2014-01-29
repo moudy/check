@@ -6,6 +6,8 @@ require('./vendor/ember-data');
 require('./templates');
 require('fastClick');
 
+require('./lib/handlebars_helpers').register(Em.Handlebars);
+
 var App = exports.instance = global.App = Em.Application.create();
 
 if (global.history && global.history.pushState) {

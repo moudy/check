@@ -1,10 +1,10 @@
 <div class='checklist-description-section'>
   <div class='content-width content-inset'>
     <div class='checklist-description editable-body'>
-      {{description}}
       {{#if isEditing}}
         {{view App.TextArea valueBinding='description'}}
       {{/if}}
+      {{markdown description}}
     </div>
   </div>
 </div>

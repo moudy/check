@@ -4,10 +4,6 @@ App.ChecklistListItemController = Em.ObjectController.extend({
 
   isEditingBinding: Em.Binding.oneWay('parentController.isEditing')
 
-, showDescription: function () {
-    return !!this.get('description') || this.get('isEditing');
-  }.property('description', 'isEditing')
-
 , actions: {
     toggleCompletion: function () {
       this.toggleProperty('isCompleted');

@@ -3,8 +3,7 @@ var Schema = mongoose.Schema;
 var timestamps = require('mongoose-timestamp');
 
 var ListItemSchema = new Schema({
-  title: { type: String, trim:true, required:true}
-, description: { type: String, trim:true }
+  description: { type: String }
 });
 
 var ChecklistSchema = new Schema({

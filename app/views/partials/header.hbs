@@ -13,7 +13,7 @@
           <img {{bind-attr src='currentUser.profileImageUrl'}} {{bind-attr alt='currentUser.username'}} />
         </a>
         {{#if view.showMenu}}
-          <ul class='account-menu'>
+          <ul class='account-menu list-reset'>
             <li><a href='#' class='block' {{action 'signout'}}>Account</a></li>
             <li><a href='#' class='block' {{action 'signout'}}>Sign Out</a></li>
           </ul>

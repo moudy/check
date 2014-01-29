@@ -4,7 +4,7 @@
 @import 'helpers';
 
 // app reset
-ol, ul {
+.list-reset {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -61,5 +61,6 @@ input, textarea { border-radius: 4px; }
 @import 'checklist_list_item';
 @import 'checklist_delete';
 @import 'buttons';
+@import 'vendor/github';
 @import 'media_queries';
 
