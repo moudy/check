@@ -5,6 +5,8 @@ App.ChecklistListItemsController = Em.ArrayController.extend({
 
 , isEditingBinding: Em.Binding.oneWay('parentController.isEditing')
 
+//, sortProperties: ['description']
+
 , checklistBinding: Em.Binding.oneWay('parentController.model')
 
 , selectNextItem: function () {
@@ -25,25 +27,23 @@ App.ChecklistListItemsController = Em.ArrayController.extend({
       this.pushObject(listItem);
     }
 
-  , move: function (dir, modelId) {
+  , move: function (dir, model) {
       var items = this.get('checklist.listItemsOrder').split(',');
-      var index = items.indexOf(modelId);
+      var index = items.indexOf(model.get('id'));
       var newIndex = index + (('up' === dir) ? -1 : 1);
+      this.removeAt(index);
+      this.insertAt(newIndex, model);
 
       items.splice(index, 1);
-      items.splice(newIndex, 0, modelId);
+      items.splice(newIndex, 0, model.get('id'));
 
-      var listItemsOrder = items.slice(0).join(',');
-
-      this.get('content').forEach(function (model) {
-        var i = items.indexOf(model.get('id'));
-        items[i] = model;
-      });
-
-      this.setObjects(items);
-
-      this.set('checklist.listItemsOrder', listItemsOrder);
+      this.set('checklist.listItemsOrder', items.join(','));
       this.get('checklist').save();
+
+      Em.run.later(this, function() {
+        model.set('animateMoveFlash', true);
+        Em.run.later(this, function () { model.set('animateMoveFlash', false); }, 600);
+      }, 10);
     }
   }
 

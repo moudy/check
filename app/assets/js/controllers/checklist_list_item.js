@@ -21,7 +21,7 @@ App.ChecklistListItemController = Em.ObjectController.extend({
     }
 
   , move: function (dir) {
-      this.get('target').send('move', dir, this.get('model.id'));
+      this.get('target').send('move', dir, this.get('model'));
     }
   }
 

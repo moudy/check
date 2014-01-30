@@ -55,9 +55,9 @@
   cursor: default;
   .checklist-list-item-description { opacity: 1; }
 
+  @include transition(background-color 600ms);
   &.animate-move-flash {
     background-color: $color-highlight;
-    @include transition(background-color 600ms);
   }
 }
 

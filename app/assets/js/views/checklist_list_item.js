@@ -7,7 +7,7 @@ App.ChecklistListItemView = Em.View.extend({
 
 , classNames: 'checklist-list-item'
 
-, classNameBindings: ['controller.isActive', 'controller.isCompleted', 'animateMoveFlash']
+, classNameBindings: ['controller.isActive', 'controller.isCompleted', 'controller.animateMoveFlash']
 
 , click: function () {
     var isEditing = this.get('controller.isEditing');
