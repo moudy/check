@@ -7,6 +7,8 @@
   {{/if}}
   {{markdown description}}
 </div>
+
 {{#if isEditing}}
-{{! <span href='#' class='button-item-reorder'></span> }}
+  <a href='#' {{action move 'up'}} class='button-move move-up'>&#11014;</a>
+  <a href='#' {{action move 'down'}} class='button-move move-down'>&#11015;</a>
 {{/if}}

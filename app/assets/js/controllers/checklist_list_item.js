@@ -19,6 +19,10 @@ App.ChecklistListItemController = Em.ObjectController.extend({
       model.deleteRecord();
       model.save();
     }
+
+  , move: function (dir) {
+      this.get('target').send('move', dir, this.get('model.id'));
+    }
   }
 
 });

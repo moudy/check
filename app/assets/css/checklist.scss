@@ -4,7 +4,7 @@
   background-color: $color-gray-extra-light;
   @include cover-area();
   -webkit-overflow-scrolling: touch;
-  overflow-y: hidden;
+  overflow-x: hidden;
 
   &.dim-list {
     .checklist-list-items-container {

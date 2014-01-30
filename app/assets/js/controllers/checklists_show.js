@@ -53,7 +53,6 @@ App.ChecklistsShowController = Em.ObjectController.extend({
     }
 
   , toggleEdit: function () {
-      console.log(this.toString());
       this.toggleProperty('isEditing');
     }
 
