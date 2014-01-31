@@ -1,0 +1,11 @@
+#!/bin/sh
+
+MONGOLAB_URI=$(heroku config | grep MONGOLAB_URI | awk '{ print $2}' | awk -F// '{print $2}')
+
+HEROKU_APP_NAME=$(echo "$MONGOLAB_URI" | awk -F: '{print $1}')
+DB_PASSWORD=$(echo "$MONGOLAB_URI" | awk -F: '{print $2}' | awk -F. '{print $1}' | awk -F@ '{print $1}')
+DB_USERNAME="$HEROKU_APP_NAME"
+DB_HOST=$(echo "$MONGOLAB_URI" | awk -F@ '{print $2}' | awk -F/ '{print $1}')
+
+mongodump -h "$DB_HOST" -d "$HEROKU_APP_NAME" -u "$DB_USERNAME" -p "$DB_PASSWORD" -o tmp/
+mongorestore -h localhost --drop -d check_development tmp/"$HEROKU_APP_NAME"

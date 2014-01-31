@@ -5,7 +5,7 @@ App.ChecklistListItemsController = Em.ArrayController.extend({
 
 , isEditingBinding: Em.Binding.oneWay('parentController.isEditing')
 
-//, sortProperties: ['description']
+, sortProperties: ['index']
 
 , checklistBinding: Em.Binding.oneWay('parentController.model')
 
@@ -23,22 +23,32 @@ App.ChecklistListItemsController = Em.ArrayController.extend({
 , actions: {
     addItem: function () {
       var checklistId = this.get('parentController.model.id');
-      var listItem = this.store.createRecord('listItem', {checklistId: checklistId});
+      var attrs = {checklistId: checklistId, index: this.get('length')};
+      var listItem = this.store.createRecord('listItem', attrs);
       this.pushObject(listItem);
     }
 
+  , deleteItem: function (model) {
+      this.get('content').removeObject(model);
+      model.destroyRecord();
+      var models = this.get('arrangedContent');
+      for (var i=0, len=models.length; i < len; i++) {
+        models[i].set('index', i);
+      }
+    }
+
   , move: function (dir, model) {
-      var items = this.get('checklist.listItemsOrder').split(',');
-      var index = items.indexOf(model.get('id'));
+      var index = model.get('index');
       var newIndex = index + (('up' === dir) ? -1 : 1);
-      this.removeAt(index);
-      this.insertAt(newIndex, model);
 
-      items.splice(index, 1);
-      items.splice(newIndex, 0, model.get('id'));
+      var swapWith = this.findBy('index', newIndex);
 
-      this.set('checklist.listItemsOrder', items.join(','));
-      this.get('checklist').save();
+      model.set('index', newIndex);
+      swapWith && swapWith.set('index', index);
+
+      var listItemIds = this.getEach('id');
+
+      Em.$.post('/checklists/'+this.get('checklist.id')+'/reorder', {listItemIds: listItemIds, _method: 'PUT'});
 
       Em.run.later(this, function() {
         model.set('animateMoveFlash', true);

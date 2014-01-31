@@ -4,6 +4,7 @@ var timestamps = require('mongoose-timestamp');
 
 var ListItemSchema = new Schema({
   description: {type: String}
+, index: {type: Number}
 });
 
 var ChecklistSchema = new Schema({
@@ -29,18 +30,15 @@ if (!ChecklistSchema.options.toJSON) ChecklistSchema.options.toObject = {};
 ChecklistSchema.options.toJSON.transform = function (doc, ret, options) {
   delete ret._id;
   delete ret.__v;
-  if (!ret.listItemsOrder) {
-    ret.listItemsOrder = doc.listItems.map(function (li) { return li.id; }).join(',');
-  }
-  ret.listItems = ret.listItemsOrder.split(',').map(function (id) {
-    var d = doc.listItems.id(id);
-    return d ? d.toJSON() : {};
-  });
 };
 
 if (!ListItemSchema.options.toJSON) ListItemSchema.options.toObject = {};
 ListItemSchema.options.toJSON.transform = function (doc, ret, options) {
   delete ret._id;
+  if ('undefined' === typeof ret.index) {
+    var lis = doc.parent().listItems;
+    ret.index = lis.indexOf(doc);
+  }
 };
 
 module.exports = mongoose.model('Checklist', ChecklistSchema, 'checklists');

@@ -1,4 +1,5 @@
 var Checklist = require('../models/checklist');
+var ListItemsReorderer = require('../services/list_items_reorderer');
 
 exports.index = function (req, res) {
   var userId = req.user.id;
@@ -17,6 +18,17 @@ exports.create = function (req, res) {
   Checklist.create(attrs, function (error, checklist) {
     if (error) return res.json(500, error.errors);
     res.json({ checklist: checklist });
+  });
+};
+
+exports.updateReorder = function (req, res) {
+  var id  = req.params.id;
+  var userId = req.user.id;
+  var listItemIds = req.body.listItemIds;
+
+  Checklist.findOne({_id:id, userId:userId}, function (error, checklist) {
+    ListItemsReorderer.reorder(checklist, listItemIds);
+    checklist.save(function (err, checklist_) { res.json({ checklist: checklist_ }); });
   });
 };
 

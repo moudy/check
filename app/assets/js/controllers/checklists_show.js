@@ -30,10 +30,6 @@ App.ChecklistsShowController = Em.ObjectController.extend({
     return this.get('isInProgress') && !this.get('isEditing');
   }.property('isInProgress', 'isEditing')
 
-//, orderedItems: function () {
-    //return this.get('listItems');
-  //}
-
 , statusMessage: function () {
     var status = this.getProperties(
       'completedCount'

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nodemon --ignore tmp/ --ignore node_modules/ --ignore public/ --ignore app/assets/ app.js",
     "start": "forever app.js",
+    "test": "mocha",
     "build-templates": "ember-precompile app/views/partials/*.hbs > app/assets/js/templates.js",
     "build-js-head": "browserify app/assets/js/head.js | uglifyjs -mc > public/head.js",
     "build-js": "npm run build-templates && browserify app/assets/js/app.js | uglifyjs -mc > public/app.js",
@@ -38,7 +39,8 @@
     "connect-mongo": "~0.4.0",
     "mongoose-gravatar": "~0.2.1",
     "marked": "~0.3.0",
-    "highlight.js": "~8.0.0"
+    "highlight.js": "~8.0.0",
+    "underscore": "~1.5.2"
   },
   "devDependencies": {
     "node-pow": "0.0.2",
@@ -46,7 +48,7 @@
     "gulp": "~3.3.2",
     "gulp-util": "~2.2.9",
     "mocha": "~1.17.1",
-    "chai": "~1.8.1"
+    "chai": "~1.9.0"
   },
   "engines": {
     "node": "0.10.x",

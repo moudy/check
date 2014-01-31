@@ -6,7 +6,7 @@ App.SignUpController = Em.Controller.extend({
       var attrs = this.getProperties('username', 'email', 'password');
       var user = this.store.createRecord('user', attrs);
 
-      var sucess = function () { console.log('success', arguments); };
+      var sucess = function () { window.location.reload(); };
 
       var error = function (res) {
         this.set('errors',res.responseJSON.errors);

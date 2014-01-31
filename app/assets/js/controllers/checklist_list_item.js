@@ -15,9 +15,7 @@ App.ChecklistListItemController = Em.ObjectController.extend({
     }
 
   , deleteItem: function () {
-      var model = this.get('model');
-      model.deleteRecord();
-      model.save();
+      this.get('target').send('deleteItem', this.get('model'));
     }
 
   , move: function (dir) {

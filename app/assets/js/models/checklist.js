@@ -40,6 +40,5 @@ App.Checklist = DS.Model.extend({
   title: attr('string')
 , description: attr('string')
 , listItems: DS.hasMany('listItem', {async:true})
-, listItemsOrder: attr('string')
 });
 

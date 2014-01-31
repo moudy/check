@@ -13,6 +13,7 @@ exports.configure = function (app) {
 
   app.post('/checklists', controllers.checklists.create);
   app.put('/checklists/:id', controllers.checklists.update);
+  app.put('/checklists/:id/reorder', controllers.checklists.updateReorder);
   app.delete('/checklists/:id', controllers.checklists.del);
 
   app.post('/checklists/:checklistId/list-items', controllers.list_items.create);
