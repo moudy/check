@@ -4,6 +4,12 @@
 @import 'helpers';
 
 // app reset
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
 .list-reset {
   padding: 0;
   margin: 0;
