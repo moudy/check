@@ -5,7 +5,9 @@
   {{#if isEditing}}
     {{view App.TextArea valueBinding='description'}}
   {{/if}}
-  {{markdown description}}
+  <div class='md'>
+    {{markdown description}}
+  </div>
 </div>
 
 {{#if isEditing}}

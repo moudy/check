@@ -11,10 +11,6 @@
   border-left: 3px solid $color-gray-light;
   min-height: 20px;
 
-  textarea {
-    margin: 10px 0;
-  }
-
   &:first-of-type {
     border-top: 1px solid $color-gray-light;
     .move-up { display: none; }
@@ -29,7 +25,7 @@
     .checklist-list-item-description { opacity: 0.5; }
   }
 
-  &.is-active { background-color: $color-highlight; }
+  //&.is-active { background-color: $color-highlight; }
 
   .delete-item:hover { color: $color-text-danger; }
 
@@ -71,21 +67,6 @@
     &.is-completed:active { border-left-color: $color-gray-medium; }
     &.is-editing:hover { border-left-color: none; }
     &.is-editing:active { border-left-color: none; }
-  }
-}
-
-.checklist-list-item-description {
-  $padding-right: 15px;
-  $padding-left: 15px;
-  padding-top: 1px;
-  padding-left: $padding-left;
-  padding-right: $padding-right;
-  pre {
-    overflow-y: scroll;
-    white-space: pre;
-    margin-left: -$padding-left;
-    margin-right: -$padding-right;
-    padding: 0px $padding-right 0px $padding-left;
   }
 }
 

@@ -9,7 +9,8 @@ App.ChecklistListItemView = Em.View.extend({
 
 , classNameBindings: ['controller.isActive', 'controller.isCompleted', 'controller.animateMoveFlash']
 
-, click: function () {
+, click: function (e) {
+    if ('a' === e.target.nodeName.toLowerCase()) return;
     var isEditing = this.get('controller.isEditing');
     if (!isEditing) {
       this.get('controller').send('toggleCompletion');

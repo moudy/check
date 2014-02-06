@@ -73,10 +73,15 @@
   position: relative;
 
   textarea {
-    border: 0 none;
     width: 100%;
     max-width: 100%;
     height: 100%;
+    margin: 0;
+
+    border-radius: 0;
+    border: 0 none;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
 
     font: inherit;
     font-size: inherit;
@@ -86,7 +91,7 @@
     //resize: none;
     background-color: $color-gray-light;
     &:focus {
-      box-shadow:inset 0 0 1px #333;
+      border-color: $color-gray-medium;
       min-height: 200px;
     }
   }
