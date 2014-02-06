@@ -1,8 +1,17 @@
-{{#if isEditing}}
-<a href='#' {{action 'deleteItem' target='view'}} class='button-bare-danger delete-item'>&#x2715;</a>
+{{#if showEditControls}}
+<div class='edit-controls'>
+    <a href='#' {{action 'editItem' target='view'}} class='button-bare edit-item'>
+      Edit Item
+    </a>
+    <a href='#' {{action 'deleteItem' target='view'}} class='button-bare-danger delete-item'>
+      Delete Item
+    </a>
+</div>
 {{/if}}
+
 <div class='checklist-list-item-description editable-body'>
-  {{#if isEditing}}
+  {{#if isEditingMd}}
+    <div class='blanket'></div>
     {{view App.TextArea valueBinding='description'}}
   {{/if}}
   <div class='md'>
@@ -10,7 +19,7 @@
   </div>
 </div>
 
-{{#if isEditing}}
+{{#if showEditControls}}
   <a href='#' {{action move 'up'}} class='button-move move-up'>&#11014;</a>
   <a href='#' {{action move 'down'}} class='button-move move-down'>&#11015;</a>
 {{/if}}

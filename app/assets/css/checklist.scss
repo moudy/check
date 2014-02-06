@@ -80,15 +80,13 @@
 
     border-radius: 0;
     border: 0 none;
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
+    border: 1px solid transparent;
 
     font: inherit;
     font-size: inherit;
     color: inherit;
     padding: 6px;
 
-    //resize: none;
     background-color: $color-gray-light;
     &:focus {
       border-color: $color-gray-medium;
