@@ -12,6 +12,14 @@
   padding-left: $padding-left;
   padding-right: $padding-right;
 
+  h1, h2, h3, h4, h5, h6 {
+    margin: 1em 0 15px;
+    padding: 0;
+    font-weight: bold;
+    line-height: 1.7;
+    position: relative;
+  }
+
   ul {
     padding-left: 30px;
     margin: 15px 0;
@@ -25,9 +33,11 @@
     border-radius: 3px;
     white-space: nowrap;
     font-size: 12px;
+    cursor: text;
   }
 
   pre {
+    cursor: text;
     overflow-y: scroll;
     white-space: pre;
     margin-top: 0;

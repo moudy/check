@@ -15,14 +15,17 @@ App.ChecklistListItemView = Em.View.extend({
   ]
 
 , click: function (e) {
-    if ('a' === e.target.nodeName.toLowerCase()) return;
+    var nodeName = e.target.nodeName.toLowerCase();
+    if ('pre' === nodeName) return;
+    if ('code' === nodeName) return;
+    if ('a' === nodeName) return;
     var isEditing = this.get('controller.isEditing');
     if (!isEditing) {
       this.get('controller').send('toggleCompletion');
     }
   }
 
-, autoFocus_: function () {
+, checkFocus: function () {
     var c = this.get('controller');
     if (c.get('isNew') && c.get('isEditing')) c.set('isEditingMd', true);
   }.on('didInsertElement')
