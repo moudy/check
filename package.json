@@ -33,14 +33,14 @@
     "mongoose-timestamp": "~0.1.1",
     "mongoose-unique-validator": "~0.3.0",
     "passport": "~0.2.0",
-    "passport-local": "~0.1.6",
     "mongoose-findorcreate": "~0.1.2",
-    "passport-local-mongoose": "~0.2.5",
     "connect-mongo": "~0.4.0",
     "mongoose-gravatar": "~0.2.1",
     "marked": "~0.3.0",
     "highlight.js": "~8.0.0",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "async": "~0.2.10",
+    "passport-github": "^0.1.5"
   },
   "devDependencies": {
     "node-pow": "0.0.2",

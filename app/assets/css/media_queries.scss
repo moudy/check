@@ -5,3 +5,16 @@
     border-right: 0 none;
   }
 }
+
+@media (min-width: $content-width*2)  {
+  .checklist-list-item.is-editing-md {
+    .md {
+      left: -50%;
+    }
+    textarea {
+      position: absolute;
+      left: 50%;
+      resize: none;
+    }
+  }
+}

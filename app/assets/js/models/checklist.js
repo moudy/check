@@ -11,6 +11,7 @@ App.ChecklistSerializer = DS.RESTSerializer.extend({
         var lis = checklist.listItems;
         listItems = listItems.concat(lis);
         checklist.listItems = lis.map(function (li) { return li.id; });
+        checklist.user = checklist.userId;
       }
     });
 
@@ -30,6 +31,7 @@ App.ChecklistSerializer = DS.RESTSerializer.extend({
 
       payload.listItems = listItems;
       payload.checklist.listItems = listItemIds;
+      payload.checklist.user = payload.checklist.userId;
     }
 
     return this._super(store, type, payload, id, requestType);
@@ -38,7 +40,9 @@ App.ChecklistSerializer = DS.RESTSerializer.extend({
 
 App.Checklist = DS.Model.extend({
   title: attr('string')
-, description: attr('string')
 , listItems: DS.hasMany('listItem', {async:true})
+, userId: attr('string')
+, username: attr('string')
+, user: DS.belongsTo('user', {async: true})
 });
 

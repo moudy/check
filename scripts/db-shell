@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+var async = require('async');
+var models = require('app/models');
+
+require('../config/db').configure().on('open', function () {
+  models.checklist.find(function (err, docs) {
+    async.whilst(
+      function () { return docs.length; }
+    , function (done) {
+        var doc = docs.pop();
+        doc.username = 'moudy';
+        delete doc.userId;
+        doc.save(done);
+      }
+    , function () { process.exit(); }
+    );
+
+  });
+});

@@ -1,38 +1,27 @@
-<header class='app-header'>
+<header class='header-bar'>
   <div class='content-width'>
-    {{#link-to 'index' class='app-logo control'}}&#10004;{{/link-to}}
+    <div class='left header-logo'>
+      <input type='checkbox' checked class='checkbox' value='' name='' />
+    </div>
 
-    {{#if currentUser}}
-    {{else}}
-      <span class='tagline'>Create and save checklists</span>
-    {{/if}}
+    <nav class='right'>
+      {{#if currentUser}}
+        <div class='account-menu-container right'>
+          <a href='#' class='account-menu-toggle' {{action 'toggleMenu' target='view'}}>
+            <img {{bind-attr src='currentUser.profileImageUrl'}} {{bind-attr alt='currentUser.username'}} />
+          </a>
+          {{#if view.showMenu}}
+            <ul class='account-menu list-reset'>
+              <li><a href='#' class='block'>Account</a></li>
+              <li><a href='#' class='block' {{action 'signout'}}>Sign Out</a></li>
+            </ul>
+          {{/if}}
+        </div>
 
-    {{#if currentUser}}
-      <div class='account-menu-container right'>
-        <a href='#' class='account-menu-toggle' {{action 'toggleMenu' target='view'}}>
-          <img {{bind-attr src='currentUser.profileImageUrl'}} {{bind-attr alt='currentUser.username'}} />
-        </a>
-        {{#if view.showMenu}}
-          <ul class='account-menu list-reset'>
-            <li><a href='#' class='block' {{action 'signout'}}>Account</a></li>
-            <li><a href='#' class='block' {{action 'signout'}}>Sign Out</a></li>
-          </ul>
-        {{/if}}
-      </div>
-      {{#link-to 'checklists.new' class='button-bare right control'}}New list{{/link-to}}
-    {{else}}
-
-      {{#if showSignin}}
-        <form {{action 'signin' on='submit'}} class='signin-form' method='post'>
-          {{input type='text' value=username placeholder='email or username' class='input'}}
-          {{input type='password' value=password placeholder='password' class='input'}}
-          <button href='#' class='button-bare'>Log In</button>
-        </form>
       {{else}}
-        <a {{action 'showSignup'}} class='button-bare right control' href="#">Sign Up</a>
-        <a {{action 'showSignin'}} class='button-bare right control' href="#">Log In</a>
-      {{/if}}
+        <a class='button-text' href='/auth/github'>Login with GitHub</a>
 
-    {{/if}}
+      {{/if}}
+    </nav>
   </div>
 </header>

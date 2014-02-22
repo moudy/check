@@ -5,6 +5,7 @@
   cursor: pointer;
   text-align: center;
   font-weight: 700;
+  text-transform: capitalize;
   &.is-disabled {
     cursor: default;
   }
@@ -15,21 +16,26 @@
   line-height: 30px;
   min-width: 30px;
   padding: 0 10px;
+  border-radius: 3px;
 }
 
-@mixin button-size-medium { font-size: 16px; }
-@mixin button-color-default { color: $color-text-action; }
-@mixin button-color-white {
-  color: $color-text-action;
-  background-color: white;
-  &:hover {
-    background-color: #eee;
-  }
+@mixin button-size-header-bar {
+  font-size: 14px;
+  line-height: inherit;
+  min-width: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
+
 @mixin button-color-danger { color: $color-text-danger; }
 
+@mixin button-color-text {
+  color: $color-text-default;
+  border-color: $color-gray-medium;
+  background-color: $color-gray-extra-light;
+}
+
 @mixin button-bare {
-  text-transform: capitalize;
   -webkit-appearance: none;
   background-color: transparent;
   border: 0 none;
@@ -37,10 +43,14 @@
   &.is-disabled { color: $color-text-light; }
 }
 
+@mixin button-bordered {
+  border: 1px solid;
+}
+
 .button-bare {
   @include button-base();
   @include button-bare();
-  @include button-color-default();
+  @include button-color-text();
   @include button-size-default();
 }
 
@@ -51,12 +61,16 @@
   @include button-size-default();
 }
 
-.button-header-bar {
+.button {
   @include button-base();
-  @include button-bare();
-  @include button-color-default();
-  @include button-size-medium();
-  padding: 14px 20px 14px 20px;
-  right: -20px;
-  position: relative;
+  @include button-bordered();
+  @include button-color-text();
+  @include button-size-default();
+}
+
+.button-text {
+  line-height: inherit;
+  font-weight: bold;
+  color: inherit;
+  display: inline-block;
 }

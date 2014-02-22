@@ -1,5 +1,6 @@
 .DS_Store
 .sass-cache/
+config/env
 tmp/
 public/app.js
 public/app.css

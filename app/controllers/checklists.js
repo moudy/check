@@ -1,8 +1,9 @@
+var User = require('../models/user');
 var Checklist = require('../models/checklist');
 var ListItemsReorderer = require('../services/list_items_reorderer');
 
 exports.index = function (req, res) {
-  var userId = req.user.id;
+  var userId = req.param('userId');
   Checklist.find({userId:userId}, function (error, checklists) {
     res.json({
       checklists: checklists
@@ -45,9 +46,11 @@ exports.update = function (req, res) {
 
 exports.show = function (req, res) {
   Checklist.findOne({_id:req.params.checklistSlug}, function (error, checklist) {
-    res.format({
-      'text/html': function() { res.render('index'); }
-    , 'application/json': function () { res.send({checklist: checklist}); }
+    User.findById(checklist.userId, function (error_, user) {
+      res.format({
+        'text/html': function() { res.render('index'); }
+      , 'application/json': function () { res.send({checklist: checklist, users: [user]}); }
+      });
     });
   });
 };

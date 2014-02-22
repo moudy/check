@@ -33,11 +33,9 @@
     border-radius: 3px;
     white-space: nowrap;
     font-size: 12px;
-    cursor: text;
   }
 
   pre {
-    cursor: text;
     overflow-y: scroll;
     white-space: pre;
     margin-top: 0;
@@ -50,6 +48,7 @@
     line-height: 19px;
 
     code {
+      cursor: text;
       margin: 0;
       padding: 0;
       border-radius: 0;

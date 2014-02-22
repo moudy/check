@@ -1,5 +1,6 @@
 //var UserCreator = require('../service/user_creator');
 var User = require('../models/user');
+var Checklist = require('../models/checklist');
 
 function errorsSerializer (error) {
   var errors = error.errors;
@@ -11,7 +12,10 @@ function errorsSerializer (error) {
 
 exports.show = function (req, res) {
   User.findOneByWhatever(req.params.id, function (err, user) {
-    res.json({user: user});
+    res.format({
+      'text/html': function() { res.render('index'); }
+    , 'application/json': function () { res.send({user: user}); }
+    });
   });
 };
 
@@ -27,5 +31,11 @@ exports.create = function (req, res) {
 exports.update = function (req, res) {
   User.findByIdAndUpdate(req.params.id, req.body.user, function (err, user) {
     res.json({user: user});
+  });
+};
+
+exports.checklistsIndex = function (req, res) {
+  Checklist.find({userId: req.params.id}, function (err, docs) {
+    res.json({checklists: docs});
   });
 };

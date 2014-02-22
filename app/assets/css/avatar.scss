@@ -1,0 +1,17 @@
+
+@mixin avatar-base {
+  border-radius: 4px;
+  padding: 1px;
+  background-color: #999;
+}
+
+@mixin avatar-size-large {
+  $size: 80px;
+  height: $size;
+  width: $size;
+}
+
+.avatar-large {
+  @include avatar-base;
+  @include avatar-size-large;
+}

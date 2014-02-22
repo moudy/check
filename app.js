@@ -4,6 +4,7 @@ var http = require('http');
 var app = express();
 
 [ 'settings'
+, 'passport'
 , 'middleware'
 , 'routes'
 , 'db'].forEach(function (i) {

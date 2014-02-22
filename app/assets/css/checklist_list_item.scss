@@ -6,15 +6,19 @@
   cursor: pointer;
   width: 100%;
 
+  border-top: 1px solid $color-gray-light;
   border-bottom: 1px solid $color-gray-light;
   border-right: 1px solid $color-gray-light;
   border-left: 3px solid $color-gray-light;
+
   min-height: 40px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 2px #aaa;
 
   &.is-editing-md {
     z-index: 1000;
     .md {
-      @include box-shadow(0 1px 3px #aaa);
+      box-shadow: 0 1px 3px #aaa;
     }
   }
 
@@ -40,7 +44,7 @@
 
   .blanket {
     @include cover-area(fixed, hidden);
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(255,255,255,1);
   }
 
   textarea, .md { position: relative; }
@@ -65,7 +69,7 @@
     @include cover-area(absolute, hidden);
     z-index: 10;
     visibility: hidden;
-    background-color: rgba(255,255,255,0.8);
+   // background-color: rgba(255,255,255,0.8);
     text-align: right;
   }
 }

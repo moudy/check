@@ -1,0 +1,45 @@
+{
+  "provider": "github",
+  "id": 241024,
+  "displayName": "Moudy Elkammash",
+  "username": "moudy",
+  "profileUrl": "https://github.com/moudy",
+  "emails": [
+    {
+      "value": ""
+    }
+  ],
+  "_raw": "{\"login\":\"moudy\",\"id\":241024,\"avatar_url\":\"https://gravatar.com/avatar/72b0dda984c92874dacf9c558c52b19d?d=https%3A%2F%2Fidenticons.github.com%2F605475ebdb40f4a00be0201304f4761d.png&r=x\",\"gravatar_id\":\"72b0dda984c92874dacf9c558c52b19d\",\"url\":\"https://api.github.com/users/moudy\",\"html_url\":\"https://github.com/moudy\",\"followers_url\":\"https://api.github.com/users/moudy/followers\",\"following_url\":\"https://api.github.com/users/moudy/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/moudy/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/moudy/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/moudy/subscriptions\",\"organizations_url\":\"https://api.github.com/users/moudy/orgs\",\"repos_url\":\"https://api.github.com/users/moudy/repos\",\"events_url\":\"https://api.github.com/users/moudy/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/moudy/received_events\",\"type\":\"User\",\"site_admin\":false,\"name\":\"Moudy Elkammash\",\"company\":null,\"blog\":\"moudy.me\",\"location\":\"Brooklyn, New York\",\"email\":\"\",\"hireable\":false,\"bio\":null,\"public_repos\":24,\"public_gists\":15,\"followers\":29,\"following\":10,\"created_at\":\"2010-04-10T13:09:28Z\",\"updated_at\":\"2014-02-21T21:55:15Z\"}",
+  "_json": {
+    "login": "moudy",
+    "id": 241024,
+    "avatar_url": "https://gravatar.com/avatar/72b0dda984c92874dacf9c558c52b19d?d=https%3A%2F%2Fidenticons.github.com%2F605475ebdb40f4a00be0201304f4761d.png&r=x",
+    "gravatar_id": "72b0dda984c92874dacf9c558c52b19d",
+    "url": "https://api.github.com/users/moudy",
+    "html_url": "https://github.com/moudy",
+    "followers_url": "https://api.github.com/users/moudy/followers",
+    "following_url": "https://api.github.com/users/moudy/following{/other_user}",
+    "gists_url": "https://api.github.com/users/moudy/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/moudy/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/moudy/subscriptions",
+    "organizations_url": "https://api.github.com/users/moudy/orgs",
+    "repos_url": "https://api.github.com/users/moudy/repos",
+    "events_url": "https://api.github.com/users/moudy/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/moudy/received_events",
+    "type": "User",
+    "site_admin": false,
+    "name": "Moudy Elkammash",
+    "company": null,
+    "blog": "moudy.me",
+    "location": "Brooklyn, New York",
+    "email": "",
+    "hireable": false,
+    "bio": null,
+    "public_repos": 24,
+    "public_gists": 15,
+    "followers": 29,
+    "following": 10,
+    "created_at": "2010-04-10T13:09:28Z",
+    "updated_at": "2014-02-21T21:55:15Z"
+  }
+}

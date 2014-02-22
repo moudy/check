@@ -18,17 +18,17 @@ App.ChecklistsShowController = Em.ObjectController.extend({
     }).get('length');
   }.property('listItems.@each.isCompleted')
 
-, isCompleted: function () {
-    return this.get('uncompletedCount') === 0;
-  }.property('listItems.@each.isCompleted')
+, isCompleted: Em.computed.equal('uncompletedCount', 0).property('listItems.@each.isCompleted')
 
-, isInProgress: function () {
-    return this.get('completedCount') > 0;
-  }.property('listItems.@each.isCompleted')
+, isInProgress: Em.computed.gt('completedCount', 0).property('listItems.@each.isCompleted')
 
 , isClearable: function () {
     return this.get('isInProgress') && !this.get('isEditing');
   }.property('isInProgress', 'isEditing')
+
+, isEditable: function () {
+    return this.session.isCurrentUser(this.get('userId'));
+  }.property()
 
 , statusMessage: function () {
     var status = this.getProperties(
@@ -39,7 +39,7 @@ App.ChecklistsShowController = Em.ObjectController.extend({
     , 'totalCount');
 
     if (status.isCompleted) {
-      return 'All '+status.completedCount+' items complete';
+      return 'All '+status.completedCount+' items completed!';
     } else if (!status.isInProgress) {
       return status.uncompletedCount+' items';
     } else {

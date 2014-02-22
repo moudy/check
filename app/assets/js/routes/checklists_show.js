@@ -2,7 +2,7 @@ var App = require('../app').instance;
 
 App.ChecklistsShowRoute = Em.Route.extend({
   model: function (params) {
-    return this.store.find('checklist', params.checklistSlug);
+    return this.store.find('checklist', params.id);
   }
 
 , setupController: function (controller, context) {
@@ -10,7 +10,8 @@ App.ChecklistsShowRoute = Em.Route.extend({
     controller.set('isEditing', false);
   }
 
-, serialize: function (model) {
-    return {checklistSlug: model.get('id')};
+, serialize: function(model) {
+    return model.getProperties('username', 'id');
   }
+
 });

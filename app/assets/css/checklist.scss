@@ -1,10 +1,39 @@
 @import 'base';
 
+.checklist-header {
+  margin: 30px 0;
+  .avatar-link {
+    width: 50px;
+    height: 50px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .checklist-title {
+    $line-height: 28px;
+    line-height: $line-height;
+    min-height: $line-height;
+    min-width: 90px;
+    margin: 0;
+    padding: 2px;
+    font-size: 20px;
+    display: inline-block;
+    font-weight: 700;
+  }
+
+  .checklist-meta {
+    padding: 0 2px;
+    font-size: 14px;
+    color: $color-text-light-medium;
+    a { color: inherit; }
+  }
+
+}
+
 .checklist-container {
   background-color: $color-gray-extra-light;
-  @include cover-area();
-  -webkit-overflow-scrolling: touch;
-  overflow-x: hidden;
 
   &.dim-list {
     .checklist-list-items-container {
@@ -15,85 +44,52 @@
 
 }
 
-.header-bar {
-  background: white;
-  border-bottom: 1px solid $color-gray-light;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  height: 50px;
-}
+/*.editable-title {*/
+  /*position: relative;*/
 
-.no-csspositionsticky {
-  .header-bar { position: fixed; }
-  .checklist-container { padding: 50px 0 31px; }
-}
+  /*input {*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*width: 100%;*/
+    /*position: absolute;*/
 
-.csspositionsticky {
-  .header-bar {
-    @include position-sticky();
-  }
-}
+    /*padding: inherit;*/
+    /*color: inherit;*/
+    /*font: inherit;*/
+    /*line-height: inherit;*/
+    /*font-size: inherit;*/
 
-.checklist-title {
-  $line-height: 28px;
-  line-height: $line-height;
-  min-height: $line-height;
-  min-width: 90px;
-  margin: 10px 0 0 0;
-  padding: 2px;
-  font-size: 20px;
-  display: inline-block;
-  font-weight: 700;
-}
+    /*border: 0 none;*/
+    /*background-color: $color-gray-light;*/
+    /*&:focus { box-shadow: inset 0 0 1px #333; }*/
+  /*}*/
+/*}*/
 
-.editable-title {
-  position: relative;
+/*.editable-body {*/
+  /*position: relative;*/
 
-  input {
-    top: 0;
-    left: 0;
-    width: 100%;
-    position: absolute;
+  /*textarea {*/
+    /*width: 100%;*/
+    /*max-width: 100%;*/
+    /*height: 100%;*/
+    /*margin: 0;*/
 
-    padding: inherit;
-    color: inherit;
-    font: inherit;
-    line-height: inherit;
-    font-size: inherit;
+    /*border-radius: 0;*/
+    /*border: 0 none;*/
+    /*border: 1px solid transparent;*/
 
-    border: 0 none;
-    background-color: $color-gray-light;
-    &:focus { box-shadow: inset 0 0 1px #333; }
-  }
-}
+    /*font: inherit;*/
+    /*font-size: inherit;*/
+    /*color: inherit;*/
+    /*padding: 6px;*/
 
-.editable-body {
-  position: relative;
-
-  textarea {
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    margin: 0;
-
-    border-radius: 0;
-    border: 0 none;
-    border: 1px solid transparent;
-
-    font: inherit;
-    font-size: inherit;
-    color: inherit;
-    padding: 6px;
-
-    background-color: $color-gray-light;
-    &:focus {
-      border-color: $color-gray-medium;
-      min-height: 200px;
-    }
-  }
-}
+    /*background-color: $color-gray-light;*/
+    /*&:focus {*/
+      /*border-color: $color-gray-medium;*/
+      /*min-height: 200px;*/
+    /*}*/
+  /*}*/
+/*}*/
 
 .checklist-list-items-container {
   margin-bottom: 40px;
@@ -105,5 +101,40 @@
 }
 
 .checklist-add-item-container {
+  text-align: center;
+}
+
+.checklist-status-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  line-height: 50px;
+  background-color: white;
+  border-top: 1px solid $color-gray-medium;
+  @include transform(translateY(100%));
+  @include transition-property(transform);
+  @include transition-duration(200ms);
+  @include transition-timing-function(ease-out);
+
+  .button {
+    position: relative;
+    top: 10px;
+  }
+}
+
+.is-in-progress .checklist-status-bar {
+  @include transition-timing-function(ease-out);
+  @include transition-duration(100ms);
+  @include transform(translateY(0%));
+}
+
+.checklist-status-message {
+  font-size:14px;
+  color: $color-text-light-medium;
+  position: relative;
+}
+
+.checklist-delete-section {
+  padding: 10px;
   text-align: center;
 }

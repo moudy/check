@@ -16,7 +16,6 @@ App.ChecklistListItemView = Em.View.extend({
 
 , click: function (e) {
     var nodeName = e.target.nodeName.toLowerCase();
-    if ('pre' === nodeName) return;
     if ('code' === nodeName) return;
     if ('a' === nodeName) return;
     var isEditing = this.get('controller.isEditing');
@@ -33,7 +32,7 @@ App.ChecklistListItemView = Em.View.extend({
 , autoFocus: function () {
     if (!this.get('controller.isEditingMd')) return;
     Em.run.scheduleOnce('afterRender', this, function () {
-      console.log(this, this.$('textarea').focus());
+      this.$('textarea').focus();
     });
   }.observes('controller.isEditingMd')
 

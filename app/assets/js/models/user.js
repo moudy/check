@@ -6,4 +6,6 @@ App.User = DS.Model.extend({
 , email: attr('string')
 , password: attr('string')
 , profileImageUrl: attr('string')
+, checklists: DS.hasMany('checklist', {async: true})
+, foo: function () { return 'bar'; }
 });

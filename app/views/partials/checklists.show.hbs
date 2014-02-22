@@ -1,12 +1,35 @@
-{{partial 'checklist_header'}}
-{{partial 'checklist_description'}}
+<header class='checklist-header'>
+  <div class='content-width'>
+    <div class='media'>
+      {{#link-to 'users.show' user class='avatar-link media-left'}}
+        <img {{bind-attr src='user.profileImageUrl'}} {{bind-attr alt='user.username'}} />
+      {{/link-to}}
 
-<div class='checklist-meta-info'>
-  {{partial 'checklist_meta_info'}}
-</div>
+      <div class='media-body'>
+        <h1 class='checklist-title editable-title'>
+          {{title}}&nbsp;
+          {{#if isEditing}}
+            {{view App.TextField valueBinding='title' placeholder='List title'}}
+          {{/if}}
+        </h1>
+        <div class='checklist-meta'>
+          by
+          {{#link-to 'users.show' user}}
+            {{user.username}}
+          {{/link-to}}
+          &middot;
+          {{listItems.length}} steps
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-{{render 'checklistListItems' }}
+{{render 'checklistListItems' listItems}}
 
-<div class='checklist-meta-info-footer'>
-  {{partial 'checklist_meta_info'}}
+<div class='checklist-status-bar'>
+  <div class='content-width'>
+    <span class='checklist-status-message'>{{statusMessage}}</span>
+    <a href='#' class='button right' {{action 'clear'}}>clear</a>
+  </div>
 </div>

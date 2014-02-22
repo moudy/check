@@ -4,12 +4,7 @@ var passport = require('passport');
 var User = require('../app/models/user');
 var expressSession = require('./middleware/express_session');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
 var user = require('./middleware/user');
-
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 exports.configure = function (app) {
 
