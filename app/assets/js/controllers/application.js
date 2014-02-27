@@ -1,5 +1,3 @@
-var App = require('../app').instance;
-
 App.ApplicationController = Em.Controller.extend({
   needs: ['index']
 

@@ -12,6 +12,7 @@ var App = exports.instance = global.App = Em.Application.create({
   ready: function(){
     this.register('session:current', App.Session, {singleton: true});
     this.inject('controller', 'session', 'session:current');
+    this.inject('route', 'session', 'session:current');
   }
 });
 

@@ -6,6 +6,7 @@
 
   &.is-editing {
     z-index: 1000;
+    .checkbox-container { display: none; }
   }
 
   &:first-of-type {
