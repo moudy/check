@@ -18,7 +18,7 @@ exports.configure = function (app) {
     require('node-pow')(app);
     app.set('host', app.get('title')+'.dev');
   } else if ('production' === app.get('env')) {
-    app.set('host', app.get('title')+'.com');
+    app.set('host', 'chck.herokuapp.com');
   }
 };
 
