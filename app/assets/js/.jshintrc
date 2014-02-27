@@ -1,0 +1,16 @@
+{
+  "browser": true,
+  "laxcomma": true,
+  "unused": true,
+  "expr": true,
+  "undef": true,
+  "eqeqeq": true,
+  "globals": {
+    "Em": false,
+    "require": false,
+    "module": false,
+    "global": false,
+    "DS": false,
+    "App": true
+  }
+}

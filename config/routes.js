@@ -10,6 +10,7 @@ exports.configure = function (app) {
 
   app.get('/checklists/:checklistSlug', controllers.checklists.show);
 
+  app.get('/list/new', controllers.pages.index);
   app.post('/checklists', controllers.checklists.create);
   app.put('/checklists/:id', controllers.checklists.update);
   app.put('/checklists/:id/reorder', controllers.checklists.updateReorder);

@@ -1,0 +1,36 @@
+{{#if isEditing}}
+  <div {{action 'doneEditing'}} class='blanket'></div>
+  <div class='checklist-list-item-editor'>
+    <div class='textarea-container'>
+      {{view App.TextArea valueBinding='description'}}
+    </div>
+    <div class='controls'>
+      <a tabindex='1' class='button-danger left control-left' {{action 'delete' target='view'}}>Delete</a>
+      <a tabindex='0' class='button right control-right' {{action 'doneEditing'}}>Done</a>
+    </div>
+  </div>
+{{/if}}
+
+<div class='md-container'>
+  {{#unless reorderMode}}
+    <label class='checkbox-container'>
+      {{input type="checkbox" name="isCompleted" checked=isCompleted}}
+    </label>
+  {{/unless}}
+
+  <div class='md'>
+    {{#if description}}
+      {{markdown description}}
+    {{else}}
+      &nbsp;
+    {{/if}}
+  </div>
+  {{#if showEditIcon}}
+    <a href='#' {{action 'edit'}} class='button-edit'>&#9998;</a>
+  {{/if}}
+</div>
+
+{{#if reorderMode}}
+  <a href='#' {{action 'move' 'up'}} class='button-move move-up'>&#11014;</a>
+  <a href='#' {{action 'move' 'down'}} class='button-move move-down'>&#11015;</a>
+{{/if}}

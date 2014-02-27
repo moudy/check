@@ -6,7 +6,7 @@
     "dev": "nodemon --ignore tmp/ --ignore node_modules/ --ignore public/ --ignore app/assets/ app.js",
     "start": "forever app.js",
     "test": "mocha",
-    "build-templates": "ember-precompile app/views/partials/*.hbs > app/assets/js/templates.js",
+    "build-templates": "./scripts/build-templates",
     "build-js-head": "browserify app/assets/js/head.js | uglifyjs -mc > public/head.js",
     "build-js": "npm run build-templates && browserify app/assets/js/app.js | uglifyjs -mc > public/app.js",
     "build-css": "mkdir -p tmp && node-sass app/assets/css/app.scss tmp/app.css && cleancss tmp/app.css > public/app.css",

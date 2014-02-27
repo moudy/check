@@ -1,9 +1,13 @@
-var App = require('../app').instance;
-
 App.ChecklistListItemsController = Em.ArrayController.extend({
   itemController: 'checklistListItem'
 
-, isEditingBinding: Em.Binding.oneWay('parentController.isEditing')
+, canEditBinding: Em.Binding.oneWay('parentController.canEdit')
+
+, showReorderButton: Em.computed.gt('length', 1)
+
+, reorderCopy: function () {
+    return this.get('reorderMode') ? 'Done Reordering Items' : 'Reorder Items';
+  }.property('reorderMode', '@each')
 
 , sortProperties: ['index']
 
@@ -22,10 +26,18 @@ App.ChecklistListItemsController = Em.ArrayController.extend({
 
 , actions: {
     addItem: function () {
-      var checklistId = this.get('parentController.model.id');
+      var checklistId = this.get('checklist.id');
       var attrs = {checklistId: checklistId, index: this.get('length')};
       var listItem = this.store.createRecord('listItem', attrs);
       this.pushObject(listItem);
+    }
+
+  , toggleReorderMode: function () {
+      this.toggleProperty('reorderMode');
+    }
+
+  , delete_: function () {
+      this.get('parentController').send('delete_');
     }
 
   , deleteItem: function (model) {

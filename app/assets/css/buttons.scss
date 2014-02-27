@@ -27,12 +27,18 @@
   padding-right: 10px;
 }
 
-@mixin button-color-danger { color: $color-text-danger; }
+@mixin button-color-danger {
+  border-color: rgb(213, 137, 137);
+  color: rgb(224, 0, 0);
+  background-color: rgb(255, 242, 242);
+}
 
 @mixin button-color-text {
   color: $color-text-default;
   border-color: $color-gray-medium;
   background-color: $color-gray-extra-light;
+  &:hover { background-color: white; }
+  &:active { background-color: $color-gray-light; }
 }
 
 @mixin button-bare {
@@ -68,9 +74,26 @@
   @include button-size-default();
 }
 
+.button-danger {
+  @include button-base();
+  @include button-bordered();
+  @include button-color-danger();
+  @include button-size-default();
+}
+
 .button-text {
   line-height: inherit;
   font-weight: bold;
   color: inherit;
   display: inline-block;
 }
+
+.button-edit {
+  @include button-base();
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  color: $color-text-light;
+  &:hover { color: $color-text-default; }
+}
+

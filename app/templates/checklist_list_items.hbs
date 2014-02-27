@@ -1,0 +1,21 @@
+{{#if this.length}}
+  <ul class='js-checklist-list-items checklist-list-items list-reset'>
+    {{each itemViewClass="App.ChecklistListItemView"}}
+  </ul>
+{{/if}}
+
+{{#if canEdit}}
+<div class='checklist-controls'>
+  <a {{action 'addItem'}} href='#' class='button'>
+    &#43; Add Item
+  </a>
+  {{#if showReorderButton}}
+    <a {{action 'toggleReorderMode'}} href='#' class='button'>
+      &#8645; {{reorderCopy}}
+    </a>
+  {{/if}}
+  <a {{action 'delete_'}} href='#' class='button right'>
+    &times; Delete List
+  </a>
+</div>
+{{/if}}

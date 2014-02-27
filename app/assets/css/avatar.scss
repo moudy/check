@@ -3,15 +3,20 @@
   border-radius: 4px;
   padding: 1px;
   background-color: #999;
+  vertical-align: middle;
 }
 
-@mixin avatar-size-large {
-  $size: 80px;
+@mixin avatar-size($size) {
   height: $size;
   width: $size;
 }
 
+.avatar-small {
+  @include avatar-base;
+  @include avatar-size(20px);
+}
+
 .avatar-large {
   @include avatar-base;
-  @include avatar-size-large;
+  @include avatar-size(80px);
 }

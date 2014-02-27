@@ -1,4 +1,3 @@
-var App = require('../app').instance;
 var attr = DS.attr;
 
 App.ChecklistSerializer = DS.RESTSerializer.extend({
@@ -11,7 +10,7 @@ App.ChecklistSerializer = DS.RESTSerializer.extend({
         var lis = checklist.listItems;
         listItems = listItems.concat(lis);
         checklist.listItems = lis.map(function (li) { return li.id; });
-        checklist.user = checklist.userId;
+        //checklist.user = checklist.userId;
       }
     });
 
@@ -43,6 +42,6 @@ App.Checklist = DS.Model.extend({
 , listItems: DS.hasMany('listItem', {async:true})
 , userId: attr('string')
 , username: attr('string')
-, user: DS.belongsTo('user', {async: true})
+, user: DS.belongsTo('user')
 });
 

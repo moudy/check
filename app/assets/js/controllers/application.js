@@ -4,7 +4,6 @@ App.ApplicationController = Em.Controller.extend({
   needs: ['index']
 
 , setCurrentUser: function (user) {
-    this.store.push('user', user);
     this.session.set('user', user);
   }
 

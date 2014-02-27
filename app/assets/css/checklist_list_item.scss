@@ -2,24 +2,10 @@
 
 .checklist-list-item {
   position: relative;
-  background: white;
-  cursor: pointer;
   width: 100%;
 
-  border-top: 1px solid $color-gray-light;
-  border-bottom: 1px solid $color-gray-light;
-  border-right: 1px solid $color-gray-light;
-  border-left: 3px solid $color-gray-light;
-
-  min-height: 40px;
-  margin-bottom: 20px;
-  box-shadow: 0 1px 2px #aaa;
-
-  &.is-editing-md {
+  &.is-editing {
     z-index: 1000;
-    .md {
-      box-shadow: 0 1px 3px #aaa;
-    }
   }
 
   &:first-of-type {
@@ -32,23 +18,20 @@
   }
 
   &.is-completed {
-    border-left-color: $color-success;
-    .checklist-list-item-description { opacity: 0.5; }
-  }
-
-  &:hover {
-    .edit-controls {
-      visibility: visible;
+    .md { opacity: 0.5; }
+    .checkbox-container {
+      border: 1px solid $color-success;
+      background-color: rgb(240, 255, 239);
     }
   }
 
   .blanket {
     @include cover-area(fixed, hidden);
-    background-color: rgba(255,255,255,1);
+    background-color: rgba(255,255,255,0.7);
+    //display: none;
   }
 
   textarea, .md { position: relative; }
-  textarea { margin-bottom: 10px; }
 
   .delete-item:hover { color: $color-text-danger; }
 
@@ -65,36 +48,50 @@
   .move-up { left: -40px; }
   .move-down { right: -40px; }
 
-  .edit-controls {
-    @include cover-area(absolute, hidden);
-    z-index: 10;
-    visibility: hidden;
-   // background-color: rgba(255,255,255,0.8);
-    text-align: right;
+  .button-edit {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .md-container {
+    background-color: white;
+    border: 1px solid $color-gray-light;
+
+    min-height: 40px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px #aaa;
+  }
+
+
+  .checkbox-container {
+    $size: 40px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: -$size - 10px;
+    width: $size;
+    height: $size;
+    line-height: $size;
+    background: $color-gray-extra-light;
+    text-align: center;
+    border-radius: 2px;
+    border: 1px dotted $color-gray-medium;
+    @include transform(translateY(-($size/2)));
+    input { cursor: pointer; }
   }
 }
 
-.checklist-container.is-editing .checklist-list-item {
-  background-color: white;
-  cursor: default;
-  .checklist-list-item-description { opacity: 1; }
+/*.checklist-container.is-editing .checklist-list-item {*/
+  /*background-color: white;*/
+  /*cursor: default;*/
+  /*.md-container { opacity: 1; }*/
 
-  @include transition(background-color 600ms);
-  &.animate-move-flash {
-    background-color: $color-highlight;
-  }
-}
-
-.no-touch {
-  .checklist-list-item {
-    &:hover { border-left-color: $color-gray-light; }
-    &:active { border-left-color: $color-gray-medium; }
-    &.is-completed:hover { border-left-color: $color-success; }
-    &.is-completed:active { border-left-color: $color-gray-medium; }
-    &.is-editing:hover { border-left-color: none; }
-    &.is-editing:active { border-left-color: none; }
-  }
-}
+  /*@include transition(background-color 600ms);*/
+  /*&.animate-move-flash {*/
+    /*background-color: $color-highlight;*/
+  /*}*/
+/*}*/
 
 .button-move {
   $size: 30px;
@@ -123,3 +120,59 @@
   /*user-select: none;*/
   /*cursor: pointer;*/
 /*}*/
+
+.checklist-list-item-editor {
+  $controls-height: 50px;
+  background-color: $color-gray-light;
+
+  .controls {
+    height: $controls-height;
+    line-height: $controls-height;
+    background-color: $color-gray-medium;
+
+    .control-left, .control-right {
+      position: relative;
+      top: 9px;
+    }
+
+    .control-left { left: 9px; }
+    .control-right { right: 9px; }
+  }
+
+  .textarea-container {
+    height: 100%;
+  }
+
+  textarea {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: transparent;
+
+    border-radius: 0;
+    border: 0 none;
+
+    padding: 6px;
+  }
+
+}
+
+
+@include bp-double-content-width {
+  .checklist-list-item.is-editing {
+    .md-container {
+      @include transform(translateX(-50%));
+    }
+    .checklist-list-item-editor {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      @include transform(translateX(50%));
+
+      textarea { resize: none; }
+    }
+  }
+}

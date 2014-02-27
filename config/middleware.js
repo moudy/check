@@ -1,7 +1,6 @@
 var express = require('express');
 var path = require('path');
 var passport = require('passport');
-var User = require('../app/models/user');
 var expressSession = require('./middleware/express_session');
 var passport = require('passport');
 var user = require('./middleware/user');

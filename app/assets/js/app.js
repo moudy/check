@@ -17,7 +17,7 @@ var App = exports.instance = global.App = Em.Application.create({
 
 App.Session = Em.Controller.extend({
   isCurrentUser: function (userId) {
-    if ('string' !== typeof userId) userId = userId.get('id');
+    if (userId && 'string' !== typeof userId) userId = userId.get('id');
     return userId && this.get('user.id') === userId;
   }
 });
@@ -37,6 +37,8 @@ App.Router.map(function () {
   this.route('index', {path: '/'});
   this.route('users.show', {path: '/:username'});
   this.route('checklists.show', {path: '/:username/:id'});
+
+  this.route('checklists.new', {path: '/list/new'});
 
   this.route('signout');
 });

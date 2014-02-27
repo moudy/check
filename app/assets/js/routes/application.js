@@ -6,6 +6,7 @@ App.ApplicationRoute = Em.Route.extend({
     var currentUser = global.DATA.currentUser;
     if (currentUser) {
       delete global.DATA.currentUser;
+      currentUser = this.store.push('user', currentUser);
       this.controllerFor('application').setCurrentUser(currentUser);
     }
   }
