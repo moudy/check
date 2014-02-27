@@ -1,13 +1,11 @@
 @import 'base';
 
+@mixin item-container-box-shadow { box-shadow: 0 1px 1px #aaa; }
+@mixin item-container-box-shadow-inset { box-shadow: inset 0 1px 1px #aaa; }
+
 .checklist-list-item {
   position: relative;
   width: 100%;
-
-  &.is-editing {
-    z-index: 1000;
-    .checkbox-container { display: none; }
-  }
 
   &:first-of-type {
     border-top: 1px solid $color-gray-light;
@@ -19,6 +17,7 @@
   }
 
   &.is-completed {
+    .md-container { @include item-container-box-shadow-inset; }
     .md { opacity: 0.5; }
     .checkbox-container {
       border: 1px solid $color-success;
@@ -26,10 +25,17 @@
     }
   }
 
+  &.is-editing {
+    z-index: 1000;
+    .checkbox-container { display: none; }
+    .md-container { @include item-container-box-shadow; }
+    .md { opacity: 1; }
+  }
+
+
   .blanket {
     @include cover-area(fixed, hidden);
     background-color: rgba(255,255,255,0.7);
-    //display: none;
   }
 
   textarea, .md { position: relative; }
@@ -61,7 +67,7 @@
 
     min-height: 40px;
     margin-bottom: 20px;
-    box-shadow: 0 1px 2px #aaa;
+    @include item-container-box-shadow;
   }
 
 
