@@ -1,3 +1,15 @@
+@import 'base';
+
 .users-show-header {
   margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.users-show-header-username {
+  font-size: 18px;
+}
+
+.user-show-header-checklists-count {
+  font-size: 14px;
+  color: $color-text-light-medium;
 }

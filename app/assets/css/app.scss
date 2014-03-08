@@ -41,6 +41,11 @@ ul {
   padding: 0;
   margin: 0;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
 // \app reset
 
 body {
@@ -74,6 +79,12 @@ input, textarea { border-radius: 4px; }
 .media-left {
   float: left;
   margin-right: 10px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: $color-text-light-medium;
+  a { color: inherit; }
 }
 
 @import 'md';

@@ -1,9 +1,15 @@
 <div class='content-width'>
-  <div class='users-show-header'>
-    <img class='avatar-large' {{bind-attr src=profileImageUrl}} {{bind-attr alt=username}} />
+  <div class='users-show-header media'>
+    <img class='avatar-medium media-left' {{bind-attr src=profileImageUrl}} {{bind-attr alt=username}} />
 
-    {{username}}
-    {{checklists.length}} Checklists
+    <div class='media-body'>
+      <h2 class='users-show-header-username'>
+        {{username}}
+      </h2>
+      <div class='subtitle'>
+        {{checklists.length}} Checklists
+      </div>
+    </div>
   </div>
   <div class='checklists-container'>
     <ul class='checklists list-reset'>

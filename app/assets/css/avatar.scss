@@ -16,6 +16,11 @@
   @include avatar-size(20px);
 }
 
+.avatar-medium {
+  @include avatar-base;
+  @include avatar-size(40px);
+}
+
 .avatar-large {
   @include avatar-base;
   @include avatar-size(80px);
