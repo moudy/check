@@ -1,16 +1,16 @@
-var express = require('express');
-var http = require('http');
-
-var app = express();
+var app = exports.app = require('express')();
 
 [ 'settings'
 , 'passport'
 , 'middleware'
-, 'routes'
-, 'db'].forEach(function (i) {
+, 'routes'].forEach(function (i) {
   require('./config/'+i).configure(app);
 });
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('App running at "' + app.get('host') + '" (port:'+app.get('port')+')');
-});
+if (!module.parent) {
+  require('./config/db').connect(app);
+
+  app.listen(app.get('port'), function(){
+    console.log('"%s" running in "%s" on port %d', app.get('host'), app.get('env'), app.get('port'));
+  });
+}

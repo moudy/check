@@ -1,24 +1,19 @@
-var _ = require('underscore');
 var path = require('path');
-
 var view = require('./view');
-var env = require('./env');
 
 exports.configure = function (app) {
-  _.each(env, function (value, key) { app.set(key, value); });
-  app.set('port', process.env.PORT || 3012);
+  // Make sure app has environment
+  app.set('environment', process.env.NODE_ENV || 'development');
+
   app.set('title', 'check');
+
+  // Configure environment specific settings
+  var environmentPath = path.join(__dirname, 'environments', app.get('environment'));
+  require(environmentPath).configure(app);
+
+  // Setup view path and engine
   app.set('views', path.join(__dirname, '..', 'app', 'views'));
   app.engine('.hbs', view.engine);
   app.set('view engine', '.hbs');
-
-  if ('development' === app.get('env')) {
-    var mongoose = require('mongoose');
-    mongoose.set('debug', true);
-    require('node-pow')(app);
-    app.set('host', app.get('title')+'.dev');
-  } else if ('production' === app.get('env')) {
-    app.set('host', 'chck.herokuapp.com');
-  }
 };
 

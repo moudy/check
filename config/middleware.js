@@ -18,14 +18,13 @@ exports.configure = function (app) {
     , insertGlobals:true
     });
   }
-  app.use(express.compress());
   app.use(express.favicon(path.join(__dirname, '..', 'public/favicon.ico')));
   app.use(express.static(path.join(__dirname, '..', 'public')));
   app.use(express.json());
   app.use(express.urlencoded());
   app.use(express.methodOverride());
   app.use(express.cookieParser('checkmate'));
-  app.use(expressSession);
+  app.use(expressSession(app));
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(express.logger('dev'));

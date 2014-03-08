@@ -40,7 +40,8 @@
     "highlight.js": "~8.0.0",
     "underscore": "~1.5.2",
     "async": "~0.2.10",
-    "passport-github": "^0.1.5"
+    "passport-github": "^0.1.5",
+    "es6ify": "^0.4.8"
   },
   "devDependencies": {
     "node-pow": "0.0.2",
@@ -79,7 +80,8 @@
   },
   "browserify": {
     "transform": [
-      "browserify-shim"
+      "browserify-shim",
+      "es6ify"
     ]
   }
 }
