@@ -12,20 +12,12 @@ $header-height: 50px;
   position: relative;
   height: $header-height;
   line-height: $header-height;
-
-  .avatar-link {
-    margin-right: 10px;
-  }
 }
 
 .header-logo {
   background: #cbffcb;
   text-align: center;
   width: $header-height;
-}
-
-.avatar-link {
-  display: inline-block;
 }
 
 .header-nav-menu {

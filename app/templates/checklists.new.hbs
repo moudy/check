@@ -1,5 +1,11 @@
+{{partial 'checklist/form'}}
+
+<div class='checklist-form'>
 {{input value=title placeholder='List Title'}}
 
-<a href='#' {{action 'create'}}>
-  Create &amp; Edit List
+{{textarea value=description}}
+
+<a href='#' class='button' {{action 'create'}}>
+  {{#if id}}Create List{{else}}Update{{/if}}
 </a>
+</div>

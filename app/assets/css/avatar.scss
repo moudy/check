@@ -4,6 +4,12 @@
   padding: 1px;
   background-color: #999;
   vertical-align: middle;
+
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
 }
 
 @mixin avatar-size($size) {
@@ -23,5 +29,5 @@
 
 .avatar-large {
   @include avatar-base;
-  @include avatar-size(80px);
+  @include avatar-size(50px);
 }
