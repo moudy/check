@@ -6,20 +6,9 @@ var passport = require('passport');
 var user = require('./middleware/user');
 
 exports.configure = function (app) {
-
-  if ('development' === app.get('env')) {
-    app.use(require('./middleware/sass'));
-    app.use('/head.js', require('./middleware/head'), {
-      noParse: ['Modernizr']
-    , insertGlobals:true
-    });
-    app.use('/app.js', require('./middleware/app'), {
-      noParse: ['Ember', 'jquery']
-    , insertGlobals:true
-    });
-  }
   app.use(express.favicon(path.join(__dirname, '..', 'public/favicon.ico')));
   app.use(express.static(path.join(__dirname, '..', 'public')));
+  app.use(express.static(path.join(__dirname, '..', 'assets')));
   app.use(express.json());
   app.use(express.urlencoded());
   app.use(express.methodOverride());

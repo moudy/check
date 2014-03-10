@@ -2,6 +2,5 @@
 .sass-cache/
 config/env
 tmp/
-public/app.js
-public/app.css
+assets/
 app/assets/js/templates.js

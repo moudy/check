@@ -44,4 +44,3 @@ App.Router.map(function () {
   this.route('signout');
 });
 
-

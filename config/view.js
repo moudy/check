@@ -5,4 +5,5 @@ module.exports = exphbs.create({
 , extname: '.hbs'
 , layoutsDir: 'app/views/layouts/'
 , partialsDir: 'app/views/partials/'
+, helpers: require('../lib/handlebars-helpers')
 });
