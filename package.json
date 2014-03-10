@@ -7,7 +7,7 @@
     "start": "forever app.js",
     "test": "mocha",
     "build-templates": "./scripts/build-templates",
-    "postinstall": "build-templates && broccoli build assets"
+    "postinstall": "npm run build-templates && broccoli build assets"
   },
   "dependencies": {
     "express": "3.4.4",
