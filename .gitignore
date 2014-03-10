@@ -4,3 +4,4 @@ config/env
 tmp/
 assets/
 app/assets/js/templates.js
+npm-debug.log
