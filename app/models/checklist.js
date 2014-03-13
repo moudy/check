@@ -11,6 +11,7 @@ var ListItemSchema = new Schema({
 var ChecklistSchema = new Schema({
   title: {type: String, required:true, trim:true}
 , username: {type: String, required:true, trim:true}
+, description: {type: String}
 , listItems: [ListItemSchema]
 , listItemsOrder: {type: String}
 , userId: {type: ObjectId, required: true}

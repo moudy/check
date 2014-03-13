@@ -1,2 +1,4 @@
-{{partial 'checklist/form'}}
+{{view App.ChecklistHeaderView}}
+
+<a {{action 'create'}} href='#' {{bind-attr class=':button validModel::is-disabled'}}>Create Checklist</a>
 

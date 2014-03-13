@@ -4,6 +4,10 @@ App.ChecklistsShowController = Em.ObjectController.extend({
     return this.session.isCurrentUser(this.get('user'));
   }.property('userId')
 
+, showDescription: function () {
+    return this.get('description') || this.get('canEdit');
+  }.property('description', 'canEdit')
+
 , totalCount: function () {
     return this.get('listItems.length');
   }.property('listItems.@each.isCompleted')
@@ -64,8 +68,11 @@ App.ChecklistsShowController = Em.ObjectController.extend({
       this.toggleProperty('isEditing');
     }
 
+  , childViewDidFocusOut: function () {
+      if (this.get('model.isDirty')) this.send('save');
+    }
+
   , save: function () {
-      if (!this.get('model.isDirty')) return;
       this.get('model').save();
     }
 

@@ -42,6 +42,7 @@ App.Checklist = DS.Model.extend({
 , listItems: DS.hasMany('listItem', {async:true})
 , userId: attr('string')
 , username: attr('string')
+, description: attr('string')
 , user: DS.belongsTo('user')
 });
 

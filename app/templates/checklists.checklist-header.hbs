@@ -6,9 +6,14 @@
       {{/link-to}}
 
       <div class='media-body'>
-        <h1 class='checklists-show-title editable-title' {{action 'edit' 'title' target=view}}>
-          {{title}}&nbsp;
-          {{#if view.isEditingTitle}}
+        <h1 class='checklists-show-title editable-field' {{action 'edit' 'title' target=view}}>
+          {{#if title}}
+            {{title}}&nbsp;
+          {{else}}
+            <span class='add-description-prompt'>Add a Title...</span>
+          {{/if}}
+
+          {{#if isEditingTitle}}
             {{view App.TextField valueBinding='title' placeholder='List title' property='title' focusOnInsert=true}}
           {{/if}}
         </h1>
@@ -23,5 +28,20 @@
         </div>
       </div>
     </div>
+
+    {{#if showDescription}}
+      <div class='p checklist-description editable-field' {{action 'edit' 'description' target=view}}>
+        {{#if description}}
+          {{description}}&nbsp;
+        {{else}}
+          <span class='add-description-prompt'>Add a description...</span>
+        {{/if}}
+
+        {{#if isEditingDescription}}
+          {{view App.TextArea valueBinding='description' property='description' focusOnInsert=true}}
+        {{/if}}
+      </div>
+    {{/if}}
+
   </div>
 </header>

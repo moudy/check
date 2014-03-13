@@ -87,9 +87,14 @@ input, textarea { border-radius: 4px; }
   a { color: inherit; }
 }
 
+.p {
+  font-size: 14px;
+  color: $color-text-default;
+  line-height: 1.6;
+}
+
 @import 'md';
 @import 'avatar';
-@import 'form';
 @import 'header_bar';
 @import 'users_show_info';
 @import 'checklist';

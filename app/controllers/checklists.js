@@ -14,8 +14,9 @@ exports.index = function (req, res) {
 exports.create = function (req, res) {
   var attrs = req.body.checklist;
   delete attrs.listItems;
-  var userId = req.user.id;
-  attrs.userId = userId;
+  var user = req.user;
+  attrs.userId = user.id;
+  attrs.username = user.username;
   Checklist.create(attrs, function (error, checklist) {
     if (error) return res.json(500, error.errors);
     res.json({ checklist: checklist });

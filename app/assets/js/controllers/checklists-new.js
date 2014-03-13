@@ -1,32 +1,44 @@
 App.ChecklistsNewController = Em.Controller.extend({
-  createRecord: function () {
-    var currentUser = this.session.get('user');
 
-    var attrs = {
-      userId: currentUser.get('id')
-      , username: currentUser.get('username')
-      , title: this.get('title')
-    };
+  canEdit: true
 
+, showDescription: true
+
+, userBinding: 'session.user'
+
+, createRecord: function () {
+    var attrs = this.getProperties('title', 'description');
     return this.store.createRecord('checklist', attrs);
   }
 
 , onSuccess: function (checklist) {
+    var self = this;
     this.set('isLoading', false);
-    var checklists = this.session.get('user.checklists');
-    checklists.pushObject(checklist);
-    this.transitionToRoute('checklists.show', checklist);
+    this.get('user.checklists').then(function (checklists) {
+      checklists.pushObject(checklist);
+      self.setProperties({title: null, description: null});
+      self.transitionToRoute('checklists.show', checklist);
+    });
   }
+
+, validModel: function () {
+    return !!this.get('title');
+  }.property('title')
 
 , onError: function (res) {
     console.log('Error', res);
   }
 
 , actions: {
-    create: function () {
-      this.set('isLoading', true);
-      this.createRecord().save().then(this.onSuccess.bind(this), this.onError.bind(this));
+    childViewDidFocusOut: function () {}
+
+  , create: function () {
+      if (this.get('title')) {
+        this.set('isLoading', true);
+        this.createRecord().save().then(this.onSuccess.bind(this), this.onError.bind(this));
+      }
     }
+
   }
 });
 

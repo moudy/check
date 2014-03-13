@@ -1,4 +1,2 @@
-var App = require('../app').instance;
-
-App.TextArea = Em.TextArea.extend(App.EditableField, {
+App.TextArea = Em.TextArea.extend(App.Autofocusable, App.EditableField, {
 });
