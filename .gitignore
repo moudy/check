@@ -1,9 +1,9 @@
 .DS_Store
-.sass-cache/
-config/env
-tmp/
-assets/
-app/assets/js/templates.js
+/.sass-cache
+/config/env
+/tmp
+/assets
+/app/assets/js/templates.js
 npm-debug.log
-public/*.js
-public/*.css
+/public/*.js
+/public/*.css
