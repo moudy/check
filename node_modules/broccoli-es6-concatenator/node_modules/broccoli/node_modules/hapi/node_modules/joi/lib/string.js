@@ -1,6 +1,7 @@
 // Load modules
 
 var Any = require('./any');
+var Errors = require('./errors');
 var Utils = require('./utils');
 
 
@@ -24,11 +25,17 @@ module.exports = internals.String = function () {
             return null;
         }
 
-        return Any.error('string.base', null, state);
+        return Errors.create('string.base', null, state, options);
     });
 };
 
 Utils.inherits(internals.String, Any);
+
+
+internals.String.create = function () {
+
+    return new internals.String();
+};
 
 
 internals.String.prototype.emptyOk = function () {
@@ -51,14 +58,13 @@ internals.String.prototype.min = function (limit) {
 
     this._test('min', limit, function (value, state, options) {
 
-        if (value !== null &&
-            value !== undefined &&
+        if (typeof value === 'string' &&
             value.length >= limit) {
 
             return null;
         }
 
-        return Any.error('string.min', { value: limit }, state);
+        return Errors.create('string.min', { value: limit }, state, options);
     });
 
     return this;
@@ -71,13 +77,13 @@ internals.String.prototype.max = function (limit) {
 
     this._test('max', limit, function (value, state, options) {
 
-        if (value !== null &&
+        if (!value ||
             value.length <= limit) {
 
             return null;
         }
 
-        return Any.error('string.max', { value: limit }, state);
+        return Errors.create('string.max', { value: limit }, state, options);
     });
 
     return this;
@@ -90,13 +96,13 @@ internals.String.prototype.length = function (limit) {
 
     this._test('length', limit, function (value, state, options) {
 
-        if (value !== null &&
+        if (typeof value === 'string' &&
             value.length === limit) {
 
             return null;
         }
 
-        return Any.error('string.length', { value: limit }, state);
+        return Errors.create('string.length', { value: limit }, state, options);
     });
 
     return this;
@@ -109,14 +115,13 @@ internals.String.prototype.regex = function (pattern) {
 
     this._test('regex', pattern, function (value, state, options) {
 
-        if (value !== undefined &&
-            value !== null &&
+        if (typeof value === 'string' &&
             value.match(pattern)) {
 
             return null;
         }
 
-        return Any.error('string.regex', { value: pattern.toString() }, state);
+        return Errors.create('string.regex', { value: pattern.toString() }, state, options);
     });
 
     return this;
@@ -127,14 +132,13 @@ internals.String.prototype.alphanum = function () {
 
     this._test('alphanum', undefined, function (value, state, options) {
 
-        if (value !== undefined &&
-            value !== null &&
+        if (typeof value === 'string' &&
             value.match(/^[a-zA-Z0-9]+$/)) {
 
             return null;
         }
 
-        return Any.error('string.alphanum', null, state);
+        return Errors.create('string.alphanum', null, state, options);
     });
 
     return this;
@@ -145,14 +149,13 @@ internals.String.prototype.token = function () {
 
     this._test('token', undefined, function (value, state, options) {
 
-        if (value !== undefined &&
-            value !== null &&
+        if (typeof value === 'string' &&
             value.match(/^\w+$/)) {
 
             return null;
         }
 
-        return Any.error('string.token', null, state);
+        return Errors.create('string.token', null, state, options);
     });
 
     return this;
@@ -165,13 +168,15 @@ internals.String.prototype.email = function () {
 
     this._test('email', undefined, function (value, state, options) {
 
-        if (value.match(regex)) {
+        if (typeof value === 'string' &&
+            value.match(regex)) {
+
             return null;
         }
 
-        return Any.error('string.email', null, state);
+        return Errors.create('string.email', null, state, options);
     });
-    
+
     return this;
 };
 
@@ -182,11 +187,13 @@ internals.String.prototype.isoDate = function () {
 
     this._test('isoDate', undefined, function (value, state, options) {
 
-        if (value.match(regex)) {
+        if (typeof value === 'string' &&
+            value.match(regex)) {
+
             return null;
         }
 
-        return Any.error('string.isoDate', null, state);
+        return Errors.create('string.isoDate', null, state, options);
     });
 
     return this;
@@ -200,11 +207,13 @@ internals.String.prototype.guid = function () {
 
     this._test('guid', undefined, function (value, state, options) {
 
-        if (value.match(regex) || value.match(regex2)) {
+        if (typeof value === 'string' &&
+            value.match(regex) || value.match(regex2)) {
+
             return null;
         }
 
-        return Any.error('string.guid', null, state);
+        return Errors.create('string.guid', null, state, options);
     });
 
     return this;
