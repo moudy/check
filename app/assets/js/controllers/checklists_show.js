@@ -8,6 +8,12 @@ App.ChecklistsShowController = Em.ObjectController.extend({
     return this.get('listItems.length');
   }.property('listItems.@each.isCompleted')
 
+, countSummary: function () {
+    var len = this.get('listItems.length');
+    var word = len === 1 ? 'step' : 'steps';
+    if (len) return len+' '+word;
+  }.property('listItems.length')
+
 , uncompletedCount: function () {
     return this.get('listItems').filter(function (i) {
       return !i.get('isCompleted');

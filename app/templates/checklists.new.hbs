@@ -1,11 +1,2 @@
 {{partial 'checklist/form'}}
 
-<div class='checklist-form'>
-{{input value=title placeholder='List Title'}}
-
-{{textarea value=description}}
-
-<a href='#' class='button' {{action 'create'}}>
-  {{#if id}}Create List{{else}}Update{{/if}}
-</a>
-</div>

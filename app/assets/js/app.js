@@ -1,4 +1,5 @@
 global.jQuery = global.$ = require('jquery');
+
 require('jquery.transit');
 global.Handlebars = require('handlebars');
 require('./vendor/ember');

@@ -3,23 +3,50 @@
 .checklist-header {
   margin: 30px 0;
 
-  .checklist-title {
-    $line-height: 28px;
-    line-height: $line-height;
-    min-height: $line-height;
-    min-width: 90px;
-    margin: 0;
-    padding: 2px;
-    font-size: 20px;
-    display: inline-block;
-    font-weight: 700;
-  }
-
   .checklist-meta {
     padding: 0 2px;
   }
 
 }
+
+.can-edit {
+  .checklists-show-title {
+    cursor: text;
+
+    &:hover {
+      background-color: $color-editable-field-background;
+    }
+  }
+}
+
+.checklists-show-title {
+  $line-height: 28px;
+  line-height: $line-height;
+  min-height: $line-height;
+  min-width: 90px;
+  margin: 0;
+  padding: 2px;
+  font-size: 20px;
+  display: inline-block;
+  font-weight: 700;
+  position: relative;
+  border-radius: 3px;
+
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    background-color: $color-editable-field-background;
+    width: 100%;
+    border: 0 none;
+    line-height: inherit;
+    font: inherit;
+    border-radius: inherit;
+    padding: inherit;
+  }
+}
+
 
 .checklist-container {
   background-color: $color-gray-extra-light;
@@ -99,4 +126,8 @@
 .checklist-delete-section {
   padding: 10px;
   text-align: center;
+}
+
+.checklist-show {
+  margin-top: 40px;
 }

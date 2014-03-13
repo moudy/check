@@ -6,6 +6,7 @@ App.ChecklistsShowView = Em.View.extend({
 , classNameBindings: [
     'controller.isEditing'
   , 'controller.isInProgress'
+  , 'controller.canEdit'
   ]
 
 , autoFocus: function () {

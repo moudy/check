@@ -1,5 +1,5 @@
 App.ChecklistsNewView = Em.View.extend({
-  classNames: 'content-width'
+  classNames: 'content-width checklists-show'
 
 , classNameBindings: ['controller.isLoading']
 

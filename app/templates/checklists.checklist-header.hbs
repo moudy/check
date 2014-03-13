@@ -1,0 +1,27 @@
+<header class='checklist-header'>
+  <div class='content-width'>
+    <div class='media'>
+      {{#link-to 'users.show' user class='avatar-large media-left'}}
+        <img {{bind-attr src='user.profileImageUrl'}} {{bind-attr alt='user.username'}} />
+      {{/link-to}}
+
+      <div class='media-body'>
+        <h1 class='checklists-show-title editable-title' {{action 'edit' 'title' target=view}}>
+          {{title}}&nbsp;
+          {{#if view.isEditingTitle}}
+            {{view App.TextField valueBinding='title' placeholder='List title' property='title' focusOnInsert=true}}
+          {{/if}}
+        </h1>
+        <div class='checklist-meta subtitle'>
+          by
+          {{#link-to 'users.show' user}}
+            {{user.username}}
+          {{/link-to}}
+          {{#if countSummary}}
+            &middot; {{countSummary}}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

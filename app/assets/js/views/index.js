@@ -5,7 +5,7 @@ require('./users-show');
 
 require('./checklists-show');
 require('./checklists-new');
-require('./checklist_header');
+require('./checklist-header');
 require('./checklist-list-item');
 require('./checklist_list_items');
 require('./checklist_delete');
