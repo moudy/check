@@ -12,18 +12,18 @@ module.exports = function (broccoli) {
   var headJS = browserify(js, {
     entries: ['./head.js']
   , outputFile: 'head.js'
-  , bundle: {debug: !isProductionEnv}
+  , bundle: {debug: isProductionEnv}
   });
 
   var appJS = browserify(js, {
     entries: ['./app.js']
   , outputFile: 'app.js'
-  , bundle: {debug: !isProductionEnv}
+  , bundle: {debug: isProductionEnv}
   });
 
   var appCSS = sass([css], 'app.scss', 'app.css');
 
-  if (isProductionEnv) {
+  if (!isProductionEnv) {
     appCSS = cleanCSS(appCSS);
     headJS = uglifyJS(headJS);
     appJS = uglifyJS(appJS);
