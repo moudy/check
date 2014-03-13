@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+mkdir -p tmp
+./node_modules/.bin/node-sass app/assets/css/app.scss tmp/app.css
+./node_modules/.bin/cleancss tmp/app.css > public/app.css

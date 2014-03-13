@@ -5,3 +5,5 @@ tmp/
 assets/
 app/assets/js/templates.js
 npm-debug.log
+public/*.js
+public/*.css
