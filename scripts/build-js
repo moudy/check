@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-./node_modules/.bin/browserify app/assets/js/app.js | ./node_modules/.bin/uglifyjs -mc > public/app.js
-./node_modules/.bin/browserify app/assets/js/head.js | uglifyjs -mc > public/head.js
