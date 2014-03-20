@@ -5,6 +5,7 @@
 
 .checklist-list-item {
   position: relative;
+
   width: 100%;
 
   &:first-of-type {
@@ -68,6 +69,11 @@
     min-height: 40px;
     margin-bottom: 20px;
     @include item-container-box-shadow;
+
+    .button-edit { opacity: 0; }
+    &:hover {
+      .button-edit { opacity: 1; }
+    }
   }
 
 
@@ -88,17 +94,6 @@
     input { cursor: pointer; }
   }
 }
-
-/*.checklist-container.is-editing .checklist-list-item {*/
-  /*background-color: white;*/
-  /*cursor: default;*/
-  /*.md-container { opacity: 1; }*/
-
-  /*@include transition(background-color 600ms);*/
-  /*&.animate-move-flash {*/
-    /*background-color: $color-highlight;*/
-  /*}*/
-/*}*/
 
 .button-move {
   $size: 30px;

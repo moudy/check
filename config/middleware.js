@@ -4,11 +4,16 @@ var passport = require('passport');
 var expressSession = require('./middleware/express_session');
 var passport = require('passport');
 var user = require('./middleware/user');
+var assetServer = require('./middleware/asset-server');
 
 exports.configure = function (app) {
   app.use(express.favicon(path.join(__dirname, '..', 'public/favicon.ico')));
+
+  if ('development' === app.get('env')) app.use(assetServer);
+
   app.use(express.static(path.join(__dirname, '..', 'public')));
-  app.use(express.static(path.join(__dirname, '..', 'assets')));
+  if ('production' === app.get('env')) app.use(express.static(path.join(__dirname, '..', 'assets')));
+
   app.use(express.json());
   app.use(express.urlencoded());
   app.use(express.methodOverride());
