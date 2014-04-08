@@ -65,6 +65,7 @@
     "fastClick": "./app/assets/js/vendor/fastclick.js",
     "Ember": "./app/assets/js/vendor/ember.js",
     "jquery.transit": "./app/assets/js/vendor/jquery.transit.js",
+    "jquery.ui": "./app/assets/js/vendor/jquery-ui.js",
     "Modernizr": "./app/assets/js/vendor/modernizr.js"
   },
   "browserify-shim": {
@@ -81,6 +82,12 @@
     },
     "Modernizr": {
       "exports": "Mondernizr"
+    },
+    "jquery.ui": {
+      "exports": "null",
+      "depends": [
+        "jquery"
+      ]
     }
   },
   "browserify": {

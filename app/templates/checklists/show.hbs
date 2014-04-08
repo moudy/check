@@ -2,6 +2,19 @@
 
 {{render 'checklistListItems' listItems}}
 
+{{#if canEdit}}
+<div class='content-width'>
+  <div class='checklist-controls'>
+    <a {{action 'addItem'}} href='#' class='button'>
+      &#43; Add Item
+    </a>
+    <a {{action 'delete_'}} href='#' class='button right'>
+      &times; Delete List
+    </a>
+  </div>
+</div>
+{{/if}}
+
 <div class='checklist-status-bar'>
   <div class='content-width'>
     <span class='checklist-status-message'>{{statusMessage}}</span>

@@ -3,7 +3,15 @@ App.ChecklistListItemView = Em.View.extend({
 
 , tagName: 'li'
 
+, controllerBinding: 'content'
+
 , classNames: 'checklist-list-item'
+
+, id: function () {
+    return this.get('content.id');
+  }.property('content')
+
+, attributeBindings: ['id:data-id']
 
 , classNameBindings: [
     'controller.isActive'

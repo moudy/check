@@ -1,8 +1,6 @@
 App.ChecklistListItemController = Em.ObjectController.extend({
 
-  reorderModeBinding: Em.Binding.oneWay('target.reorderMode')
-
-, showEditIcon: function () {
+  showEditIcon: function () {
     return !this.get('isEditing') && this.get('parentController.canEdit');
   }.property('isEditing')
 

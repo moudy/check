@@ -3,12 +3,6 @@ App.ChecklistListItemsController = Em.ArrayController.extend({
 
 , canEditBinding: Em.Binding.oneWay('parentController.canEdit')
 
-, showReorderButton: Em.computed.gt('length', 1)
-
-, reorderCopy: function () {
-    return this.get('reorderMode') ? 'Done Reordering Items' : 'Reorder Items';
-  }.property('reorderMode', '@each')
-
 , sortProperties: ['index']
 
 , checklistBinding: Em.Binding.oneWay('parentController.model')
@@ -32,10 +26,6 @@ App.ChecklistListItemsController = Em.ArrayController.extend({
       this.pushObject(listItem);
     }
 
-  , toggleReorderMode: function () {
-      this.toggleProperty('reorderMode');
-    }
-
   , delete_: function () {
       this.get('parentController').send('delete_');
     }
@@ -49,23 +39,8 @@ App.ChecklistListItemsController = Em.ArrayController.extend({
       }
     }
 
-  , move: function (dir, model) {
-      var index = model.get('index');
-      var newIndex = index + (('up' === dir) ? -1 : 1);
-
-      var swapWith = this.findBy('index', newIndex);
-
-      model.set('index', newIndex);
-      swapWith && swapWith.set('index', index);
-
-      var listItemIds = this.getEach('id');
-
+  , reorder: function (listItemIds) {
       Em.$.post('/checklists/'+this.get('checklist.id')+'/reorder', {listItemIds: listItemIds, _method: 'PUT'});
-
-      Em.run.later(this, function() {
-        model.set('animateMoveFlash', true);
-        Em.run.later(this, function () { model.set('animateMoveFlash', false); }, 600);
-      }, 10);
     }
   }
 

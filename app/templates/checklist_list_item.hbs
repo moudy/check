@@ -1,3 +1,8 @@
+{{#with view.content}}
+<a href='' class='sort-handle'>
+  sort
+</a>
+
 {{#if isEditing}}
   <div {{action 'doneEditing'}} class='blanket'></div>
   <div class='checklist-list-item-editor'>
@@ -12,11 +17,9 @@
 {{/if}}
 
 <div class='md-container'>
-  {{#unless reorderMode}}
-    <label class='checkbox-container'>
-      {{input type="checkbox" name="isCompleted" checked=isCompleted}}
-    </label>
-  {{/unless}}
+  <label class='checkbox-container'>
+    {{input type="checkbox" name="isCompleted" checked=isCompleted}}
+  </label>
 
   <div class='md'>
     {{#if description}}
@@ -30,7 +33,4 @@
   {{/if}}
 </div>
 
-{{#if reorderMode}}
-  <a href='#' {{action 'move' 'up'}} class='button-move move-up'>&#11014;</a>
-  <a href='#' {{action 'move' 'down'}} class='button-move move-down'>&#11015;</a>
-{{/if}}
+{{/with}}
