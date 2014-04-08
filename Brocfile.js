@@ -1,13 +1,28 @@
-module.exports = function (broccoli) {
+module.exports = function () {
   var isProductionEnv = process.env.NODE_ENV === 'production';
+
+  var mergeTrees = require('broccoli-merge-trees');
+
+  var emberTemplateCompiler = require('ember-template-compiler');
+  var templateBuilder = require('broccoli-template-builder');
 
   var uglifyJS = require('broccoli-uglify-js');
   var browserify = require('broccoli-browserify');
   var sass = require('broccoli-sass');
   var cleanCSS = require('broccoli-clean-css');
 
-  var js = broccoli.makeTree('app/assets/js');
-  var css = broccoli.makeTree('app/assets/css');
+  var js = 'app/assets/js';
+  var css = 'app/assets/css';
+  var templates = 'app/templates';
+
+  templates = templateBuilder(templates, {
+    extensions: ['hbs']
+  , outputFile: 'templates.js'
+  , namespace: 'Ember.TEMPLATES'
+  , compile: function (string) {
+      return 'Ember.Handlebars.template('+emberTemplateCompiler.precompile(string)+')';
+    }
+  });
 
   var headJS = browserify(js, {
     entries: ['./head.js']
@@ -27,7 +42,13 @@ module.exports = function (broccoli) {
     appCSS = cleanCSS(appCSS);
     headJS = uglifyJS(headJS);
     appJS = uglifyJS(appJS);
+    templates = uglifyJS(templates);
   }
 
-  return [headJS, appJS, appCSS];
+  return mergeTrees([
+      headJS
+    , appJS
+    , appCSS
+    , templates
+    ], { overwrite: true });
 };

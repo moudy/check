@@ -4,7 +4,6 @@ require('jquery.transit');
 global.Handlebars = require('handlebars');
 require('./vendor/ember');
 require('./vendor/ember-data');
-require('./templates');
 require('fastClick');
 
 require('./lib/handlebars_helpers').register(Em.Handlebars);
@@ -29,7 +28,7 @@ if (global.history && global.history.pushState) {
 }
 
 require('./mixins');
-require('./application_adapter');
+require('./adapters/application');
 require('./views');
 require('./models');
 require('./routes');
