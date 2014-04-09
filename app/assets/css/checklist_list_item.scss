@@ -10,7 +10,8 @@
 .checklist-list-item-placeholder,
 .checklist-list-item {
   position: relative;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   width: 100%;
 
   &.is-completed {
@@ -102,6 +103,8 @@
   width: 30px;
   display: inline-block;
   cursor: move;
+  border-top: $border-spacing solid transparent;
+  border-bottom: $border-width solid $color;
 
   .bar {
     border-top: $border-width solid $color;

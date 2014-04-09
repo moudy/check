@@ -1,13 +1,15 @@
 {{#with view.content}}
+
+{{#if showEditIcon}}
 <div class='sort-handle-container'>
   <a href='#' class='sort-handle'>
     <div class='bar'></div>
     <div class='bar'></div>
     <div class='bar'></div>
     <div class='bar'></div>
-    <div class='bar'></div>
   </a>
 </div>
+{{/if}}
 
 {{#if isEditing}}
   <div {{action 'doneEditing'}} class='blanket'></div>
