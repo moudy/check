@@ -8,5 +8,6 @@ require('./checklists_show');
 require('./checklists-new');
 require('./users-show');
 
-App.IndexController = Em.ArrayController.extend({
+App.IndexController = Em.Controller.extend({
+  isCompleted: true
 });

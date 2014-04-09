@@ -19,6 +19,14 @@
   border-radius: 3px;
 }
 
+@mixin button-size-big {
+  font-size: 18px;
+  line-height: 38px;
+  min-width: 40px;
+  padding: 0 18px;
+  border-radius: 3px;
+}
+
 @mixin button-size-header-bar {
   font-size: 14px;
   line-height: inherit;
@@ -41,30 +49,8 @@
   &:active { background-color: $color-gray-light; }
 }
 
-@mixin button-bare {
-  -webkit-appearance: none;
-  background-color: transparent;
-  border: 0 none;
-
-  &.is-disabled { color: $color-text-light; }
-}
-
 @mixin button-bordered {
   border: 1px solid;
-}
-
-.button-bare {
-  @include button-base();
-  @include button-bare();
-  @include button-color-text();
-  @include button-size-default();
-}
-
-.button-bare-danger {
-  @include button-base();
-  @include button-bare();
-  @include button-color-danger();
-  @include button-size-default();
 }
 
 .button {
@@ -95,5 +81,11 @@
   line-height: 24px;
   color: $color-text-light;
   &:hover { color: $color-text-default; }
+}
+
+.button-signin {
+  @include button-base();
+  @include button-size-big();
+  @include button-bordered();
 }
 

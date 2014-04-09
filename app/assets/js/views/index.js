@@ -12,5 +12,4 @@ require('./checklist-description');
 
 
 App.IndexView = Em.View.extend({
-  classNames: 'content-width'
 });

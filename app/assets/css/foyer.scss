@@ -1,0 +1,42 @@
+@import 'base';
+
+.foyer-hero {
+  background-color: white;
+  position: relative;
+  top: -$header-height;
+  z-index: 99;
+  padding: 100px;
+}
+
+.hero-heading {
+  label, h1 { display: inline-block; }
+
+  label {
+    margin-right: 10px;
+    top: -6px;
+    position: relative;
+  }
+}
+
+.hero-title {
+  font-size: 28px;
+}
+
+.hero-description {
+  font-size: 20px;
+}
+
+.foyer-cta {
+  margin: 40px 0;
+}
+
+.foyer-cta-or {
+  font-size: 18px;
+  font-size: 18px;
+  font-style: italic;
+  color: $color-text-light-medium;
+}
+
+.foyer-cta-try {
+}
+

@@ -1,5 +1,26 @@
-TODO - {{#if session.user}}
-Logged in Dashboard view
-{{else}}
-Foyer
-{{/if}}
+<div class='foyer-hero'>
+
+  <div {{bind-attr class=':hero-heading :center isCompleted'}}>
+    <label class='checkbox-container'>
+      {{input type='checkbox' name='isCompleted' checked=isCompleted}}
+    </label>
+    <h1 class='hero-title'>
+      Just Checklists.
+    </h1>
+    <p class='hero-description center'>
+      Create &amp; manage your checkists in one place.
+    </p>
+
+    <div class='foyer-cta'>
+      <a href='#' class='button-signin'>
+        Sign in with GitHub
+      </a>
+      <p class='foyer-cta-or'>or</p>
+      <p class='foyer-cta-try'>
+        Try an exmaple
+      </p>
+    </div>
+
+  </div>
+
+</div>
