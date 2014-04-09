@@ -11,5 +11,10 @@ App.IndexRoute = Em.Route.extend({
       this.transitionTo('users.show', user);
     }
   }
+
+, afterModel: function () {
+    var user = this.session.get('user');
+    document.title = [user.get('username'), 'Check'].join(' | ');
+  }
 });
 

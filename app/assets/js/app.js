@@ -1,5 +1,7 @@
 global.jQuery = global.$ = require('jquery');
 
+global.EmberENV = {FEATURES: {'ember-document-title': true}};
+
 require('jquery.ui');
 require('jquery.transit');
 global.Handlebars = require('handlebars');
