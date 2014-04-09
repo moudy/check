@@ -1,5 +1,3 @@
-var App = require('../app').instance;
-
 App.ChecklistsShowView = Em.View.extend({
   classNames: ['checklist-container']
 

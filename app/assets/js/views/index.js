@@ -8,7 +8,7 @@ require('./checklists-new');
 require('./checklist-header');
 require('./checklist-list-item');
 require('./checklist_list_items');
-require('./checklist_delete');
+require('./checklist-description');
 
 
 App.IndexView = Em.View.extend({

@@ -1,0 +1,31 @@
+@import 'base';
+
+.text-danger {
+  color: $color-text-danger;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: $color-text-light-medium;
+  a { color: inherit; }
+}
+
+.p {
+  font-size: 14px;
+  color: $color-text-default;
+  line-height: 1.6;
+}
+
+.action-dormant {
+  color: $color-text-light-medium;
+  &:hover {
+    color: $color-text-action;
+  }
+}
+
+.action-dormant-danger {
+  color: $color-text-light-medium;
+  &:hover {
+    color: $color-text-danger;
+  }
+}

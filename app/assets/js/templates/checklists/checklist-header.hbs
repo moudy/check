@@ -30,9 +30,9 @@
     </div>
 
     {{#if showDescription}}
-      <div class='p checklist-description editable-field' {{action 'edit' 'description' target=view}}>
+      {{#view App.ChecklistDescriptionView}}
         {{#if description}}
-          {{description}}&nbsp;
+          {{autolink description target='_blank'}}&nbsp;
         {{else}}
           <span class='add-description-prompt'>Add a description...</span>
         {{/if}}
@@ -40,7 +40,7 @@
         {{#if isEditingDescription}}
           {{view App.TextArea valueBinding='description' property='description' focusOnInsert=true}}
         {{/if}}
-      </div>
+      {{/view}}
     {{/if}}
 
   </div>

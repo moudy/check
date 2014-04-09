@@ -77,12 +77,8 @@
 .checklist-add-item-row {
   padding: 16px;
   position: relative;
-  color: $color-text-light-medium;
   font-size: 14px;
 
-  &:hover {
-    color: $color-text-action;
-  }
 }
 
 .checklist-list-items {
@@ -120,9 +116,11 @@
   position: relative;
 }
 
-.checklist-delete-section {
-  padding: 10px;
-  text-align: center;
+.checklist-footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid #eee;
 }
 
 .checklist-show {
