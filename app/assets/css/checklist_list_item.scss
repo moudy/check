@@ -13,15 +13,6 @@
   margin-bottom: 20px;
   width: 100%;
 
-  &:first-of-type {
-    border-top: 1px solid $color-gray-light;
-    .move-up { display: none; }
-  }
-
-  &:last-of-type {
-    .move-down { display: none; }
-  }
-
   &.is-completed {
     .md-container { @include item-container-box-shadow-inset; }
     .md { opacity: 0.5; }
@@ -51,15 +42,6 @@
   .delete-item {
     color: $color-text-light;
   }
-
-  .move-up, .move-down {
-    position: absolute;
-    top: 50%;
-    @include transform(translateY(-50%));
-  }
-
-  .move-up { left: -40px; }
-  .move-down { right: -40px; }
 
   .button-edit {
     position: absolute;
@@ -98,25 +80,31 @@
     input { cursor: pointer; }
   }
 
-  .sort-handle {
+  .sort-handle-container {
     position: absolute;
-    right: -25px;
-    top: 0px;
+    right: 0px;
+    padding-left: 10px;
+    top: 50%;
+    display: none;
+    @include transform(translate(100%, -50%));
+  }
+
+  &:hover {
+    .sort-handle-container { display: block; }
   }
 }
 
-.button-move {
-  $size: 30px;
+.sort-handle {
+  $border-width: 1px;
+  $border-spacing: 3px;
+  $color: #ddd;
+  width: 30px;
   display: inline-block;
-  width: $size;
-  height: $size;
-  line-height: $size;
-  border-radius: $size/2;
-  text-align: center;
-  color: $color-text-light;
+  cursor: move;
 
-  &:hover {
-    color: $color-text-default;
+  .bar {
+    border-top: $border-width solid $color;
+    border-bottom: $border-spacing solid transparent;
   }
 }
 
