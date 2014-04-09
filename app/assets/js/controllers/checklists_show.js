@@ -76,6 +76,13 @@ App.ChecklistsShowController = Em.ObjectController.extend({
       this.get('model').save();
     }
 
+  , addItem: function () {
+      var checklistId = this.get('id');
+      var attrs = {checklistId: checklistId, index: this.get('listItems.length')};
+      var listItem = this.store.createRecord('listItem', attrs);
+      this.get('model.listItems').pushObject(listItem);
+    }
+
   , delete_: function () {
       if (!window.confirm('Are you sure?')) return;
       var self = this;

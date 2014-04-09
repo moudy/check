@@ -59,6 +59,7 @@
 
 .checklist-container {
   background-color: $color-gray-extra-light;
+  margin-bottom: 80px;
 
   &.dim-list {
     .checklist-list-items-container {
@@ -73,8 +74,15 @@
   color: $color-text-light-medium;
 }
 
-.checklist-list-items-container {
-  margin-bottom: 80px;
+.checklist-add-item-row {
+  padding: 16px;
+  position: relative;
+  color: $color-text-light-medium;
+  font-size: 14px;
+
+  &:hover {
+    color: $color-text-action;
+  }
 }
 
 .checklist-list-items {

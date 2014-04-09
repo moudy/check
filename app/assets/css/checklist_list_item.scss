@@ -63,22 +63,6 @@
   }
 
 
-  .checkbox-container {
-    $size: 40px;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    left: -$size - 10px;
-    width: $size;
-    height: $size;
-    line-height: $size;
-    background: $color-gray-extra-light;
-    text-align: center;
-    border-radius: 2px;
-    border: 1px dotted $color-gray-medium;
-    @include transform(translateY(-($size/2)));
-    input { cursor: pointer; }
-  }
 
   .sort-handle-container {
     position: absolute;
@@ -92,6 +76,23 @@
   &:hover {
     .sort-handle-container { display: block; }
   }
+}
+
+.checkbox-container {
+  $size: 40px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: -$size - 10px;
+  width: $size;
+  height: $size;
+  line-height: $size;
+  background: $color-gray-extra-light;
+  text-align: center;
+  border-radius: 2px;
+  border: 1px dotted $color-gray-medium;
+  @include transform(translateY(-($size/2)));
+  input { cursor: pointer; }
 }
 
 .sort-handle {

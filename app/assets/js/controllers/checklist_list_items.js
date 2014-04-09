@@ -19,14 +19,8 @@ App.ChecklistListItemsController = Em.ArrayController.extend({
   }.observes('@each.isCompleted')
 
 , actions: {
-    addItem: function () {
-      var checklistId = this.get('checklist.id');
-      var attrs = {checklistId: checklistId, index: this.get('length')};
-      var listItem = this.store.createRecord('listItem', attrs);
-      this.pushObject(listItem);
-    }
 
-  , delete_: function () {
+    delete_: function () {
       this.get('parentController').send('delete_');
     }
 

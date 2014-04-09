@@ -4,10 +4,12 @@
 
 {{#if canEdit}}
 <div class='content-width'>
+  <a {{action 'addItem'}} href='#' class='checklist-add-item-row block'>
+    <span class='checkbox-container'>&#10010;</span>
+    Add Item...
+  </a>
+
   <div class='checklist-controls'>
-    <a {{action 'addItem'}} href='#' class='button'>
-      &#43; Add Item
-    </a>
     <a {{action 'delete_'}} href='#' class='button right'>
       &times; Delete List
     </a>
