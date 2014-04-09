@@ -13,7 +13,7 @@ module.exports = function () {
 
   var js = 'app/assets/js';
   var css = 'app/assets/css';
-  var templates = 'app/templates';
+  var templates = 'app/assets/js/templates';
 
   templates = templateBuilder(templates, {
     extensions: ['hbs']
