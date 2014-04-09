@@ -6,10 +6,7 @@
     "dev": "nodemon --ignore tmp/ --ignore node_modules/ --ignore public/ --ignore app/assets/ app.js",
     "start": "forever app.js",
     "test": "mocha",
-    "build-templates": "./scripts/build-templates",
-    "build-js": "./scripts/build-js",
-    "build-css": "./scripts/build-css",
-    "postinstall": "npm run build-templates && broccoli build assets"
+    "postinstall": "npm run broccoli build assets"
   },
   "dependencies": {
     "express": "3.4.4",

@@ -18,6 +18,10 @@
     font-weight: bold;
     line-height: 1.7;
     position: relative;
+
+    &:first-of-type {
+      margin-top: 5px;
+    }
   }
 
   ul {

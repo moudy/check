@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-./node_modules/.bin/ember-precompile app/templates/*.hbs > app/assets/js/templates.js
-
-
-
