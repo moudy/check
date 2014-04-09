@@ -6,7 +6,7 @@
     "dev": "nodemon --ignore tmp/ --ignore node_modules/ --ignore public/ --ignore app/assets/ app.js",
     "start": "forever app.js",
     "test": "mocha",
-    "postinstall": "npm run broccoli build assets"
+    "postinstall": "rm -rf ./assets && broccoli build assets"
   },
   "dependencies": {
     "express": "3.4.4",
@@ -44,14 +44,14 @@
     "broccoli": "^0.7.2",
     "broccoli-merge-trees": "^0.1.3",
     "ember-template-compiler": "^1.6.0-beta.2",
-    "broccoli-template-builder": "0.0.1"
+    "broccoli-template-builder": "0.0.1",
+    "broccoli-browserify": "0.0.1"
   },
   "devDependencies": {
     "node-pow": "0.0.2",
     "browserify-middleware": "~2.2.0",
     "mocha": "~1.17.1",
-    "chai": "~1.9.0",
-    "broccoli-browserify": "0.0.1"
+    "chai": "~1.9.0"
   },
   "engines": {
     "node": "0.10.x",
