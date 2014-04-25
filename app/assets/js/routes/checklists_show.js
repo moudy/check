@@ -4,8 +4,7 @@ App.ChecklistsShowRoute = Em.Route.extend({
   }
 
 , afterModel: function (model) {
-    var user = this.session.get('user');
-    document.title = [model.get('title'), user.get('username')].join(' | ');
+    document.title = [model.get('title'), model.get('username')].join(' | ');
   }
 
 , serialize: function(model) {

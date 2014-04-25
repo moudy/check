@@ -1,12 +1,9 @@
-global.jQuery = global.$ = require('jquery');
-
-global.EmberENV = {FEATURES: {'ember-document-title': true}};
 
 require('jquery.ui');
 require('jquery.transit');
-global.Handlebars = require('handlebars');
-require('./vendor/ember');
-require('./vendor/ember-data');
+
+global.EmberENV = {FEATURES: {'ember-document-title': true}};
+
 require('fastClick');
 
 require('./lib/handlebars_helpers').register(Em.Handlebars);
@@ -19,31 +16,11 @@ var App = exports.instance = global.App = Em.Application.create({
   }
 });
 
-App.Session = Em.Controller.extend({
-  isCurrentUser: function (userId) {
-    if (userId && 'string' !== typeof userId) userId = userId.get('id');
-    return userId && this.get('user.id') === userId;
-  }
-});
-
-if (global.history && global.history.pushState) {
-  App.Router.reopen({ location: 'history' });
-}
-
 require('./mixins');
 require('./adapters/application');
 require('./views');
 require('./models');
 require('./routes');
 require('./controllers');
-
-App.Router.map(function () {
-  this.route('index', {path: '/'});
-  this.route('users.show', {path: '/:username'});
-  this.route('checklists.show', {path: '/:username/:id'});
-
-  this.route('checklists.new', {path: '/list/new'});
-
-  this.route('signout');
-});
+require('./router');
 

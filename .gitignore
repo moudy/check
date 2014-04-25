@@ -3,7 +3,5 @@
 /config/env
 /tmp
 /assets
-/app/assets/js/templates.js
+/node_modules
 npm-debug.log
-/public/*.js
-/public/*.css

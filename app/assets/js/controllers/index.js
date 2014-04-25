@@ -7,6 +7,7 @@ require('./checklists_index');
 require('./checklists_show');
 require('./checklists-new');
 require('./users-show');
+require('./session');
 
 App.IndexController = Em.Controller.extend({
   isCompleted: true
