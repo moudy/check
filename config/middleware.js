@@ -1,29 +1,36 @@
 var express = require('express');
 var path = require('path');
 var passport = require('passport');
-var expressSession = require('./middleware/express_session');
 var passport = require('passport');
 var user = require('./middleware/user');
 var assetServer = require('./middleware/asset-server');
 
 exports.configure = function (app) {
-  app.use(express.favicon(path.join(__dirname, '..', 'public/favicon.ico')));
+  var rootPath = path.join(__dirname, '..');
+  app.use(require('serve-favicon')(path.join(rootPath, 'public/favicon.ico')));
 
-  if ('development' === app.get('env')) app.use(assetServer);
+  if ('development' === app.get('env')) {
+    app.use(assetServer);
+  } else {
+    app.use('/assets', express.static(path.join(rootPath, 'assets')));
+  }
 
-  app.use(express.static(path.join(__dirname, '..', 'public')));
-  if ('production' === app.get('env')) app.use(express.static(path.join(__dirname, '..', 'assets')));
+  app.use(express.static(path.join(rootPath, 'public')));
 
-  app.use(express.json());
-  app.use(express.urlencoded());
-  app.use(express.methodOverride());
-  app.use(express.cookieParser('checkmate'));
-  app.use(expressSession(app));
+  app.use(require('body-parser')());
+  app.use(require('cookie-parser')());
+  app.use(require('method-override')());
+
+  app.use(require('cookie-parser')('checkmate'));
+  app.use(require('./middleware/session'));
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(express.logger('dev'));
 
-  if ('development' === app.get('env')) app.use(require('../lib/body_logger'));
+  app.use(require('morgan')('dev'));
+  if ('development' === app.get('env')) {
+    app.use(require('morgan')('dev'));
+    app.use(require('../lib/body_logger'));
+  }
 
   app.use(function (req, res, next) {
     res.locals.ENV = {};
@@ -32,7 +39,8 @@ exports.configure = function (app) {
   });
 
   app.use(user);
-  app.use(app.router);
 
-  if ('development' === app.get('env')) app.use(express.errorHandler());
+  if ('development' === app.get('env')) {
+    app.use(require('errorhandler')());
+  }
 };

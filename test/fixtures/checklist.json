@@ -1,0 +1,29 @@
+{
+  "__v": 7,
+  "listItems":
+    [{
+      "description": "Create a CNAME file with the name of the domain you want to point it at, ie: “elirousso.com” (http:// is not required)",
+      "index": 0
+    },
+    {
+      "description": "Commit the CNAME file and push up your changes",
+      "index": 1
+    },
+    {
+      "description": "In your DNS manager, create an A record for the root apex \\”@\\” and point it to 192.30.252.153",
+      "index": 2
+    },
+    {
+      "description": "In your DNS manager, create an A record for the root apex \\”www\\” and point it to 192.30.252.153",
+      "index": 3
+    },
+    {
+      "description": "Wait for the name servers to update. This could take a little while, so grab a coffee.",
+      "index": 4
+    }
+  ],
+  "title": "Setting up Custom Domains for GitHub Project Pages",
+  "updatedAt": "2014-02-27T17:01:03.446-0500",
+  "username": "moudy",
+  "userId": "530f684492e78b1100a37477"
+}

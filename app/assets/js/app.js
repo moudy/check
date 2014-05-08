@@ -16,6 +16,10 @@ var App = exports.instance = global.App = Em.Application.create({
   }
 });
 
+DS.RESTAdapter.reopen({
+  namespace: 'api'
+});
+
 require('./mixins');
 require('./adapters/application');
 require('./views');

@@ -18,7 +18,7 @@ UserSchema.virtual('profileImageUrl').get(function(){
 
 UserSchema.virtual('links').get(function(){
   return {
-    checklists: '/users/'+this.id+'/checklists'
+    checklists: '/api/users/'+this.id+'/checklists'
   };
 });
 

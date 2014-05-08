@@ -9,7 +9,6 @@
     "postinstall": "rm -rf ./assets && broccoli build assets"
   },
   "dependencies": {
-    "express": "3.4.4",
     "express3-handlebars": "~0.5.0",
     "node-sass": "~0.8.0",
     "clean-css": "~2.0.6",
@@ -28,7 +27,6 @@
     "mongoose-unique-validator": "~0.3.0",
     "passport": "~0.2.0",
     "mongoose-findorcreate": "~0.1.2",
-    "connect-mongo": "~0.4.0",
     "mongoose-gravatar": "~0.2.1",
     "marked": "~0.3.0",
     "highlight.js": "~8.0.0",
@@ -45,13 +43,26 @@
     "ember-template-compiler": "^1.6.0-beta.2",
     "broccoli-template-builder": "0.0.1",
     "broccoli-browserify": "0.0.1",
-    "broccoli": "^0.9.0"
+    "broccoli": "^0.9.0",
+    "mongodb": "^1.4.3",
+    "supertest": "^0.12.0",
+    "morgan": "^1.0.0",
+    "cookie-parser": "^1.0.1",
+    "method-override": "^1.0.0",
+    "express-session": "^1.0.4",
+    "body-parser": "^1.0.2",
+    "express": "^4.1.1",
+    "connect-mongo": "^0.4.1",
+    "serve-favicon": "^2.0.0",
+    "errorhandler": "^1.0.1",
+    "rsvp": "^3.0.6"
   },
   "devDependencies": {
     "node-pow": "0.0.2",
     "browserify-middleware": "~2.2.0",
     "mocha": "~1.17.1",
-    "chai": "~1.9.0"
+    "chai": "~1.9.0",
+    "mocha-mongoose": "^1.0.1"
   },
   "engines": {
     "node": "0.10.x",

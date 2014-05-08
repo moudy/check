@@ -3,7 +3,7 @@ var get = Em.get;
 function buildListItemUrl (record) {
   var checklistId = record.get('checklistId');
   var id = get(record, 'id') || '';
-  return ['/checklists', checklistId, 'list-items', id].join('/');
+  return ['/api/checklists', checklistId, 'list-items', id].join('/');
 }
 
 App.ListItemAdapter = DS.RESTAdapter.extend({

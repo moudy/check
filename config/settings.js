@@ -6,6 +6,7 @@ exports.configure = function (app) {
   app.set('environment', process.env.NODE_ENV || 'development');
 
   app.set('title', 'check');
+  app.set('cookieSecret', 'sushisushi');
 
   // Configure environment specific settings
   var environmentPath = path.join(__dirname, 'environments', app.get('environment'));
