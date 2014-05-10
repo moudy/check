@@ -1,4 +1,4 @@
-var IndexRoute = require('../../../../../lib/project-router-mongoose/routes/index');
+var IndexRoute = require('project-router-mongoose').IndexRoute;
 var inherits = require('util').inherits;
 
 function ApiUsersChecklistsRoute () {}

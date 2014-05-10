@@ -1,7 +1,3 @@
-/* globals describe: false, it: false, beforeEach: false, after: false */
-var expect = require('chai').expect;
-
-var mongoose = require('mongoose');
 var Checklist = require('../../app/models/checklist');
 var ListItemsReorderer = require('../../app/services/list_items_reorderer');
 
@@ -10,6 +6,8 @@ describe('ListItemsReorderer', function () {
   var checklist;
   var listDescriptionArray = ['a', 'b', 'c'];
   var listIds;
+
+  beforeEach(resetDB);
 
   beforeEach(function () {
     checklist = new Checklist({ title: 'Foo' });
@@ -35,11 +33,6 @@ describe('ListItemsReorderer', function () {
     checklist.listItems.forEach(function (li) {
       expect(li.index).to.eql(expected[li.description]);
     });
-  });
-
-  after(function () {
-    mongoose.models = {};
-    mongoose.modelSchemas = {};
   });
 
 });

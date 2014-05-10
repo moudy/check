@@ -12,7 +12,7 @@ exports.configure = function (app) {
     res.redirect('/');
   });
 
-  var router = ProjectRouter.map({routesPath: 'app/routes/api'}, function () {
+  var router = ProjectRouter.map(function () {
     this.namespace('api', function () {
       this.resource('users', {only: ['show'], resource: User}, function () {
         this.resource('checklists', {only: ['index', 'create'], resource: Checklist });
@@ -27,7 +27,6 @@ exports.configure = function (app) {
     this.get('/:id', 'index');
     this.get('/:username/:checklistSlug', 'index');
   });
-
   app.use(router);
 
 };

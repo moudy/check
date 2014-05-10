@@ -2,10 +2,10 @@ var inherits = require('util').inherits;
 var RSVP = require('rsvp');
 var _ = require('underscore');
 var Checklist = require('app/models/checklist');
-var ProjectRouter = require('project-router');
+var UpdateRoute = require('project-router-mongoose').UpdateRoute;
 
 function ListItemsUpdate () {}
-inherits(ListItemsUpdate, ProjectRouter.Route);
+inherits(ListItemsUpdate, UpdateRoute);
 module.exports = ListItemsUpdate;
 
 var p = ListItemsUpdate.prototype;

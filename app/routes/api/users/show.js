@@ -1,4 +1,4 @@
-var ShowRoute = require('../../../../lib/project-router-mongoose/routes/show');
+var ShowRoute = require('project-router-mongoose').ShowRoute;
 
 var inherits = require('util').inherits;
 
