@@ -1,7 +1,7 @@
 //var requireDirectory = require('node-require-directory');
 //var controllers = requireDirectory('app/controllers');
 var passport = require('passport');
-var ProjectRouter = require('../lib/project-router-mongoose');
+var ProjectRouter = require('project-router-mongoose');
 var Checklist = require('app/models/checklist');
 var User = require('app/models/user');
 
@@ -14,12 +14,12 @@ exports.configure = function (app) {
 
   var router = ProjectRouter.map({routesPath: 'app/routes/api'}, function () {
     this.namespace('api', function () {
-      this.resources('users', {only: ['show'], resource: User}, function () {
-        this.resources('checklists', {only: ['index', 'create'], resource: Checklist });
+      this.resource('users', {only: ['show'], resource: User}, function () {
+        this.resource('checklists', {only: ['index', 'create'], resource: Checklist });
       });
 
-      this.resources('checklists', {only: ['show', 'update'], resource: Checklist}, function () {
-        this.resources('list-items', {only: ['update', 'create', 'destroy'] });
+      this.resource('checklists', {only: ['show', 'update'], resource: Checklist}, function () {
+        this.resource('list-items', {only: ['update', 'create', 'destroy'] });
       });
     });
 

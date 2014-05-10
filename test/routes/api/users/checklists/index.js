@@ -17,7 +17,7 @@ describe('GET /api/users/:id/checklists', function () {
 
   it('returns a users checklists', function (done) {
     var ENDPOINT = '/api/users/'+user.id+'/checklists';
-    console.log(ENDPOINT);
+
     supertest(app).get(ENDPOINT).set('Accept', 'application/json').end(function (err, res) {
       expect(res.body.checklists.length).to.eq(data.length);
       done();
