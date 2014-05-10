@@ -6,10 +6,10 @@ require('./checklists_new');
 
 App.IndexRoute = Em.Route.extend({
   beforeModel: function () {
-    //var user = this.session.get('user');
-    //if (user) {
-      //this.transitionTo('users.show', user);
-    //}
+    var user = this.session.get('user');
+    if (user) {
+      this.transitionTo('users.show', user);
+    }
   }
 
 , afterModel: function () {
