@@ -19,6 +19,7 @@ exports.configure = function (app) {
       });
 
       this.resource('checklists', {only: ['show', 'update'], resource: Checklist}, function () {
+        this.member.put('/reorder');
         this.resource('list-items', {only: ['update', 'create', 'destroy'] });
       });
     });

@@ -33,8 +33,14 @@ App.ChecklistListItemsController = Em.ArrayController.extend({
       }
     }
 
-  , reorder: function (listItemIds) {
-      Em.$.post('/checklists/'+this.get('checklist.id')+'/reorder', {listItemIds: listItemIds, _method: 'PUT'});
+  , reorder: function (listItemsIds) {
+      var url = '/api/checklists/'+this.get('checklist.id')+'/reorder';
+      Em.$.ajax({
+        type: 'POST'
+      , url: url
+      , data: {listItemsIds: listItemsIds, _method: 'PUT'}
+      , dataType: 'json'
+      });
     }
   }
 

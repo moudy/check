@@ -8,7 +8,7 @@ App.ApplicationController = Em.Controller.extend({
 , actions: {
     signout: function () {
       this.session.set('user', null);
-      Em.$.post('/sessions', { _method: 'DELETE' });
+      Em.$.post('/sessions', { _method: 'DELETE' }, 'json');
       App.Router.router.getHandler('index').renderTemplate();
     }
   }
