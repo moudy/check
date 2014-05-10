@@ -1,11 +1,9 @@
-//var requireDirectory = require('node-require-directory');
-//var controllers = requireDirectory('app/controllers');
 var passport = require('passport');
 var ProjectRouter = require('project-router-mongoose');
 var Checklist = require('app/models/checklist');
 var User = require('app/models/user');
 
-exports.configure = function (app) {
+module.exports = function (app) {
 
   app.get('/auth/github', passport.authenticate('github'), function(){});
   app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), function(req, res) {
@@ -22,12 +20,16 @@ exports.configure = function (app) {
         this.member.put('/reorder');
         this.resource('list-items', {only: ['update', 'create', 'destroy'] });
       });
+
+      this.resource('sessions', {only: 'destroy'});
     });
+
 
     this.get('/', 'index');
     this.get('/:id', 'index');
     this.get('/:username/:checklistSlug', 'index');
   });
+
   app.use(router);
 
 };

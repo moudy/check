@@ -2,7 +2,7 @@ var User = require('app/models/user');
 var GitHubStrategy = require('passport-github').Strategy;
 var passport = require('passport');
 
-exports.configure = function (app) {
+module.exports = function (app) {
 
   var gitHubStrategyOptions = {
     clientID: app.get('GITHUB_CLIENT_ID')

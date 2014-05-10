@@ -7,9 +7,16 @@ App.ApplicationController = Em.Controller.extend({
 
 , actions: {
     signout: function () {
+
+      Em.$.ajax({
+        type: 'post'
+      , url:'/api/sessions/'+this.session.get('user.id')
+      , data: { _method: 'DELETE' }
+      , dataType: 'json'
+      });
+
       this.session.set('user', null);
-      Em.$.post('/sessions', { _method: 'DELETE' }, 'json');
-      App.Router.router.getHandler('index').renderTemplate();
+      this.transitionToRoute('index');
     }
   }
 

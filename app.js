@@ -1,11 +1,10 @@
 var app = exports.app = require('express')();
 
 [ 'settings'
-, 'passport'
 , 'middleware'
 , 'routes'
 ].forEach(function (i) {
-  require('./config/'+i).configure(app);
+  require('./config/'+i)(app);
 });
 
 if (!module.parent) {

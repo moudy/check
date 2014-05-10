@@ -1,6 +1,6 @@
 var env = require('../env').development;
 
-exports.configure = function (app) {
+module.exports = function (app) {
   app.set('port', 3012);
   app.set('MONGO_URI', 'mongodb://localhost/check-development');
   app.set('host', 'check.dev');

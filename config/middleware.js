@@ -5,7 +5,7 @@ var passport = require('passport');
 var user = require('./middleware/user');
 var assetServer = require('./middleware/asset-server');
 
-exports.configure = function (app) {
+module.exports = function (app) {
   var rootPath = path.join(__dirname, '..');
   app.use(require('serve-favicon')(path.join(rootPath, 'public/favicon.ico')));
 
