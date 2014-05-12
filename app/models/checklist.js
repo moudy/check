@@ -1,15 +1,13 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var timestamps = require('mongoose-timestamp');
 var ObjectId = mongoose.Schema.Types.ObjectId;
-
-var ListItemSchema = new Schema({
-  description: {type: String}
-, index: {type: Number}
-});
+var ListItemSchema = require('./list-item-schema');
+var getSlug = require('speakingurl');
+//var SlugSetter = require('app/services/slug-setter');
 
 var ChecklistSchema = new Schema({
   title: {type: String, required:true, trim:true}
+, slug: {type: String, required:true, trim:true}
 , username: {type: String, required:true, trim:true}
 , description: {type: String}
 , listItems: [ListItemSchema]
@@ -17,28 +15,24 @@ var ChecklistSchema = new Schema({
 , userId: {type: ObjectId, required: true}
 });
 
-ListItemSchema.virtual('checklistId').get(function(){ return this.parent()._id.toHexString(); });
+ChecklistSchema.plugin(require('mongoose-find-by-whatever'), [
+  {_id: 'ObjectId'}
+, {slug: '*'}
+]);
 
-[ChecklistSchema, ListItemSchema].forEach(function (schema) {
-  schema.virtual('id').get(function(){ return this._id.toHexString(); });
-  schema.set('toJSON', {virtuals: true});
-  schema.plugin(timestamps);
+ChecklistSchema.virtual('id').get(function(){ return this._id.toHexString(); });
+ChecklistSchema.set('toJSON', {virtuals: true});
+
+ChecklistSchema.pre('validate', function (next) {
+  //SlugSetter.set(this, next);
+  this.slug = getSlug(this.title);
+  next();
 });
-
 
 if (!ChecklistSchema.options.toJSON) ChecklistSchema.options.toObject = {};
 ChecklistSchema.options.toJSON.transform = function (doc, ret) {
   delete ret._id;
   delete ret.__v;
-};
-
-if (!ListItemSchema.options.toJSON) ListItemSchema.options.toObject = {};
-ListItemSchema.options.toJSON.transform = function (doc, ret) {
-  delete ret._id;
-  if ('undefined' === typeof ret.index) {
-    var lis = doc.parent().listItems;
-    ret.index = lis.indexOf(doc);
-  }
 };
 
 module.exports = mongoose.model('Checklist', ChecklistSchema, 'checklists');

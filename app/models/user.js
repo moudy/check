@@ -24,8 +24,7 @@ UserSchema.virtual('links').get(function(){
 
 UserSchema.set('toJSON', {virtuals: true});
 
-[ [require('mongoose-timestamp')]
-, [require('mongoose-unique-validator')]
+[ [require('mongoose-unique-validator')]
 , [require('mongoose-findorcreate')]
 , [require('../../lib/mongoose-find-by-whatever'), [{email: /@/}, { _id: 'ObjectId'}, {username: '*'}]]
 ].forEach(function (plugin) {

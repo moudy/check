@@ -59,9 +59,24 @@ App.ChecklistsShowController = Em.ObjectController.extend({
     }
   }.property('listItems.@each.isCompleted')
 
+, updateUrl: function () {
+    var pathname = '/'+[this.get('username'), this.get('slug')].join('/');
+    var windowPathname = window.location.pathname;
+    var title = this.get('title');
+    if (windowPathname !== pathname) {
+      Em.run.once(function(){
+        window.history.replaceState( {} , title, pathname);
+      });
+    }
+  }.observes('slug')
+
 , actions: {
     clear: function () {
       this.get('listItems').invoke('set', 'isCompleted', false);
+    }
+
+  , save: function () {
+      this.get('model').save();
     }
 
   , toggleEdit: function () {
@@ -72,10 +87,6 @@ App.ChecklistsShowController = Em.ObjectController.extend({
       if (this.get('model.isDirty')) this.send('save');
     }
 
-  , save: function () {
-      this.get('model').save();
-    }
-
   , addItem: function () {
       var checklistId = this.get('id');
       var attrs = {checklistId: checklistId, index: this.get('listItems.length')};
@@ -83,19 +94,6 @@ App.ChecklistsShowController = Em.ObjectController.extend({
       this.get('model.listItems').pushObject(listItem);
     }
 
-  , delete_: function () {
-      if (!window.confirm('Are you sure?')) return;
-      var self = this;
-      var model = this.get('model');
-
-      model.destroyRecord().then(function() {
-        var checklists = self.session.get('user.checklists');
-        checklists.removeObject(model);
-        Em.run.next(null, function() {
-          self.transitionToRoute('users.show', self.session.get('user'));
-        });
-      });
-    }
   }
 
 });

@@ -39,6 +39,7 @@ App.ChecklistSerializer = DS.RESTSerializer.extend({
 
 App.Checklist = DS.Model.extend({
   title: attr('string')
+, slug: attr('string')
 , listItems: DS.hasMany('listItem', {async:true})
 , userId: attr('string')
 , username: attr('string')

@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+
+var async = require('async');
+var app = require('../app').app;
+var db = require('../config/db');
+var Checklist = require('app/models/checklist');
+
+db.connect(app, function () {
+  Checklist.find({}, function (err, docs) {
+    console.log(docs.length, 'Checklists');
+    async.whilst(
+      function () { return docs.length; }
+    , function (done) {
+        var doc = docs.pop();
+        doc.save(function (err, d) {
+          console.log(err, d.slug);
+          done();
+        });
+      }
+    , function () { process.exit(); });
+  });
+});
