@@ -15,10 +15,10 @@ var js = 'app/assets/js';
 var css = 'app/assets/css';
 var templates = 'app/assets/js/templates';
 
-var APP_CSS = 'assets/app.css';
-var APP_JS = 'assets/app.js';
-var HAED_JS = 'assets/head.js';
-var TEMPLATES = 'assets/templates.js';
+var APP_CSS = 'app.css';
+var APP_JS = 'app.js';
+var HAED_JS = 'head.js';
+var TEMPLATES = 'templates.js';
 
 templates = templateBuilder(templates, {
   extensions: ['hbs']

@@ -34,7 +34,7 @@ module.exports = function (app) {
   app.use(require('serve-favicon')(path.join(rootPath, 'public/favicon.ico')));
 
   if ('development' === app.get('env')) {
-    app.use(require('broccoli-middleware'));
+    app.use('/assets', require('broccoli-middleware'));
   } else {
     app.use(require('./assets').handle);
   }
