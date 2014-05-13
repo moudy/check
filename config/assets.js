@@ -5,7 +5,8 @@ var assetsPath = path.join(__dirname, '..', 'assets');
 
 module.exports = new rack.Rack([
   new rack.StaticAssets({
-    dirname: assetsPath
+    urlPrefix: '/assets'
+  , dirname: assetsPath
   , gzip: true
   })
 ]);
