@@ -1,7 +1,7 @@
 var RSVP = require('rsvp');
 var inherits = require('util').inherits;
 var Checklist = require('app/models/checklist');
-var CreateRoute = require('project-router-mongoose').CreateRoute;
+var CreateRoute = require('project-router-mongoose').create;
 
 function ListItemsCreate () {}
 inherits(ListItemsCreate, CreateRoute);

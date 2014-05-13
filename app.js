@@ -1,11 +1,5 @@
 var app = exports.app = require('express')();
-
-[ 'settings'
-, 'middleware'
-, 'routes'
-].forEach(function (i) {
-  require('./config/'+i)(app);
-});
+require('./config/boot')(app);
 
 if (!module.parent) {
   require('./config/db').connect(app);

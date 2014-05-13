@@ -1,5 +1,5 @@
 var inherits = require('util').inherits;
-var Route = require('project-router-mongoose').Route;
+var Route = require('project-router').Route;
 
 function ApiSessionsDestroyRoute () {}
 inherits(ApiSessionsDestroyRoute, Route);

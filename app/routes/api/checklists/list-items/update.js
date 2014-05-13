@@ -2,7 +2,7 @@ var inherits = require('util').inherits;
 var RSVP = require('rsvp');
 var _ = require('underscore');
 var Checklist = require('app/models/checklist');
-var UpdateRoute = require('project-router-mongoose').UpdateRoute;
+var UpdateRoute = require('project-router-mongoose').update;
 
 function ListItemsUpdate () {}
 inherits(ListItemsUpdate, UpdateRoute);

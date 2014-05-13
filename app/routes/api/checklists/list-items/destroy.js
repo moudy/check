@@ -1,7 +1,7 @@
 var RSVP = require('rsvp');
 var inherits = require('util').inherits;
 var Checklist = require('app/models/checklist');
-var DestroyRoute = require('project-router-mongoose').DestroyRoute;
+var DestroyRoute = require('project-router-mongoose').destroy;
 var ListItemsReorderer = require('app/services/list_items_reorderer');
 
 function ListItemsDestroy () {}

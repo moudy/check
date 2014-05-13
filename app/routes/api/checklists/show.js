@@ -1,5 +1,5 @@
 var inherits = require('util').inherits;
-var ShowRoute = require('project-router-mongoose').ShowRoute;
+var ShowRoute = require('project-router-mongoose').show;
 
 function ApiChecklitsShowRoute () {}
 inherits(ApiChecklitsShowRoute, ShowRoute);
