@@ -15,16 +15,14 @@ var js = 'app/assets/js';
 var css = 'app/assets/css';
 var templates = 'app/assets/js/templates';
 
-var outputs = {
-  css: (env.production ? 'app.css' : 'assets/app.css')
-, appJS: (env.production ? 'app.js' : 'assets/app.js')
-, headJS: (env.production ? 'head.js' : 'assets/head.js')
-, templates: (env.production ? 'templates.js' : 'assets/templates.js')
-};
+var APP_CSS = 'assets/app.css';
+var APP_JS = 'assets/app.js';
+var HAED_JS = 'assets/head.js';
+var TEMPLATES = 'assets/templates.js';
 
 templates = templateBuilder(templates, {
   extensions: ['hbs']
-, outputFile: outputs.templates
+, outputFile: TEMPLATES
 , namespace: 'Ember.TEMPLATES'
 , compile: function (string) {
     return 'Ember.Handlebars.template('+emberTemplateCompiler.precompile(string)+')';
@@ -33,7 +31,7 @@ templates = templateBuilder(templates, {
 
 var headJS = browserify(js, {
   entries: ['./head.js']
-, outputFile: outputs.headJS
+, outputFile: HAED_JS
 , bundle: {debug: !env.production}
 });
 
@@ -41,11 +39,11 @@ var assetSuffix = env.production ? 'prod' : 'dev';
 
 var appJS = browserify(js, {
   entries: ['./app.'+assetSuffix+'.js']
-, outputFile: outputs.appJS
+, outputFile: APP_JS
 , bundle: {debug: !env.production}
 });
 
-var appCSS = sass([css], 'app.scss', outputs.css);
+var appCSS = sass([css], 'app.scss', APP_CSS);
 
 if (env.production) {
   appCSS = cleanCSS(appCSS);
