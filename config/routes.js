@@ -1,8 +1,7 @@
-var projectRouter = require('project-router');
 var Checklist = require('app/models/checklist');
 var User = require('app/models/user');
 
-module.exports = projectRouter.map(function () {
+module.exports = function () {
   this.namespace('api', function () {
     this.resource('users', {only: ['show'], resource: User}, function () {
       this.resource('checklists', {only: ['index', 'create'], resource: Checklist });
@@ -20,5 +19,5 @@ module.exports = projectRouter.map(function () {
   this.get('/', 'index');
   this.get('/:id', 'index');
   this.get('/:username/:checklistSlug', 'index');
-});
+};
 

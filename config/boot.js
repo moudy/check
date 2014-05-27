@@ -3,6 +3,7 @@ var path = require('path');
 var express = require('express');
 var passport = require('passport');
 var view = require('./view');
+var projectRouter = require('project-router');
 
 module.exports = function (app) {
   // Make sure app has environment
@@ -72,6 +73,12 @@ module.exports = function (app) {
     res.redirect('/');
   });
 
-  app.use(require('./router'));
+  var router = projectRouter.map(require('./routes'));
+
+  if ('development' === app.get('env')) {
+    app.use('/routes', require('project-router-viewer')(router));
+  }
+
+  app.use(router);
 };
 

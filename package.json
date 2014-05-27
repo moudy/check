@@ -53,6 +53,7 @@
     "passport-github": "^0.1.5",
     "project-router": "^0.1.1",
     "project-router-mongoose": "0.0.5",
+    "project-router-viewer": "0.0.1",
     "require-directory": "~1.2.0",
     "rsvp": "^3.0.6",
     "serve-favicon": "^2.0.0",
