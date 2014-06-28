@@ -16,12 +16,14 @@ module.exports = function (app) {
 
   var rootPath = path.join(__dirname, '..');
   var configPath = path.join(rootPath, 'config');
+  var assetsPath = path.join(rootPath, 'public', 'assets');
   var initializersPath = path.join(configPath, 'initializers');
 
   app.set('title', 'check');
   app.set('port', env.PORT);
   app.set('origin', env.ORIGIN);
-  app.set('ASSET_ORIGIN', env.ASSET_ORIGIN);
+  app.set('assetOrigin', env.ASSET_ORIGIN);
+  app.set('ASSETS', fs.readdirSync(assetsPath));
 
   // Setup view path and engine
   app.set('views', path.join(rootPath, 'app', 'views'));
