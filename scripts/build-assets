@@ -2,8 +2,6 @@
 
 CLIENT_ASSETS_DIR=./client/dist/assets
 
-rm -rf "$ASSETS_DIR"
-
 for FILE in "$CLIENT_ASSETS_DIR"/*.{js,css}; do
   gzip "$FILE" --best --keep --force
 done
