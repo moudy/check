@@ -6,35 +6,19 @@
     "dev": "nodemon --ignore tmp/ --ignore node_modules/ --ignore public/ --ignore client/ app.js",
     "start": "forever app.js",
     "test": "mocha",
-    "postinstall": "rm -rf ./assets && broccoli build assets"
+    "postinstall": "./script/build-assets"
   },
   "dependencies": {
     "async": "^0.9.0",
     "body-parser": "^1.0.2",
-    "broccoli": "^0.12.0",
-    "broccoli-browserify": "^0.1.0",
-    "broccoli-clean-css": "^0.1.5",
-    "broccoli-cli": "0.0.1",
-    "broccoli-merge-trees": "^0.1.3",
-    "broccoli-sass": "^0.1.4",
-    "broccoli-template-builder": "0.0.2",
-    "broccoli-uglify-js": "^0.1.3",
-    "browserify": "^3.33.0",
-    "browserify-shim": "^3.3.1",
-    "clean-css": "~2.0.6",
     "connect-mongo": "^0.4.1",
     "cookie-parser": "^1.0.1",
-    "ember-precompile": "^0.2.4",
-    "ember-template-compiler": "^1.6.0-beta.3",
     "errorhandler": "^1.0.1",
     "express": "^4.1.1",
     "express-session": "^1.0.4",
     "express3-handlebars": "~0.5.0",
     "forever": "~0.10.11",
     "handlebars": "~1.3.0",
-    "highlight.js": "~8.0.0",
-    "jquery-replace-class": "0.0.1",
-    "marked": "~0.3.0",
     "method-override": "^1.0.0",
     "mongodb": "^1.4.3",
     "mongoose": "~3.8.4",
@@ -45,25 +29,17 @@
     "mongoose-unique-validator": "~0.3.0",
     "mongoose-validator": "~0.2.2",
     "morgan": "^1.0.0",
-    "node-require-directory": "~1.0.2",
-    "node-sass": "~0.8.0",
-    "nodemon": "~1.0.13",
     "passport": "~0.2.0",
     "passport-github": "^0.1.5",
     "project-router": "^0.1.1",
     "project-router-mongoose": "0.0.5",
-    "require-directory": "~1.2.0",
     "rsvp": "^3.0.6",
     "serve-favicon": "^2.0.0",
     "speakingurl": "^0.9.1",
     "supertest": "^0.12.0",
-    "uglify-js": "~2.4.8",
-    "uglifyjs": "~2.3.6",
     "underscore": "~1.5.2"
   },
   "devDependencies": {
-    "broccoli-middleware": "0.0.1",
-    "browserify-middleware": "~2.2.0",
     "chai": "^1.9.1",
     "dotenv": "^0.4.0",
     "mocha": "^1.20.1",
@@ -73,41 +49,6 @@
   },
   "engines": {
     "node": "0.10.x",
-    "npm": "1.3.x"
-  },
-  "browser": {
-    "jquery": "./app/assets/js/vendor/jquery.js",
-    "fastClick": "./app/assets/js/vendor/fastclick.js",
-    "Ember": "./app/assets/js/vendor/ember.js",
-    "jquery.transit": "./app/assets/js/vendor/jquery.transit.js",
-    "jquery.ui": "./app/assets/js/vendor/jquery-ui.js",
-    "Modernizr": "./app/assets/js/vendor/modernizr.js"
-  },
-  "browserify-shim": {
-    "jquery": {
-      "exports": "$"
-    },
-    "jquery.transit": {
-      "depends": [
-        "jquery"
-      ]
-    },
-    "fastClick": {
-      "exports": "FastClick"
-    },
-    "Modernizr": {
-      "exports": "Mondernizr"
-    },
-    "jquery.ui": {
-      "exports": "null",
-      "depends": [
-        "jquery"
-      ]
-    }
-  },
-  "browserify": {
-    "transform": [
-      "browserify-shim"
-    ]
+    "npm": "1.4.x"
   }
 }

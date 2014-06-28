@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Client</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <base href="/" />
+
+    <link rel="stylesheet" href="assets/vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+    <link rel="stylesheet" href="assets/client-066add35eeccc46b02d3538ecbd0141a.css">
+  </head>
+  <body>
+    <script>
+      window.ClientENV = {"environment":"production","baseURL":"/","locationType":"auto","EmberENV":{"FEATURES":{}},"APP":{}};
+      window.EmberENV = window.ClientENV.EmberENV;
+    </script>
+    <script src="assets/vendor-cf27a9e9955b3a13017b3c1a8f7129b3.js"></script>
+    <script src="assets/client-6679a00e0e3826b9035b65973cd585b0.js"></script>
+    <script>
+      window.Client = require('client/app')['default'].create(ClientENV.APP);
+    </script>
+  </body>
+</html>
