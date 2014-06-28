@@ -10,6 +10,7 @@ export default Ember.Controller.extend({
 
 , createRecord: function () {
     var attrs = this.getProperties('title', 'description');
+    attrs.userId = this.get('user.id');
     return this.store.createRecord('checklist', attrs);
   }
 
