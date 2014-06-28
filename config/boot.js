@@ -40,6 +40,18 @@ module.exports = function (app) {
     require('node-pow')(app);
   }
 
+  app.use('/assets/*.css.gz', function (req, res, next) {
+    res.set('Content-Encoding', 'gzip');
+    res.set('Content-Type', 'text/css');
+    next();
+  });
+
+  app.use('/assets/*.js.gz', function (req, res, next) {
+    res.set('Content-Encoding', 'gzip');
+    res.set('Content-Type', 'application/javascript');
+    next();
+  });
+
   app.use(require('serve-favicon')(path.join(rootPath, 'public/favicon.ico')));
   app.use(express.static(path.join(rootPath, 'public')));
   app.use(bodyParser.urlencoded({extended: true}));
