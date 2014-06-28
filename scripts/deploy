@@ -8,5 +8,5 @@ cd ..
 
 git add ./client/dist
 git commit -m "Built Client App"
-#git push $@
+git push $@
 
