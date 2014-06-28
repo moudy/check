@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import DS from 'ember-data';
+import ApplicationAdapter from './application';
 
 var get = Ember.get;
 
@@ -8,7 +8,7 @@ function buildChecklistCreateUrl (record) {
   return ['/api/users', userId, 'checklists'].join('/');
 }
 
-export default DS.RESTAdapter.extend({
+export default ApplicationAdapter.extend({
   createRecord: function(store, type, record) {
     var data = {};
     var serializer = store.serializerFor(type.typeKey);

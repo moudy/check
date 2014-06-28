@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import DS from 'ember-data';
+import ApplicationAdapter from './application';
 
 var get = Ember.get;
 
@@ -9,7 +9,7 @@ function buildListItemUrl (record) {
   return ['/api/checklists', checklistId, 'list-items', id].join('/');
 }
 
-export default DS.RESTAdapter.extend({
+export default ApplicationAdapter.extend({
 
   createRecord: function(store, type, record) {
     var data = {};
