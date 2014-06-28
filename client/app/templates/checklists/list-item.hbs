@@ -1,0 +1,44 @@
+{{#with view.content}}
+
+{{#if showEditIcon}}
+<div class='sort-handle-container'>
+  <a href='#' class='sort-handle'>
+    <div class='bar'></div>
+    <div class='bar'></div>
+    <div class='bar'></div>
+    <div class='bar'></div>
+  </a>
+</div>
+{{/if}}
+
+{{#if isEditing}}
+  <div {{action 'doneEditing'}} class='blanket'></div>
+  <div class='checklist-list-item-editor'>
+    <div class='textarea-container'>
+      {{view 'textarea' valueBinding='description'}}
+    </div>
+    <div class='controls'>
+      <a tabindex='1' class='button-danger left control-left' {{action 'delete' target='view'}}>Delete</a>
+      <a tabindex='0' class='button right control-right' {{action 'doneEditing'}}>Done</a>
+    </div>
+  </div>
+{{/if}}
+
+<div class='md-container'>
+  <label class='checkbox-container'>
+    {{input type="checkbox" name="isCompleted" checked=isCompleted}}
+  </label>
+
+  <div class='md'>
+    {{#if description}}
+      {{markdown-text description}}
+    {{else}}
+      &nbsp;
+    {{/if}}
+  </div>
+  {{#if showEditIcon}}
+    <a href='#' {{action 'edit'}} class='button-edit'>&#9998;</a>
+  {{/if}}
+</div>
+
+{{/with}}

@@ -1,7 +1,9 @@
 .DS_Store
 /.sass-cache
-/config/env
 /tmp
 /assets
-/node_modules
 npm-debug.log
+.env.development
+node_modules/*
+!node_modules/app
+!node_modules/lib

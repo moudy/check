@@ -1,13 +1,17 @@
-var fs = require('fs');
-var path = require('path');
-var express = require('express');
-var passport = require('passport');
-var view = require('./view');
+var fs            = require('fs');
+var path          = require('path');
+var express       = require('express');
+var passport      = require('passport');
+var bodyParser    = require('body-parser');
+var session       = require('express-session');
+var MongoStore    = require('connect-mongo')(session);
 var projectRouter = require('project-router');
+var view          = require('./view');
 
 module.exports = function (app) {
+  var env = process.env;
   // Make sure app has environment
-  app.set('environment', process.env.NODE_ENV || 'development');
+  app.set('environment', env.NODE_ENV || 'development');
 
   var rootPath = path.join(__dirname, '..');
   var configPath = path.join(rootPath, 'config');
@@ -15,7 +19,9 @@ module.exports = function (app) {
   var initializersPath = path.join(configPath, 'initializers');
 
   app.set('title', 'check');
-  app.set('cookieSecret', 'sushisushi');
+  app.set('port', env.PORT);
+  app.set('origin', env.ORIGIN);
+  app.set('ASSET_ORIGIN', env.ASSET_ORIGIN);
 
   // Setup view path and engine
   app.set('views', path.join(rootPath, 'app', 'views'));
@@ -31,42 +37,43 @@ module.exports = function (app) {
   });
 
   // Middleware
-
-  app.use(require('serve-favicon')(path.join(rootPath, 'public/favicon.ico')));
-
   if ('development' === app.get('env')) {
-    app.use('/assets', require('broccoli-middleware'));
-  } else {
-    app.use(require('./assets').handle);
+    require('node-pow')(app);
   }
 
+  app.use(require('serve-favicon')(path.join(rootPath, 'public/favicon.ico')));
   app.use(express.static(path.join(rootPath, 'public')));
-
-  app.use(require('body-parser')());
-  app.use(require('cookie-parser')());
+  app.use(bodyParser.urlencoded({extended: true}));
+  app.use(bodyParser.json());
+  app.use(require('cookie-parser')(env.COOKIE_SECRET));
   app.use(require('method-override')());
 
-  app.use(require('cookie-parser')('checkmate'));
-  app.use(require('./middleware/session'));
+  app.use(session({
+    secret: env.COOKIE_SECRET
+  , maxAge: new Date(Date.now() + 3600000)
+  , store: new MongoStore({ url: env.MONGO_URI })
+  }));
+
   app.use(passport.initialize());
   app.use(passport.session());
 
   if ('development' === app.get('env')) {
     app.use(require('morgan')('dev'));
     app.use(require('../lib/body_logger'));
+    app.use(require('errorhandler')());
   }
 
   app.use(function (req, res, next) {
+    var user = req.user;
     res.locals.ENV = {};
     res.locals.ENV[app.get('env')] = true;
+    if (user) {
+      res.locals.ENV.currentUser = user.toJSON();
+    }
     next();
   });
 
   app.use(require('./middleware/user'));
-
-  if ('development' === app.get('env')) {
-    app.use(require('errorhandler')());
-  }
 
   app.get('/auth/github', passport.authenticate('github'), function(){});
   app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), function(req, res) {

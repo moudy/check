@@ -1,13 +1,14 @@
 var User = require('app/models/user');
 var GitHubStrategy = require('passport-github').Strategy;
 var passport = require('passport');
+var env = process.env;
 
-module.exports = function (app) {
+module.exports = function () {
 
   var gitHubStrategyOptions = {
-    clientID: app.get('GITHUB_CLIENT_ID')
-  , clientSecret: app.get('GITHUB_CLIENT_SECRET')
-  , callbackURL: 'http://'+app.get('host')+'/auth/github/callback'
+    clientID: env.GITHUB_CLIENT_ID
+  , clientSecret: env.GITHUB_CLIENT_SECRET
+  , callbackURL: env.ORIGIN+'/auth/github/callback'
   };
 
   function gitHubStrategyCallback (accessToken, refreshToken, profile, done) {
