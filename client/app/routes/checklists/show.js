@@ -24,7 +24,7 @@ export default Ember.Route.extend({
         var checklists = self.session.get('user.checklists');
         checklists.removeObject(model);
         Ember.run.next(null, function() {
-          self.transitionToRoute('users.show', self.session.get('user'));
+          self.transitionTo('users.show', self.session.get('user'));
         });
       });
     }

@@ -7,7 +7,7 @@ module.exports = function () {
       this.resource('checklists', {only: ['index', 'create'], resource: Checklist });
     });
 
-    this.resource('checklists', {only: ['show', 'update'], resource: Checklist}, function () {
+    this.resource('checklists', {only: ['show', 'update', 'destroy'], resource: Checklist}, function () {
       this.member.put('/reorder');
       this.resource('list-items', {only: ['update', 'create', 'destroy'] });
     });

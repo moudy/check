@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+cd ./client
+ember build -e production
+cd ..
+
+git add ./client/dist
+git commit -m "Built Client Apps"
+git push $@
+
