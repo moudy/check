@@ -4,7 +4,9 @@ cd ./client
 ember build -e production
 cd ..
 
+./scripts/build-assets
+
 git add ./client/dist
-git commit -m "Built Client Apps"
-git push $@
+git commit -m "Built Client App"
+#git push $@
 

@@ -16,7 +16,7 @@ module.exports = function (app) {
 
   var rootPath = path.join(__dirname, '..');
   var configPath = path.join(rootPath, 'config');
-  var assetsPath = path.join(rootPath, 'public', 'assets');
+  var assetsPath = path.join(rootPath, 'client', 'dist', 'assets');
   var initializersPath = path.join(configPath, 'initializers');
 
   app.set('title', 'check');
@@ -54,6 +54,7 @@ module.exports = function (app) {
 
   app.use(require('serve-favicon')(path.join(rootPath, 'public/favicon.ico')));
   app.use(express.static(path.join(rootPath, 'public')));
+  app.use(express.static(path.join(rootPath, 'client', 'dist')));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
   app.use(require('cookie-parser')(env.COOKIE_SECRET));

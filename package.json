@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "nodemon --ignore tmp/ --ignore node_modules/ --ignore public/ --ignore client/ app.js",
     "start": "forever app.js",
-    "test": "mocha",
-    "postinstall": "./scripts/build-assets"
+    "test": "mocha"
   },
   "dependencies": {
     "async": "^0.9.0",
