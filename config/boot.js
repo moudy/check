@@ -7,6 +7,7 @@ var session       = require('express-session');
 var MongoStore    = require('connect-mongo')(session);
 var projectRouter = require('project-router');
 var view          = require('./view');
+var db            = require('./db');
 
 module.exports = function (app) {
   var env = process.env;
@@ -47,7 +48,7 @@ module.exports = function (app) {
   app.use(session({
     secret: env.COOKIE_SECRET
   , maxAge: new Date(Date.now() + 3600000)
-  , store: new MongoStore({ url: env.MONGO_URI })
+  , store: new MongoStore({ url: db.MONGO_URI })
   }));
 
   app.use(passport.initialize());
