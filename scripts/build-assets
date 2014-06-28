@@ -6,7 +6,7 @@ ASSETS_DIR=./public/assets
 rm -rf "$ASSETS_DIR"
 
 for FILE in "$CLIENT_ASSETS_DIR"/*.{js,css}; do
-  gzip "$FILE" --best --keep
+  gzip "$FILE" --best --keep --force
 done
 
 cp -r $CLIENT_ASSETS_DIR $ASSETS_DIR
