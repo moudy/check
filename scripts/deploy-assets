@@ -1,0 +1,48 @@
+#!/usr/bin/env node
+
+var env = process.env;
+
+if (!env.AWS_ACCESS_KEY || !env.AWS_SECRET_KEY || !env.AWS_BUCKET) {
+  console.log('Not deploying assets. No AWS credentials found.');
+  process.exit();
+}
+
+var s3 = require('s3');
+
+var client = s3.createClient({
+  maxAsyncS3: Infinity
+, s3RetryCount: 3
+, s3RetryDelay: 1000
+, s3Options: {
+    accessKeyId: process.env.AWS_ACCESS_KEY
+  , secretAccessKey: process.env.AWS_SECRET_KEY
+  }
+});
+
+var fs = require('fs');
+var path = require('path');
+
+function upload (filename) {
+  var file = path.join('public/assets', filename);
+
+  var params = {
+     localFile: file
+  ,  s3Params: {
+      Bucket: env.AWS_BUCKET
+    , Key: 'assets/'+filename
+    , ACL: 'public-read'
+    }
+  };
+
+  if (filename.match(/gz$/)) params.s3Params.ContentEncoding = 'gzip';
+  if (filename.match(/(css|css.gz)$/)) params.s3Params.ContentType = 'text/css';
+  if (filename.match(/(js|js.gz)$/)) params.s3Params.ContentType = 'text/javascript';
+  if (filename.indexOf('-') > -1) params.s3Params.CacheControl = 'public, max-age='+(60*60*24*365);
+
+  var uploader = client.uploadFile(params);
+  uploader.on('error', function(err) { console.error('Error uploading asset:', err.stack); });
+  uploader.on('end', function() { console.log('Done uploading asset:', filename); });
+}
+
+fs.readdirSync('client/dist/assets').forEach(upload);
+
