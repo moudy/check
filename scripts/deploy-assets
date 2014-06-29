@@ -23,7 +23,7 @@ var fs = require('fs');
 var path = require('path');
 
 function upload (filename) {
-  var file = path.join('public/assets', filename);
+  var file = path.join('client/dist/assets', filename);
 
   var params = {
      localFile: file
