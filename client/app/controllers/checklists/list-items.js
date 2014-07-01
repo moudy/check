@@ -17,7 +17,7 @@ export default Ember.ArrayController.extend({
         return !i.get('isCompleted');
       });
 
-      next && next.set('isActive', true);
+      if (next) next.set('isActive', true);
     });
   }.observes('@each.isCompleted')
 

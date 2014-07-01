@@ -54,7 +54,7 @@ module.exports = function (app) {
 
   app.use(require('serve-favicon')(path.join(rootPath, 'public/favicon.ico')));
   app.use(express.static(path.join(rootPath, 'public')));
-  app.use(express.static(path.join(rootPath, 'client', 'dist')));
+  app.use('/assets', express.static(path.join(rootPath, 'client', 'dist', 'assets')));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
   app.use(require('cookie-parser')(env.COOKIE_SECRET));
@@ -62,7 +62,7 @@ module.exports = function (app) {
 
   app.use(session({
     secret: env.COOKIE_SECRET
-  , maxAge: new Date(Date.now() + 3600000)
+  , cookie: { maxAge: (365 * 24 * 60 * 60 * 1000) }
   , store: new MongoStore({ url: db.MONGO_URI })
   }));
 
@@ -85,18 +85,13 @@ module.exports = function (app) {
     next();
   });
 
-  app.use(require('./middleware/user'));
-
   app.get('/auth/github', passport.authenticate('github'), function(){});
   app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), function(req, res) {
     res.redirect('/');
   });
 
   var router = projectRouter.map(require('./routes'));
-
-  if ('development' === app.get('env')) {
-    app.use('/routes', require('project-router-viewer')(router));
-  }
+  app.use('/info/routes', require('project-router-viewer')(router));
 
   app.use(router);
 };

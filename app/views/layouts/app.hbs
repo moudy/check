@@ -14,10 +14,6 @@
     <script>
       window.ENV = {{to-json ENV}};
       window.ClientENV = {};
-      window.DATA = {};
-      {{#if currentUser}}
-      window.DATA.currentUser = {{{currentUser}}};
-      {{/if}}
     </script>
 
     <script src='{{asset-url '/assets/vendor.js'}}'></script>

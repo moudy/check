@@ -19,26 +19,26 @@
     "express3-handlebars": "~0.5.0",
     "forever": "~0.10.11",
     "handlebars": "~1.3.0",
-    "method-override": "^1.0.0",
+    "method-override": "^2.0.2",
     "mongodb": "^1.4.3",
     "mongoose": "~3.8.4",
     "mongoose-find-by-whatever": "0.0.2",
     "mongoose-findorcreate": "~0.1.2",
     "mongoose-gravatar": "~0.2.1",
-    "mongoose-timestamp": "~0.1.1",
+    "mongoose-timestamp": "^0.2.1",
     "mongoose-unique-validator": "~0.3.0",
-    "mongoose-validator": "~0.2.2",
+    "mongoose-validator": "^1.0.0",
     "morgan": "^1.0.0",
     "passport": "~0.2.0",
     "passport-github": "^0.1.5",
     "project-router": "^0.1.1",
     "project-router-mongoose": "0.0.7",
+    "project-router-viewer": "0.0.3",
     "rsvp": "^3.0.6",
     "s3": "^2.0.0",
     "serve-favicon": "^2.0.0",
     "speakingurl": "^0.9.1",
-    "supertest": "^0.12.0",
-    "underscore": "~1.5.2"
+    "underscore": "^1.6.0"
   },
   "devDependencies": {
     "chai": "^1.9.1",
@@ -46,7 +46,7 @@
     "mocha": "^1.20.1",
     "mocha-mongoose": "^1.0.1",
     "node-pow": "0.0.2",
-    "project-router-viewer": "0.0.2"
+    "supertest": "^0.13.0"
   },
   "engines": {
     "node": "0.10.x",
