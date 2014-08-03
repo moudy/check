@@ -2,6 +2,7 @@ var TESTING_DEBUG;
 //TESTING_DEBUG = process.env.TESTING_DEBUG = true;
 
 process.env.NODE_ENV = 'testing';
+require('dotenv').load();
 
 var _         = require('underscore');
 var app       = require('../app').app;
@@ -9,19 +10,18 @@ var fixtures  = require('./fixtures');
 var db        = require('../config/db');
 var chai      = require('chai');
 var mongoose  = require('mongoose');
-var clearDB   = require('mocha-mongoose')(app.get('MONGO_URI'));
+var clearDB   = require('mocha-mongoose')(db.MONGO_URI);
 
 mongoose.set('debug', TESTING_DEBUG);
 
 global._ = _;
-global.app = app;
 global.expect = chai.expect;
 global.fixtures = fixtures;
 
 global.resetDB = function (done) {
   clearDB(function () {
     if (mongoose.connection.db) return done();
-    db.connect(app, done);
+    db.connect(done);
   });
 };
 

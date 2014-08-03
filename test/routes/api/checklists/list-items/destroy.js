@@ -1,5 +1,6 @@
 var supertest = require('supertest');
 var Checklist = require('app/models/checklist');
+var app = require('../../../../../app').app;
 
 describe('DELETE /api/checklist/:checklistId/list-item/:id', function () {
   beforeEach(resetDB);
