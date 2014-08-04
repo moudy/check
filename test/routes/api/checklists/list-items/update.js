@@ -1,6 +1,6 @@
 var supertest = require('supertest');
 var Checklist = require('app/models/checklist');
-var app = require('../../../../../app').app;
+var app = require('../../../../../app');
 
 describe('PUT /api/checklist/:checklistId/list-item/:id', function () {
   beforeEach(resetDB);

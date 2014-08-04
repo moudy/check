@@ -2,7 +2,7 @@ if ('production' !== process.env.NODE_ENV) {
   require('dotenv').load();
 }
 
-var app = exports.app = require('express')();
+var app = require('express')();
 require('./config/boot')(app);
 
 if (!module.parent) {
@@ -17,3 +17,5 @@ if (!module.parent) {
     );
   });
 }
+
+module.exports = app;

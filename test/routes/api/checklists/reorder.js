@@ -1,6 +1,6 @@
 var Checklist = require('app/models/checklist');
 var supertest = require('supertest');
-var app = require('../../../../app').app;
+var app = require('../../../../app');
 
 describe('POST /api/checklist/:id/reorder', function () {
   beforeEach(resetDB);

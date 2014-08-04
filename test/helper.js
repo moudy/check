@@ -5,7 +5,6 @@ process.env.NODE_ENV = 'testing';
 require('dotenv').load();
 
 var _         = require('underscore');
-var app       = require('../app').app;
 var fixtures  = require('./fixtures');
 var db        = require('../config/db');
 var chai      = require('chai');

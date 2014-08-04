@@ -1,7 +1,7 @@
 var supertest = require('supertest');
 var Checklist = require('app/models/checklist');
 var User = require('app/models/user');
-var app = require('../../../../../app').app;
+var app = require('../../../../../app');
 
 describe('GET /api/users/:id/checklists', function () {
 
