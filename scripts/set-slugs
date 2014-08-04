@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 
 var async = require('async');
-var app = require('../app').app;
 var db = require('../config/db');
 var Checklist = require('app/models/checklist');
 
-db.connect(app, function () {
+db.connect(function () {
   Checklist.find({}, function (err, docs) {
     console.log(docs.length, 'Checklists');
     async.whilst(

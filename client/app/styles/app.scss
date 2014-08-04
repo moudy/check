@@ -10,6 +10,10 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+html, body {
+  background-color: $background-color;
+}
+
 .list-reset {
   padding: 0;
   margin: 0;
@@ -50,7 +54,6 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
   color: $color-text-default;
-  background-color: $color-gray-extra-light;
   font: 13px Helvetica, arial, freesans, clean, sans-serif;
   line-height: 1.4;
 }
@@ -85,7 +88,7 @@ input, textarea { border-radius: 4px; }
 @import 'type';
 @import 'md';
 @import 'avatar';
-@import 'header_bar';
+@import 'header';
 @import 'users_show_info';
 @import 'checklist';
 @import 'checklist_item';

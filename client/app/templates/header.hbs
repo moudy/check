@@ -1,33 +1,22 @@
 <header class='header-bar'>
   <div class='content-width'>
     {{#link-to 'index' class='left header-logo'}}
-      <input type='checkbox' checked class='checkbox' value='' name='' />
+
     {{/link-to}}
+
+    <nav class='left'>
+    </nav>
 
     <nav class='right'>
       {{#if currentUser}}
-        <div class='header-nav-menu'>
-          {{#link-to 'users.show' currentUser class='button-text'}}
-            <img {{bind-attr src='currentUser.profileImageUrl'}} {{bind-attr alt='currentUser.username'}} class='avatar-small' />
-            {{currentUser.username}} &#9662;
-          {{/link-to}}
+        {{#link-to 'checklists.new' class='nav-button'}}
+          + New Checklist
+        {{/link-to}}
 
-          <ul class='header-nav-menu-list'>
-            <li class='header-nav-menu-item'>
-              {{#link-to 'checklists.new' class='header-nav-menu-link'}}
-                Create a List
-              {{/link-to}}
-            </li>
-            <li class='header-nav-menu-item'>
-              {{#link-to 'users.show' currentUser class='header-nav-menu-link'}}
-                My Profile
-              {{/link-to}}
-            </li>
-            <li class='header-nav-menu-item'>
-              <a class='header-nav-menu-link' {{action 'signout'}} href='#' >Sign Out</a>
-            </li>
-          </ul>
-        </div>
+        {{#link-to 'users.show' currentUser class='nav-button'}}
+          <img {{bind-attr src='currentUser.profileImageUrl'}} {{bind-attr alt='currentUser.username'}} class='avatar-small' />
+          {{currentUser.username}}
+        {{/link-to}}
       {{else}}
         <a class='button-text' href='/auth/github'>Login with GitHub</a>
       {{/if}}

@@ -5,7 +5,10 @@ renderer.link = function(href, title, text) {
 };
 
 marked.setOptions({
-  highlight: function (code) { return hljs.highlightAuto(code).value; }
+  highlight: function (code, lang) {
+   if (!lang) return hljs.highlightAuto(code).value;
+   return hljs.highlight(lang, code).value;
+  }
 , renderer: renderer
 , smartLists: true
 , smartypants: true

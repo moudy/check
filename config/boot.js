@@ -64,6 +64,8 @@ module.exports = function (app) {
     secret: env.COOKIE_SECRET
   , cookie: { maxAge: (365 * 24 * 60 * 60 * 1000) }
   , store: new MongoStore({ url: db.MONGO_URI })
+  , resave: false
+  , saveUninitialized: false
   }));
 
   app.use(passport.initialize());
