@@ -23,8 +23,8 @@ describe('POST /api/users/:userId/checklists', function () {
     return post(
       '/api/users/'+user.id+'/checklists'
     , {checklist: checklistData}
-    ).then(function (body) {
-      expect(body.checklist.userId).to.equal(user.id);
+    ).then(function (res) {
+      expect(res.body.checklist.userId).to.equal(user.id);
     });
   });
 

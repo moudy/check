@@ -10,15 +10,15 @@ describe('GET /api/users/:id', function () {
 
   it('gets a user by id', function () {
     var user = this.user;
-    return get('/api/users/'+user.id).then(function (body) {
-      expect(body.user.id).to.equal(user.id);
+    return get('/api/users/'+user.id).then(function (res) {
+      expect(res.body.user.id).to.equal(user.id);
     });
   });
 
   it('gets a user by username', function () {
     var user = this.user;
-    return get('/api/users/'+user.username).then(function (body) {
-      expect(body.user.id).to.equal(user.id);
+    return get('/api/users/'+user.username).then(function (res) {
+      expect(res.body.user.id).to.equal(user.id);
     });
   });
 

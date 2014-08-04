@@ -12,7 +12,7 @@ exports.get = function (endpoint) {
       .set('Accept', 'application/json')
       .end(function (err, res) {
         if (err) return reject(err);
-        resolve(res.body);
+        resolve(res);
       });
   });
 };
@@ -25,7 +25,7 @@ exports.post = function (endpoint, data) {
       .set('Accept', 'application/json')
       .end(function (err, res) {
         if (err) return reject(err);
-        resolve(res.body);
+        resolve(res);
       });
   });
 };
@@ -38,7 +38,19 @@ exports.put = function (endpoint, data) {
       .set('Accept', 'application/json')
       .end(function (err, res) {
         if (err) return reject(err);
-        resolve(res.body);
+        resolve(res);
+      });
+  });
+};
+
+exports.del = function (endpoint) {
+  return new Promise(function (resolve, reject) {
+    supertest(app)
+      .delete(endpoint)
+      .set('Accept', 'application/json')
+      .end(function (err, res) {
+        if (err) return reject(err);
+        resolve(res);
       });
   });
 };

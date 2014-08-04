@@ -11,8 +11,8 @@ describe('PUT /api/checklist/:id/reorder', function () {
     var listItemsIds = listItems.map(function (li) { return li.id; });
     var newListItemsIds = listItemsIds.slice().reverse();
 
-    function testOrder (body) {
-      var responseListItems = body.checklist.listItems;
+    function testOrder (res) {
+      var responseListItems = res.body.checklist.listItems;
       newListItemsIds.forEach(function (id) {
         var li = _.find(responseListItems, function (l) {return l.id === id;});
         expect(li.index).to.equal(newListItemsIds.indexOf(id));

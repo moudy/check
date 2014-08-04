@@ -18,8 +18,8 @@ describe('GET /api/users/:id/checklists', function () {
 
   it('returns a users checklists', function () {
     var checklists = this.checklists;
-    return get('/api/users/'+user.id+'/checklists').then(function (body) {
-      expect(body.checklists.length).to.eq(checklistsData.length - 1);
+    return get('/api/users/'+user.id+'/checklists').then(function (res) {
+      expect(res.body.checklists.length).to.eq(checklistsData.length - 1);
     });
   });
 
