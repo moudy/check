@@ -4,6 +4,7 @@ var TESTING_DEBUG;
 process.env.NODE_ENV = 'testing';
 require('dotenv').load();
 
+var RSVP      = require('rsvp');
 var _         = require('underscore');
 var fixtures  = require('./fixtures');
 var db        = require('../config/db');
@@ -11,39 +12,47 @@ var chai      = require('chai');
 var mongoose  = require('mongoose');
 var clearDB   = require('mocha-mongoose')(db.MONGO_URI);
 
+var Promise = RSVP.Promise;
+
 mongoose.set('debug', TESTING_DEBUG);
 
 global._ = _;
 global.expect = chai.expect;
 global.fixtures = fixtures;
 
-global.resetDB = function (done) {
-  clearDB(function () {
-    if (mongoose.connection.db) return done();
-    db.connect(done);
+global.resetDB = function () {
+  return new Promise (function (resolve, reject) {
+    clearDB(function () {
+      if (mongoose.connection.db) return resolve();
+      db.connect(function () { resolve(); });
+    });
   });
 };
 
-global.createModel = function(Model, data, name, cb) {
-  return function (done) {
+global.createModel = function(Model, data, name) {
+  return function () {
     var context = this;
-    Model.create(data, function (err, doc) {
-      if (err) return done(err);
-      if (_.isArray(data)) {
-        doc = _.toArray(arguments);
-        doc.shift();
-      }
-      context[name] = doc;
-      done();
+    return new Promise (function (resolve, reject) {
+      Model.create(data, function (err, doc) {
+        if (err) return done(err);
+        if (_.isArray(data)) {
+          doc = _.toArray(arguments);
+          doc.shift();
+        }
+        context[name] = doc;
+        resolve(doc);
+      });
     });
   };
 };
 
-global.expectCount = function(Model, count, cb) {
-  return function (done) {
-    Model.count(function (err, count_) {
-      expect(count_).to.eq(count);
-      cb ? cb(err) : done(err);
+global.expectCount = function(Model, count) {
+  return function () {
+    return new Promise (function (resolve, reject) {
+      Model.count(function (err, count_) {
+        expect(count_).to.eq(count);
+        resolve();
+      });
     });
   };
 };

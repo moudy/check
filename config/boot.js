@@ -60,13 +60,15 @@ module.exports = function (app) {
   app.use(require('cookie-parser')(env.COOKIE_SECRET));
   app.use(require('method-override')());
 
-  app.use(session({
-    secret: env.COOKIE_SECRET
-  , cookie: { maxAge: (365 * 24 * 60 * 60 * 1000) }
-  , store: new MongoStore({ url: db.MONGO_URI })
-  , resave: false
-  , saveUninitialized: false
-  }));
+  if (process.env.NODE_ENV !== 'testing') {
+    app.use(session({
+      secret: env.COOKIE_SECRET
+    , cookie: { maxAge: (365 * 24 * 60 * 60 * 1000) }
+    , store: new MongoStore({ url: db.MONGO_URI })
+    , resave: false
+    , saveUninitialized: false
+    }));
+  }
 
   app.use(passport.initialize());
   app.use(passport.session());
