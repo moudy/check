@@ -37,7 +37,8 @@ export default Ember.ArrayController.extend({
     }
 
   , reorder: function (listItemsIds) {
-      var url = '/api/checklists/'+this.get('checklist.id')+'/reorder';
+      //var url = '/api/checklists/'+this.get('checklist.id')+'/reorder';
+      var url = `/api/checklists/${this.get('checklist.id')}/reorder`;
       Ember.$.ajax({
         type: 'POST'
       , url: url

@@ -13,7 +13,7 @@
           + New Checklist
         {{/link-to}}
 
-        {{#link-to 'user' currentUser class='nav-button'}}
+        {{#link-to 'user.index' currentUser class='nav-button'}}
           <img {{bind-attr src='currentUser.profileImageUrl'}} {{bind-attr alt='currentUser.username'}} class='avatar-small' />
           {{currentUser.username}}
         {{/link-to}}

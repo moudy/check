@@ -33,10 +33,10 @@ export default Ember.ArrayController.extend({
       query.userId = this.get('user.id');
 
       this.set('isLoadingMore', true);
-      this.store.find('checklist', query).then(function (results) {
+      this.store.find('checklist', query).then(results => {
         this.pushObjects(results.toArray());
         this.set('isLoadingMore', false);
-      }.bind(this));
+      });
     }
   }
 
