@@ -515,8 +515,8 @@ input, textarea {
   background-color: #999;
   vertical-align: middle;
   overflow: hidden;
-  height: 40px;
-  width: 40px; }
+  height: 50px;
+  width: 50px; }
   .avatar-medium img {
     width: 100%;
     height: 100%;
@@ -528,8 +528,8 @@ input, textarea {
   background-color: #999;
   vertical-align: middle;
   overflow: hidden;
-  height: 50px;
-  width: 50px; }
+  height: 80px;
+  width: 80px; }
   .avatar-large img {
     width: 100%;
     height: 100%;
@@ -566,16 +566,31 @@ input, textarea {
   .nav-button:active, .nav-button.active {
     background-color: #d2d2d2; }
 
-.users-show-header {
+.user-hero {
   margin-top: 30px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  text-align: center; }
 
-.users-show-header-username {
+.user-hero-username {
   font-size: 18px; }
 
-.user-show-header-checklists-count {
-  font-size: 14px;
-  color: #a7a7a7; }
+.action-bar {
+  line-height: 30px;
+  margin-bottom: 5px; }
+  .action-bar a {
+    line-height: inherit; }
+  .action-bar .flip {
+    display: inline-block;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg); }
+
+.action-bar-text {
+  color: #a7a7a7;
+  font-weight: 200;
+  padding: 0 10px; }
 
 .checklist-header {
   margin: 30px 0 15px; }
@@ -690,14 +705,16 @@ input, textarea {
   margin-top: 40px; }
 
 .checklists {
-  border-top: 1px solid #eee; }
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden; }
+  .checklists li:first-of-type .checklist-item {
+    border-top: 0 none; }
 
 .checklist-item {
   display: block;
   padding: 10px;
-  border-bottom: 1px solid #eee;
-  border-right: 1px solid #eee;
-  border-left: 1px solid #eee;
+  border-top: 1px solid #eee;
   background-color: white; }
 
 .checklist-item-title {
@@ -709,8 +726,12 @@ input, textarea {
   min-height: 16px; }
 
 .checklist-item-list-count {
-  color: #ddd;
+  color: #a7a7a7;
   line-height: 24px; }
+
+.checklists-footer {
+  text-align: center;
+  margin-top: 10px; }
 
 .checklist-list-item-placeholder {
   background-color: #eee; }
@@ -856,10 +877,10 @@ input, textarea {
 
 .button {
   display: inline-block;
-  cursor: pointer;
   text-align: center;
   font-weight: 700;
   text-transform: capitalize;
+  cursor: pointer;
   border: 1px solid;
   color: #333;
   border-color: #ddd;
@@ -878,10 +899,10 @@ input, textarea {
 
 .button-danger {
   display: inline-block;
-  cursor: pointer;
   text-align: center;
   font-weight: 700;
   text-transform: capitalize;
+  cursor: pointer;
   border: 1px solid;
   border-color: #d58989;
   color: #e00000;
@@ -895,17 +916,46 @@ input, textarea {
     cursor: default; }
 
 .button-text {
-  line-height: inherit;
-  font-weight: bold;
-  color: inherit;
-  display: inline-block; }
-
-.button-edit {
   display: inline-block;
-  cursor: pointer;
   text-align: center;
   font-weight: 700;
   text-transform: capitalize;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 30px;
+  min-width: 30px;
+  padding: 0 10px;
+  border-radius: 3px;
+  font-weight: 200; }
+  .button-text.is-disabled {
+    cursor: default; }
+
+.button-action {
+  display: inline-block;
+  text-align: center;
+  font-weight: 700;
+  text-transform: capitalize;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 30px;
+  min-width: 30px;
+  padding: 0 10px;
+  border-radius: 3px;
+  color: #a7a7a7;
+  font-weight: 200; }
+  .button-action.is-disabled {
+    cursor: default; }
+  .button-action:hover, .button-action.active {
+    color: #4A90E2; }
+  .button-action:active {
+    color: #76ace9; }
+
+.button-edit {
+  display: inline-block;
+  text-align: center;
+  font-weight: 700;
+  text-transform: capitalize;
+  cursor: pointer;
   width: 24px;
   height: 24px;
   line-height: 24px;
@@ -917,10 +967,10 @@ input, textarea {
 
 .button-signin {
   display: inline-block;
-  cursor: pointer;
   text-align: center;
   font-weight: 700;
   text-transform: capitalize;
+  cursor: pointer;
   font-size: 18px;
   line-height: 38px;
   min-width: 40px;

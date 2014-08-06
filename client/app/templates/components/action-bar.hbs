@@ -1,0 +1,11 @@
+{{#each sortOptions}}
+  <a href='#' {{action setSort this}} {{bind-attr class=':button-action active'}}>
+    {{title}}
+    <span {{bind-attr class='desc:flip'}}>
+      {{#if active}}&#9662;{{else}}&#9663;{{/if}}
+    </span>
+  </a>
+{{/each}}
+
+{{yield}}
+

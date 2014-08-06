@@ -6,12 +6,22 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('index', {path: '/'});
-  this.route('users.show', {path: '/:username'});
-  this.route('checklists.show', {path: '/:username/:slug'});
 
-  this.route('checklists.new', {path: '/list/new'});
+  this.resource('user', {path: '/:username'}, function () {
+    this.resource('checklists', {path: '/'}, function () {
+      //this.route('new');
+    });
+    this.route('index', {path: '/'});
 
-  this.route('signout');
+    this.resource('checklist', {path: '/:slug'}, function () {
+      this.resource('list-items', {path: '/'}, function () {
+      });
+    });
+  });
+
+
+  this.route('checklists.new', {path: '/new'});
+
 });
 
 export default Router;

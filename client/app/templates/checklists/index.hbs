@@ -1,0 +1,32 @@
+<ul class='checklists list-reset'>
+  {{#each checklist in model}}
+  <li>
+  {{#link-to 'checklist' checklist class='checklist-item'}}
+  <h2 class='checklist-item-title'>{{checklist.title}}</h2>
+  <span class='checklist-item-list-count right'>{{checklist.listItems.length}}</span>
+  {{/link-to}}
+  </li>
+  {{else}}
+  {{#if isCurrentUserProfile}}
+  No lists yet.
+  {{#link-to 'checklist.new' class='button'}}Create one{{/link-to}}
+  {{else}}
+  Nothing here yet.
+  {{/if}}
+  {{/each}}
+</ul>
+
+{{#if showLoadMore}}
+
+<div class='checklists-footer'>
+  <a href='#' class='button-text' {{action 'loadMore'}}>
+    {{#if isLoadingMore}}
+      Loading...
+    {{else}}
+      Load more
+    {{/if}}
+  </a>
+</div>
+
+{{/if}}
+

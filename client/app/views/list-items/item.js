@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.View.extend({
-  templateName: 'checklists/list-item'
+
+  templateName: 'list-items/item'
 
 , tagName: 'li'
 

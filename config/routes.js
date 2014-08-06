@@ -4,7 +4,9 @@ var User = require('app/models/user');
 module.exports = function () {
   this.namespace('api', function () {
     this.resource('users', {only: ['show'], resource: User}, function () {
-      this.resource('checklists', {only: ['index', 'create'], resource: Checklist });
+      this.resource('checklists', {only: ['index', 'create'], resource: Checklist }, function () {
+        this.collection.get('count');
+      });
     });
 
     this.resource('checklists', {only: ['show', 'update', 'destroy'], resource: Checklist}, function () {

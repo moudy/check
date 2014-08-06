@@ -1,15 +1,21 @@
 @import 'base';
 
+$color-border: $color-gray-light;
+$color-border-dark: $color-gray-medium;
+
 .checklists {
-  border-top: 1px solid $color-gray-light;
+  border: 1px solid $color-border-dark;
+  border-radius: 4px;
+  overflow: hidden;
+  li:first-of-type .checklist-item {
+    border-top: 0 none;
+  }
 }
 
 .checklist-item {
   display: block;
   padding: 10px;
-  border-bottom: 1px solid $color-gray-light;
-  border-right: 1px solid $color-gray-light;
-  border-left: 1px solid $color-gray-light;
+  border-top: 1px solid $color-border;
   background-color: white;
 }
 
@@ -22,6 +28,11 @@
 }
 
 .checklist-item-list-count {
-  color: $color-text-light;
+  color: $color-text-light-medium;
   line-height: 24px;
+}
+
+.checklists-footer {
+  text-align: center;
+  margin-top: 10px;
 }

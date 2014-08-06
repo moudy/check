@@ -1,13 +1,10 @@
 var IndexRoute = require('project-router-mongoose').index;
-var inherits = require('util').inherits;
+var FindUserChecklists = require('app/query-objects/find-user-checklists');
 
-function ApiUsersChecklistsRoute () {}
-inherits(ApiUsersChecklistsRoute, IndexRoute);
-module.exports = ApiUsersChecklistsRoute;
+module.exports = IndexRoute.extend({
 
-var p = ApiUsersChecklistsRoute.prototype;
+  model: function () {
+    return FindUserChecklists(this.param('userId'), this.request.query);
+  }
 
-p.model = function () {
-  return this.resource.find({userId: this.param('userId')}).exec();
-};
-
+});

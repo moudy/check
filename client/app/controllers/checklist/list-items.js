@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
 
-  itemController: 'checklists/list-item'
+  itemController: 'checklist/list-item'
 
 , canEditBinding: Ember.Binding.oneWay('parentController.canEdit')
 

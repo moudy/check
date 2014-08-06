@@ -1,7 +1,7 @@
 <header class='checklist-header'>
   <div class='content-width'>
     <div class='media'>
-      {{#link-to 'users.show' user class='avatar-large media-left'}}
+      {{#link-to 'user' user class='avatar-medium media-left'}}
         <img {{bind-attr src='user.profileImageUrl'}} {{bind-attr alt='user.username'}} />
       {{/link-to}}
 
@@ -19,7 +19,7 @@
         </h1>
         <div class='checklist-meta subtitle'>
           by
-          {{#link-to 'users.show' user}}
+          {{#link-to 'user' user}}
             {{user.username}}
           {{/link-to}}
           {{#if countSummary}}
@@ -30,7 +30,7 @@
     </div>
 
     {{#if showDescription}}
-      {{#view 'checklists/description'}}
+      {{#view 'checklist/description'}}
         {{#if description}}
           {{autolink-text description target='_blank'}}&nbsp;
         {{else}}

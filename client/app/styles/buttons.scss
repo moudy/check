@@ -2,10 +2,10 @@
 
 @mixin button-base {
   display: inline-block;
-  cursor: pointer;
   text-align: center;
   font-weight: 700;
   text-transform: capitalize;
+  cursor: pointer;
   &.is-disabled {
     cursor: default;
   }
@@ -68,10 +68,18 @@
 }
 
 .button-text {
-  line-height: inherit;
-  font-weight: bold;
-  color: inherit;
-  display: inline-block;
+  @include button-base();
+  @include button-size-default();
+  font-weight: 200;
+}
+
+.button-action {
+  @include button-base();
+  @include button-size-default();
+  color: $color-text-light-medium;
+  font-weight: 200;
+  &:hover, &.active { color: $color-brand-primary; }
+  &:active { color: lighten($color-brand-primary, 10%); }
 }
 
 .button-edit {

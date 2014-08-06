@@ -25,10 +25,10 @@
 
 .avatar-medium {
   @include avatar-base;
-  @include avatar-size(40px);
+  @include avatar-size(50px);
 }
 
 .avatar-large {
   @include avatar-base;
-  @include avatar-size(50px);
+  @include avatar-size(80px);
 }

@@ -1,0 +1,20 @@
+@import 'base';
+
+.action-bar {
+  line-height: 30px;
+  margin-bottom: 5px;
+  a {
+    line-height: inherit;
+  }
+
+  .flip {
+    display: inline-block;
+    @include transform(rotate(180deg));
+  }
+}
+
+.action-bar-text {
+  color: $color-text-light-medium;
+  font-weight: 200;
+  padding: 0 10px;
+}

@@ -6,7 +6,7 @@ export default Ember.CollectionView.extend(Sortable, {
 
 , classNames: ['checklist-list-items-container', 'content-width']
 
-, itemViewClass: 'checklists/list-item'
+, itemViewClass: 'list-items/item'
 
 , contentBinding: 'controller'
 
@@ -16,3 +16,4 @@ export default Ember.CollectionView.extend(Sortable, {
   }
 
 });
+

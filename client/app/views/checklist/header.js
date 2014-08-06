@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.View.extend({
 
-  templateName: 'checklists/checklist-header'
+  templateName: 'checklist/header'
 
 , actions: {
     edit: function (property) {

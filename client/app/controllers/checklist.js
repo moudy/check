@@ -2,7 +2,11 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 
-  canEdit: function () {
+  needs: ['user']
+
+, userBinding: 'controllers.user.model'
+
+, canEdit: function () {
     return this.session.isCurrentUser(this.get('user'));
   }.property('userId')
 

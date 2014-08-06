@@ -9,6 +9,6 @@ export default DS.Model.extend({
 , userId: attr('string')
 , username: attr('string')
 , description: attr('string')
-, user: DS.belongsTo('user')
+, user: DS.belongsTo('user', {async:true})
 });
 

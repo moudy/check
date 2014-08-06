@@ -24,7 +24,6 @@ ChecklistSchema.virtual('id').get(function(){ return this._id.toHexString(); });
 ChecklistSchema.set('toJSON', {virtuals: true});
 
 ChecklistSchema.pre('validate', function (next) {
-  //SlugSetter.set(this, next);
   this.slug = getSlug(this.title);
   next();
 });

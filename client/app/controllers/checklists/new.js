@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
     this.get('user.checklists').then(function (checklists) {
       checklists.pushObject(checklist);
       self.setProperties({title: null, description: null});
-      self.transitionToRoute('checklists.show', checklist);
+      self.transitionToRoute('checklist.show', checklist);
     });
   }
 

@@ -22,9 +22,9 @@ export default Ember.Route.extend({
     var user = this.session.get('user');
     if (!user) return this._super.apply(this, arguments);
 
-    var controller = this.controllerFor('users/show');
+    var controller = this.controllerFor('dashboard');
     controller.set('model', user);
-    this.render('users/show', {controller: controller});
+    this.render('dashboard', {controller: controller});
   }
 
 });
