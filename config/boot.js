@@ -1,13 +1,13 @@
-var fs            = require('fs');
-var path          = require('path');
-var express       = require('express');
-var passport      = require('passport');
-var bodyParser    = require('body-parser');
-var session       = require('express-session');
-var MongoStore    = require('connect-mongo')(session);
-var projectRouter = require('project-router');
-var view          = require('./view');
-var db            = require('./db');
+var fs             = require('fs');
+var path           = require('path');
+var express        = require('express');
+var passport       = require('passport');
+var bodyParser     = require('body-parser');
+var session        = require('express-session');
+var MongoStore     = require('connect-mongo')(session);
+var projectRouter  = require('project-router');
+var view           = require('./view');
+var db             = require('./db');
 
 module.exports = function (app) {
   var env = process.env;

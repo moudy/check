@@ -2,13 +2,15 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
 
-  itemController: 'checklist/list-item'
+  needs: ['checklist']
 
-, canEditBinding: Ember.Binding.oneWay('parentController.canEdit')
+, itemController: 'list-items/item'
+
+, canEditBinding: Ember.Binding.oneWay('controllers.checklist')
 
 , sortProperties: ['index']
 
-, checklistBinding: Ember.Binding.oneWay('parentController.model')
+, checklistBinding: Ember.Binding.oneWay('controllers.checklist.model')
 
 , selectNextItem: function () {
     Ember.run.once(this, function () {
@@ -37,10 +39,9 @@ export default Ember.ArrayController.extend({
     }
 
   , reorder: function (listItemsIds) {
-      //var url = '/api/checklists/'+this.get('checklist.id')+'/reorder';
       var url = `/api/checklists/${this.get('checklist.id')}/reorder`;
       Ember.$.ajax({
-        type: 'POST'
+        type: 'PUT'
       , url: url
       , data: {listItemsIds: listItemsIds, _method: 'PUT'}
       , dataType: 'json'
