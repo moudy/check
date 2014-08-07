@@ -6,11 +6,9 @@ export default Ember.ArrayController.extend({
 
 , itemController: 'list-items/item'
 
-, canEditBinding: Ember.Binding.oneWay('controllers.checklist')
+, canEditBinding: Ember.Binding.oneWay('controllers.checklist.canEdit')
 
 , sortProperties: ['index']
-
-, checklistBinding: Ember.Binding.oneWay('controllers.checklist.model')
 
 , selectNextItem: function () {
     Ember.run.once(this, function () {

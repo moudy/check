@@ -7,7 +7,6 @@ export default Ember.Component.extend({
 , update: function () {
     Ember.run.once(this, function () {
       var sortValue = this.get('sortValue') || null;
-      console.log(sortValue);
       this.get('sortOptions').forEach(function (option) {
         option.set('active', option.get('value') === sortValue);
       }, this);
