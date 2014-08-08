@@ -24,6 +24,19 @@ export default ApplicationAdapter.extend({
     return url;
   }
 
+, userRecentChecklistsUrl: function (userId) {
+    var url = ['users', userId, 'checklists', 'recently-viewed'];
+    var host = get(this, 'host');
+    var prefix = this.urlPrefix();
+
+    if (prefix) { url.unshift(prefix); }
+
+    url = url.join('/');
+    if (!host && url) { url = '/' + url; }
+
+    return url;
+  }
+
 , createRecord: function(store, type, record) {
     var data = {};
     var serializer = store.serializerFor(type.typeKey);
@@ -35,7 +48,12 @@ export default ApplicationAdapter.extend({
 
 , findQuery: function (store, type, query) {
     var userId;
-    if (query.userId) {
+    if (query.recent && query.userId) {
+      userId = query.userId;
+      delete query.userId;
+      delete query.recent;
+      return this.ajax(this.userRecentChecklistsUrl(userId), 'GET', { data: query });
+    } else if (query.userId) {
       userId = query.userId;
       delete query.userId;
       return this.ajax(this.userChecklistsUrl(userId), 'GET', { data: query });

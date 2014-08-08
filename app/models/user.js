@@ -6,6 +6,7 @@ var UserSchema = new Schema({
 , githubProfileRaw: {type: String, required: true, select: false}
 , gravatarId: {type: String}
 , githubId: {type: String, required:true, trim:true, unique: true, index:true}
+, recentlyViewed: [String]
 });
 
 UserSchema.virtual('id').get(function(){

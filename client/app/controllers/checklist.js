@@ -1,13 +1,16 @@
+import DS from 'ember-data';
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 
-  needs: ['user']
+  canEdit: function () {
+    return this.session.isCurrentUser(this.get('userId'));
+  }.property('userId')
 
-, userBinding: 'controllers.user.model'
-
-, canEdit: function () {
-    return this.session.isCurrentUser(this.get('user'));
+, user: function () {
+    return DS.PromiseObject.create({
+      promise: this.store.find('user', this.get('userId'))
+    });
   }.property('userId')
 
 , showDescription: function () {

@@ -7,23 +7,41 @@ var EXAMPLE_LIST_ITEMS = [
 
 export default Ember.Route.extend({
 
-  afterModel: function () {
+  isAuthenticated: Ember.computed.bool('session.user')
+
+, model: function () {
+    if (!this.get('isAuthenticated')) return;
+    var userId = this.session.get('user.id');
+    var query = { userId: userId };
+    var recentQuery = { userId: userId, recent: true };
+
+    return Ember.RSVP.hash({
+      checklists: this.store.find('checklist', query)
+    , recent: this.store.find('checklist', recentQuery)
+    });
+  }
+
+, afterModel: function () {
     document.title = ['Check'].join(' | ');
   }
 
 , setupController: function (controller) {
-    controller.setProperties({
-      listItems: EXAMPLE_LIST_ITEMS
-    , canEdit: true
-    });
+    if (this.get('isAuthenticated')) {
+    } else {
+      controller.setProperties({
+        listItems: EXAMPLE_LIST_ITEMS
+      , canEdit: true
+      });
+    }
   }
 
-, renderTemplate: function () {
+, renderTemplate: function (controller, model) {
     var user = this.session.get('user');
     if (!user) return this._super.apply(this, arguments);
 
-    var controller = this.controllerFor('dashboard');
-    controller.set('model', user);
+    controller = this.controllerFor('dashboard');
+    controller.set('checklists', model.checklists);
+    controller.set('recent', model.recent);
     this.render('dashboard', {controller: controller});
   }
 

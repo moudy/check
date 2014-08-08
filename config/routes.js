@@ -6,6 +6,8 @@ module.exports = function () {
     this.resource('users', {only: ['show'], resource: User}, function () {
       this.resource('checklists', {only: ['index', 'create'], resource: Checklist }, function () {
         this.collection.get('count');
+        this.collection.get('recently-viewed');
+        this.collection.post('add-recently-viewed');
       });
     });
 

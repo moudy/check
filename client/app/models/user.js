@@ -14,4 +14,13 @@ export default DS.Model.extend({
     });
   }.property('id')
 
+, saveRecentlyViewed: function (checklistId) {
+    return Ember.$.ajax({
+      url: `/api/users/${this.get('id')}/checklists/add-recently-viewed`
+    , type: 'POST'
+    , data: {checklistId: checklistId}
+    , dataType: 'json'
+    });
+  }
+
 });

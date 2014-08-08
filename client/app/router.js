@@ -12,13 +12,12 @@ Router.map(function() {
       //this.route('new');
     });
     this.route('index', {path: '/'});
-
-    this.resource('checklist', {path: '/:slug'}, function () {
-      this.resource('list-items', {path: '/'}, function () {
-      });
-    });
   });
 
+  this.resource('checklist', {path: '/:username/:slug'}, function () {
+    this.resource('list-items', {path: '/'}, function () {
+    });
+  });
 
   this.route('checklists.new', {path: '/new'});
 
