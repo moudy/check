@@ -89,6 +89,11 @@ input, textarea { border-radius: 4px; }
   margin-bottom: 40px;
 }
 
+.loading-container {
+  text-align: center;
+  padding: 100px 0;
+}
+
 @import 'foyer';
 @import 'type';
 @import 'md';
