@@ -4,6 +4,23 @@ $color-border: $color-gray-light;
 $color-border-dark: $color-gray-medium;
 $checklists-list-item-padding: 10px;
 
+/*.button-nav-group {*/
+  /*display: inline-block;*/
+/*}*/
+
+/*.button-nav-item {*/
+  /*display: inline-block;*/
+  /*padding-left: $checklists-list-item-padding;*/
+  /*padding-right: $checklists-list-item-padding;*/
+  /*line-height: 26px;*/
+
+  /*&:hover, &.active { color: $color-brand-primary; }*/
+  /*&.active {*/
+    /*cursor: default;*/
+    /*color: $color-text-default;*/
+  /*}*/
+  /*&:active { color: lighten($color-brand-primary, 10%); }*/
+/*}*/
 
 .checklists-list-container {
   margin-bottom: 40px;

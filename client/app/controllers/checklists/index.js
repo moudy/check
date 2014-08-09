@@ -4,12 +4,6 @@ export default Ember.ArrayController.extend({
 
   needs: ['user/index']
 
-, queryParams: ['sort']
-
-, sort: null
-
-, desc: null
-
 , page: 1
 
 , showLoadMore: function () {
@@ -17,8 +11,6 @@ export default Ember.ArrayController.extend({
   }.property('length', 'count')
 
 , userBinding: 'controllers.user/index.model'
-
-, sortBinding: 'controllers.user/index.sort'
 
 , countBinding: 'controllers.user/index.checklistsTotal'
 

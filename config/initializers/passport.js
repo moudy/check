@@ -19,6 +19,7 @@ module.exports = function () {
       githubProfileRaw: profile._raw
     , gravatarId: githubProfile.gravatar_id
     , username: profile.username
+    , name: profile.name
     };
 
     User.findOrCreate({ githubId: profile.id }, attrs, done);

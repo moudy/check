@@ -3,7 +3,7 @@
   <div class='checklists-list-container'>
     <div class='checklists-list-header'>
       <div class='checklists-list-header-text'>
-        Recently Viewed
+        Recently Viewed Checklists
       </div>
     </div>
     <ul class='checklists-list list-reset'>
@@ -17,6 +17,11 @@
     <div class='checklists-list-header'>
       <div class='checklists-list-header-text'>
         Your Checklists
+        {{#with session.user.checklistsCount}}
+          <span class='count-bubble'>
+            {{total}}
+          </span>
+        {{/with}}
       </div>
     </div>
     {{render 'checklists/index' checklists}}

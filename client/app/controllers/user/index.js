@@ -6,12 +6,8 @@ export default Ember.ObjectController.extend({
     return this.session.isCurrentUser(this.get('id'));
   }.property('userId')
 
-, checklistsTotal: function () {
-    return this.get('checklistCount.total');
-  }.property('checklistCount.total')
-
 , checklistsTitle: function () {
-    return this.get('username')+"'s Checklists";
+    return this.get('firstName')+"'s Checklists";
   }.property('id')
 
 });

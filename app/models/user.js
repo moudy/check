@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
   username: {type: String, required: true, trim: true, lowercase: true, unique: true, index: true}
+, name: {type: String, required: true, trim: true, }
 , githubProfileRaw: {type: String, required: true, select: false}
 , gravatarId: {type: String}
 , githubId: {type: String, required:true, trim:true, unique: true, index:true}

@@ -11,7 +11,10 @@ export default Ember.Route.extend({
 
 , model: function () {
     if (!this.get('isAuthenticated')) return;
-    var userId = this.session.get('user.id');
+
+    var user = this.session.get('user');
+    var userId = user.get('id');
+
     var query = { userId: userId };
     var recentQuery = { userId: userId, recent: true };
 
@@ -40,8 +43,12 @@ export default Ember.Route.extend({
     if (!user) return this._super.apply(this, arguments);
 
     controller = this.controllerFor('dashboard');
-    controller.set('checklists', model.checklists);
-    controller.set('recent', model.recent);
+
+    controller.setProperties({
+      checklists: model.checklists
+    , recent: model.recent
+    });
+
     this.render('dashboard', {controller: controller});
   }
 

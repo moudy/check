@@ -1,13 +1,22 @@
+var Promise = require('rsvp').Promise;
 var ShowRoute = require('project-router-mongoose').show;
 
-var inherits = require('util').inherits;
+module.exports = ShowRoute.extend({
 
-function UsersShowRoute () {}
-inherits(UsersShowRoute, ShowRoute);
-module.exports = UsersShowRoute;
+  model: function () {
+    return this.resource.findOneByWhatever(this.param('id')).exec();
+  }
 
-var p = UsersShowRoute.prototype;
+, afterModel: function (user) {
+    if (user.name) return;
+    // Remove this jank when names are all there
+    return new Promise(function (resolve) {
+      return this.resource.findOneByWhatever(this.param('id'))
+        .select('githubProfileRaw').exec().then(function (user) {
+          user.name = JSON.parse(user.githubProfileRaw).name;
+          user.save(function () { resolve(); });
+        });
+    }.bind(this));
+  }
 
-p.model = function () {
-  return this.resource.findOneByWhatever(this.param('id')).exec();
-};
+});

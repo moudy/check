@@ -1,13 +1,10 @@
-var inherits = require('util').inherits;
 var Route = require('project-router').Route;
 
-function ApiSessionsDestroyRoute () {}
-inherits(ApiSessionsDestroyRoute, Route);
-module.exports = ApiSessionsDestroyRoute;
+module.exports = Route.extend({
 
-var p = ApiSessionsDestroyRoute.prototype;
+  enter: function () {
+    this.request.logout();
+  }
 
-p.enter = function () {
-  this.request.logout();
-};
+});
 

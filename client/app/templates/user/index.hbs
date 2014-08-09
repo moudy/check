@@ -1,22 +1,24 @@
 <div class='content-width'>
   <div class='user-hero'>
-    <img class='avatar-medium' {{bind-attr src=profileImageUrl}} {{bind-attr alt=username}} />
-    <h2 class='users-hero-username'>
-      {{username}}
+    <img class='avatar-large' {{bind-attr src=profileImageUrl}} {{bind-attr alt=username}} />
+    <h2 class='user-hero-name'>
+      {{name}}
     </h2>
+    <div class='user-hero-username'>
+      {{username}}
+    </div>
   </div>
 
   <div class='checklists-list-container'>
     <div class='checklists-list-header'>
       <div class='checklists-list-header-text'>
-        {{checklistsTitle}} ({{checklistsTotal}})
+        {{checklistsTitle}}
+        {{#with checklistsCount}}
+          <span class='count-bubble'>
+            {{total}}
+          </span>
+        {{/with}}
       </div>
-
-      {{checklists-sort-controls
-        sortValue=sort
-        action='sortChange'
-        class='right'
-      }}
     </div>
     {{outlet}}
   </div>

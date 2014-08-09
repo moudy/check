@@ -1,0 +1,11 @@
+.count-bubble {
+  $size: 18px;
+  display: inline-block;
+  border-radius: $size/2;
+  background-color: $color-gray-medium;
+  text-align: center;
+  min-width: $size;
+  height: $size;
+  line-height: $size;
+  font-size: 12px;
+}

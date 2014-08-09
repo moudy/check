@@ -73,15 +73,6 @@
   font-weight: 200;
 }
 
-.button-action {
-  @include button-base();
-  @include button-size-default();
-  color: $color-text-light-medium;
-  font-weight: 200;
-  &:hover, &.active { color: $color-brand-primary; }
-  &:active { color: lighten($color-brand-primary, 10%); }
-}
-
 .button-edit {
   @include button-base();
   width: 24px;
