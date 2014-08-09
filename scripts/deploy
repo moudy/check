@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 cd ./client
-ember build -e production
+ember build --environment=production
 cd ..
 
 ./scripts/build-assets
