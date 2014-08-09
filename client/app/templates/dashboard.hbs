@@ -1,9 +1,25 @@
-<div class='content-width'>
+<div class='content-width dashboard'>
 
-  <h2>Recently Viewed</h2>
-  {{render 'checklists/index' recent}}
+  <div class='checklists-list-container'>
+    <div class='checklists-list-header'>
+      <div class='checklists-list-header-text'>
+        Recently Viewed
+      </div>
+    </div>
+    <ul class='checklists-list list-reset'>
+      {{#each recent}}
+        {{partial 'checklists/list-item'}}
+      {{/each}}
+    </ul>
+  </div>
 
-  <h2>Your Checklists</h2>
+  <div class='checklists-list-container'>
+    <div class='checklists-list-header'>
+      <div class='checklists-list-header-text'>
+        Your Checklists
+      </div>
+    </div>
+    {{render 'checklists/index' checklists}}
+  </div>
 
-  {{render 'checklists/index' checklists}}
 </div>

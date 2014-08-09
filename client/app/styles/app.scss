@@ -84,15 +84,20 @@ input, textarea { border-radius: 4px; }
   margin-right: 10px;
 }
 
+.dashboard {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
 @import 'foyer';
 @import 'type';
 @import 'md';
 @import 'avatar';
 @import 'header';
 @import 'user-hero';
-@import 'action-bar';
+@import 'checklists-sort-controls';
+@import 'checklists-list';
 @import 'checklist';
-@import 'checklist_item';
 @import 'checklist_list_item';
 @import 'buttons';
 @import 'vendor/github';

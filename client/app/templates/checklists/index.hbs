@@ -1,18 +1,15 @@
-<ul class='checklists list-reset'>
-  {{#each checklist in model}}
-  <li>
-  {{#link-to 'checklist' checklist class='checklist-item'}}
-  <h2 class='checklist-item-title'>{{checklist.title}}</h2>
-  <span class='checklist-item-list-count right'>{{checklist.listItems.length}}</span>
-  {{/link-to}}
-  </li>
+<ul class='checklists-list list-reset'>
+  {{#each}}
+    {{partial 'checklists/list-item'}}
   {{else}}
-  {{#if isCurrentUserProfile}}
-  No lists yet.
-  {{#link-to 'checklist.new' class='button'}}Create one{{/link-to}}
-  {{else}}
-  Nothing here yet.
-  {{/if}}
+    {{#if isCurrentUserProfile}}
+      No lists yet.
+      {{#link-to 'checklist.new' class='button'}}
+        Create one
+      {{/link-to}}
+    {{else}}
+      Nothing here yet.
+    {{/if}}
   {{/each}}
 </ul>
 

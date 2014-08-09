@@ -2,7 +2,14 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
-  classNames: ['action-bar']
+  classNames: ['checklists-list-sort-controls']
+
+, sortValue: null
+
+, sortOptions: [
+    Ember.Object.create({ title: 'Recent', value: null})
+  , Ember.Object.create({ title: 'A-Z', value: 'title'})
+  ]
 
 , update: function () {
     Ember.run.once(this, function () {

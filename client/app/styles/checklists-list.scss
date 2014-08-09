@@ -1,0 +1,58 @@
+@import 'base';
+
+$color-border: $color-gray-light;
+$color-border-dark: $color-gray-medium;
+$checklists-list-item-padding: 10px;
+
+
+.checklists-list-container {
+  margin-bottom: 40px;
+}
+
+.checklists-list-header {
+  line-height: 40px;
+  font-size: 14px;
+  .checklists-list-sort-controls {
+    display: inline-block;
+  }
+}
+
+.checklists-list-header-text {
+  display: inline-block;
+  padding-left: $checklists-list-item-padding;
+  padding-right: $checklists-list-item-padding;
+}
+
+.checklists-list {
+  border: 1px solid $color-border-dark;
+  border-radius: 4px;
+  overflow: hidden;
+  li:first-of-type .checklists-list-item {
+    border-top: 0 none;
+  }
+}
+
+.checklists-list-item {
+  display: block;
+  padding: $checklists-list-item-padding;
+  border-top: 1px solid $color-border;
+  background-color: white;
+}
+
+.checklists-list-item-title {
+  @include h2();
+  display: inline-block;
+  margin: 0;
+  $line-height: 16px;
+  min-height: $line-height;
+}
+
+.checklists-list-item-list-count {
+  color: $color-text-light-medium;
+  line-height: 24px;
+}
+
+.checklists-list-footer {
+  text-align: center;
+  margin-top: 10px;
+}

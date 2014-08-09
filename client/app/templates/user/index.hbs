@@ -6,16 +6,18 @@
     </h2>
   </div>
 
-  <div class='checklists-container'>
-    {{#action-bar
-      sortOptions=sortOptions
-      sortValue=sort
-      action='sortChange'
-    }}
-    <div class='right action-bar-text'>
-      {{checklistsTotal}} Checklists
+  <div class='checklists-list-container'>
+    <div class='checklists-list-header'>
+      <div class='checklists-list-header-text'>
+        {{checklistsTitle}} ({{checklistsTotal}})
+      </div>
+
+      {{checklists-sort-controls
+        sortValue=sort
+        action='sortChange'
+        class='right'
+      }}
     </div>
-    {{/action-bar}}
     {{outlet}}
   </div>
 </div>
