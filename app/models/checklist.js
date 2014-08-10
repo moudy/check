@@ -10,6 +10,7 @@ var ChecklistSchema = new Schema({
 , slug: {type: String, required:true, trim:true}
 , username: {type: String, required:true, trim:true}
 , description: {type: String}
+, body: {type: String}
 , listItems: [ListItemSchema]
 , listItemsOrder: {type: String}
 , userId: {type: ObjectId, required: true}

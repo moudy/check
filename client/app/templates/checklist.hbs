@@ -3,7 +3,7 @@
 {{outlet}}
 
 {{#if canEdit}}
-<div class='content-width'>
+<div>
   <a {{action 'addItem'}} href='#' class='checklist-list-item checklist-add-item-row block action-dormant'>
     <span class='checkbox-container'>&#10010;</span>
     Add Item...
@@ -23,3 +23,9 @@
     <a href='#' class='button right' {{action 'clear'}}>clear</a>
   </div>
 </div>
+
+{{#if isEditing}}
+<div class='checklist-body-edit-container'>
+  {{textarea value=body}}
+</div>
+{{/if}}

@@ -53,7 +53,6 @@
 }
 
 .checklist-description {
-  margin-top: 15px;
   padding: 4px 0;
 }
 
@@ -67,7 +66,10 @@
     }
   }
 
-
+  &.is-editing .checklist-list-items-container {
+    @include transform(translateX(-50%));
+    width: 50%;
+  }
 }
 
 .add-description-prompt {
@@ -125,4 +127,19 @@
 
 .checklist-show {
   margin-top: 40px;
+}
+
+.checklist-body-edit-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  right: 0;
+  padding: 100px 40px;
+  background-color: #aaa;
+
+  textarea {
+    width: 100%;
+    display: block;
+  }
 }

@@ -4,7 +4,7 @@ import Sortable from '../../mixins/sortable';
 export default Ember.CollectionView.extend(Sortable, {
   tagName: 'ul'
 
-, classNames: ['checklist-list-items-container', 'content-width']
+, classNames: ['checklist-list-items-container']
 
 , itemViewClass: 'list-items/item'
 
