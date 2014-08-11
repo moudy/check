@@ -1,12 +1,15 @@
 @import 'base';
 
 .checklist-header {
-  margin: 30px 0 15px;
+  padding-top: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid $border-color;
+  background-color: white;
+}
 
-  .checklist-meta {
-    padding: 0 2px;
-  }
-
+.checklist-controls-bar {
+  padding: 10px;
+  margin-top: 10px;
 }
 
 .can-edit {
@@ -86,30 +89,6 @@
 .checklist-list-items {
   position: relative;
   margin-bottom: 20px;
-}
-
-.checklist-status-bar {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  line-height: 50px;
-  background-color: white;
-  border-top: 1px solid $color-gray-medium;
-  @include transform(translateY(100%));
-  @include transition-property(transform);
-  @include transition-duration(200ms);
-  @include transition-timing-function(ease-out);
-
-  .button {
-    position: relative;
-    top: 10px;
-  }
-}
-
-.is-in-progress .checklist-status-bar {
-  @include transition-timing-function(ease-out);
-  @include transition-duration(100ms);
-  @include transform(translateY(0%));
 }
 
 .checklist-status-message {

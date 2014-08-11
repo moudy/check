@@ -1,24 +1,21 @@
-<header class='checklist-header'>
-
+<div class='content-width'>
   <h1 class='checklists-show-title editable-field' {{action 'edit' 'title' target=view}}>
     {{#if title}}
-    {{title}}&nbsp;
+      {{title}}&nbsp;
     {{else}}
-    <span class='add-description-prompt'>Add a Title...</span>
+      <span class='add-description-prompt'>Add a Title...</span>
     {{/if}}
-
     {{#if isEditingTitle}}
-    {{view 'text-field' valueBinding='title' placeholder='List title' property='title' focusOnInsert=true}}
+      {{view 'text-field'
+        valueBinding='title'
+        placeholder='List title'
+        property='title'
+        focusOnInsert=true}}
     {{/if}}
   </h1>
-  <span class='checklist-meta subtitle'>
-    by
-    {{#link-to 'user' user}}
-    {{user.username}}
+  <span class='subtitle'>by {{#link-to 'user' user}}
+      {{user.username}}
     {{/link-to}}
-    {{#if countSummary}}
-    &middot; {{countSummary}}
-    {{/if}}
   </span>
 
   {{#if showDescription}}
@@ -30,9 +27,12 @@
       {{/if}}
 
       {{#if isEditingDescription}}
-        {{view 'textarea' valueBinding='description' property='description' focusOnInsert=true}}
+        {{view 'textarea'
+          valueBinding='description'
+          property='description'
+          focusOnInsert=true}}
       {{/if}}
     {{/view}}
   {{/if}}
 
-</header>
+</div>

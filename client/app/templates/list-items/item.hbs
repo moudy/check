@@ -24,11 +24,11 @@
   </div>
 {{/if}}
 
-<div class='md-container'>
-  <label class='checkbox-container'>
-    {{input type="checkbox" name="isCompleted" checked=isCompleted}}
-  </label>
+<label class='checkbox-container'>
+  {{input type="checkbox" name="isCompleted" checked=isCompleted}}
+</label>
 
+<div class='md-container'>
   <div class='md'>
     {{#if description}}
       {{markdown-text description}}

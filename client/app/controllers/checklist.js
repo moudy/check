@@ -60,9 +60,9 @@ export default Ember.ObjectController.extend({
     , 'totalCount');
 
     if (status.isCompleted) {
-      return 'All '+status.completedCount+' items completed!';
+      return 'All '+status.completedCount+' steps completed!';
     } else if (!status.isInProgress) {
-      return status.uncompletedCount+' items';
+      return status.uncompletedCount+' steps';
     } else {
       return +status.completedCount+' of '+status.totalCount + ' complete';
     }

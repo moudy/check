@@ -1,11 +1,26 @@
 {{view 'checklist/header'}}
 
-{{outlet}}
+<div class='checklist-controls-bar'>
+  <div class='content-width'>
+    <span class='checklist-status-message'>{{statusMessage}}</span>
+    {{#if isInProgress}}
+    &middot;
+      <a href='#' {{action 'clear'}}>Clear</a>
+    {{/if}}
+
+    <div class='right'>
+      <a href='#' {{action 'toggleEdit'}}>Edit</a>
+    </div>
+  </div>
+</div>
+
+<div class='content-width'>
+  {{outlet}}
 
 {{#if canEdit}}
 <div>
-  <a {{action 'addItem'}} href='#' class='checklist-list-item checklist-add-item-row block action-dormant'>
-    <span class='checkbox-container'>&#10010;</span>
+  <a {{action 'addItem'}} href='#' class='checklist-add-item-row block action-dormant'>
+    &#10010;
     Add Item...
   </a>
 
@@ -17,11 +32,6 @@
 </div>
 {{/if}}
 
-<div class='checklist-status-bar'>
-  <div class='content-width'>
-    <span class='checklist-status-message'>{{statusMessage}}</span>
-    <a href='#' class='button right' {{action 'clear'}}>clear</a>
-  </div>
 </div>
 
 {{#if isEditing}}

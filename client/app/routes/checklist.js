@@ -7,7 +7,8 @@ export default Ember.Route.extend({
 
 , afterModel: function (model) {
     document.title = [model.get('title'), model.get('username')].join(' | ');
-    this.session.get('user').saveRecentlyViewed(model.get('id'));
+    var user = this.session.get('user');
+    if (user) user.saveRecentlyViewed(model.get('id'));
   }
 
 , serialize: function(model) {

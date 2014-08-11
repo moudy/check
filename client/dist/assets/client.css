@@ -367,7 +367,7 @@ input, textarea {
 
 .content-width {
   margin: 0 auto;
-  max-width: 600px; }
+  max-width: 700px; }
 
 .content-inset {
   padding-left: 10px;
@@ -551,7 +551,8 @@ input, textarea {
   z-index: 10;
   position: relative;
   height: 40px;
-  line-height: 40px; }
+  line-height: 40px;
+  border-bottom: 1px solid #ddd; }
 
 .header-logo {
   width: 40px;
@@ -586,19 +587,6 @@ input, textarea {
 .user-hero-username {
   font-size: 16px;
   color: #a7a7a7; }
-
-.checklists-sort-controls {
-  line-height: 30px;
-  margin-bottom: 5px; }
-  .checklists-sort-controls a {
-    line-height: inherit; }
-  .checklists-sort-controls .flip {
-    display: inline-block;
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    transform: rotate(180deg); }
 
 /*.button-nav-group {*/
 /*display: inline-block;*/
@@ -659,9 +647,14 @@ input, textarea {
   margin-top: 10px; }
 
 .checklist-header {
-  margin: 30px 0 15px; }
-  .checklist-header .checklist-meta {
-    padding: 0 2px; }
+  padding-top: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  background-color: white; }
+
+.checklist-controls-bar {
+  padding: 10px;
+  margin-top: 10px; }
 
 .can-edit .editable-field {
   cursor: text; }
@@ -724,44 +717,6 @@ input, textarea {
   position: relative;
   margin-bottom: 20px; }
 
-.checklist-status-bar {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  line-height: 50px;
-  background-color: white;
-  border-top: 1px solid #ddd;
-  -webkit-transform: translateY(100%);
-  -moz-transform: translateY(100%);
-  -ms-transform: translateY(100%);
-  -o-transform: translateY(100%);
-  transform: translateY(100%);
-  -webkit-transition-property: -webkit-transform;
-  -moz-transition-property: -moz-transform;
-  transition-property: transform;
-  -webkit-transition-duration: 200ms;
-  -moz-transition-duration: 200ms;
-  transition-duration: 200ms;
-  -webkit-transition-timing-function: ease-out;
-  -moz-transition-timing-function: ease-out;
-  transition-timing-function: ease-out; }
-  .checklist-status-bar .button {
-    position: relative;
-    top: 10px; }
-
-.is-in-progress .checklist-status-bar {
-  -webkit-transition-timing-function: ease-out;
-  -moz-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-  -webkit-transition-duration: 100ms;
-  -moz-transition-duration: 100ms;
-  transition-duration: 100ms;
-  -webkit-transform: translateY(0%);
-  -moz-transform: translateY(0%);
-  -ms-transform: translateY(0%);
-  -o-transform: translateY(0%);
-  transform: translateY(0%); }
-
 .checklist-status-message {
   font-size: 14px;
   color: #a7a7a7;
@@ -793,19 +748,18 @@ input, textarea {
 
 .checklist-list-item-placeholder, .checklist-list-item {
   position: relative;
-  margin-top: 10px;
   margin-bottom: 10px;
-  width: 100%; }
-  .checklist-list-item-placeholder.is-completed .md-container, .checklist-list-item.is-completed .md-container {
-    box-shadow: inset 0 1px 1px #aaa; }
-  .checklist-list-item-placeholder.is-completed .md, .checklist-list-item.is-completed .md {
-    opacity: 0.5; }
+  width: 100%;
+  border: 1px solid #ddd; }
+  .checklist-list-item-placeholder.is-completed, .checklist-list-item.is-completed {
+    /*.md-container { @include item-container-box-shadow-inset; }*/ }
+    .checklist-list-item-placeholder.is-completed .md, .checklist-list-item.is-completed .md {
+      opacity: 0.5; }
   .checklist-list-item-placeholder.is-editing, .checklist-list-item.is-editing {
-    z-index: 1000; }
+    z-index: 1000;
+    /*.md-container { @include item-container-box-shadow; }*/ }
     .checklist-list-item-placeholder.is-editing .checkbox-container, .checklist-list-item.is-editing .checkbox-container {
       display: none; }
-    .checklist-list-item-placeholder.is-editing .md-container, .checklist-list-item.is-editing .md-container {
-      box-shadow: 0 1px 1px #aaa; }
     .checklist-list-item-placeholder.is-editing .md, .checklist-list-item.is-editing .md {
       opacity: 1; }
   .checklist-list-item-placeholder .blanket, .checklist-list-item .blanket {
@@ -828,9 +782,7 @@ input, textarea {
     right: 0; }
   .checklist-list-item-placeholder .md-container, .checklist-list-item .md-container {
     background-color: white;
-    border: 1px solid #eee;
-    min-height: 40px;
-    box-shadow: 0 1px 1px #aaa; }
+    min-height: 40px; }
     .checklist-list-item-placeholder .md-container .button-edit, .checklist-list-item .md-container .button-edit {
       opacity: 0; }
     .checklist-list-item-placeholder .md-container:hover .button-edit, .checklist-list-item .md-container:hover .button-edit {
@@ -849,30 +801,23 @@ input, textarea {
   .checklist-list-item-placeholder:hover .sort-handle-container, .checklist-list-item:hover .sort-handle-container {
     display: block; }
   .checklist-list-item-placeholder .checkbox-container, .checklist-list-item .checkbox-container {
+    background-color: #eee;
     position: absolute;
-    top: 50%;
-    left: -50px;
-    -webkit-transform: translateY(-20px);
-    -moz-transform: translateY(-20px);
-    -ms-transform: translateY(-20px);
-    -o-transform: translateY(-20px);
-    transform: translateY(-20px); }
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 40px;
+    cursor: pointer;
+    text-align: center;
+    display: block; }
+    .checklist-list-item-placeholder .checkbox-container input, .checklist-list-item .checkbox-container input {
+      cursor: pointer;
+      height: 100%; }
+  .checklist-list-item-placeholder .md-container, .checklist-list-item .md-container {
+    margin-left: 40px; }
 
 .is-completed .checkbox-container {
-  border: 1px solid #00f300;
   background-color: #f0ffef; }
-
-.checkbox-container {
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  border-radius: 2px;
-  border: 1px dotted #ddd;
-  display: inline-block; }
-  .checkbox-container input {
-    cursor: pointer; }
 
 .sort-handle {
   width: 30px;
@@ -909,7 +854,7 @@ input, textarea {
     border: 0 none;
     padding: 6px; }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1400px) {
   .checklist-list-item.is-editing .md-container {
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
@@ -1093,11 +1038,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-chunk {
   color: #aaa; }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .checklist-list-item, .checklist-item {
     border-right: 0 none; } }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .checklist-list-item.is-editing-md .md {
     left: -50%; }
   .checklist-list-item.is-editing-md textarea {

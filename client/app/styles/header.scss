@@ -11,6 +11,7 @@ $header-background-color: darken($background-color, 5%);
   position: relative;
   height: $header-height;
   line-height: $header-height;
+  border-bottom: 1px solid $border-color;
 }
 
 .header-logo {
