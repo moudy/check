@@ -9,33 +9,43 @@
     {{/if}}
 
     <div class='right'>
-      <a href='#' {{action 'toggleEdit'}}>Edit</a>
+      {{#if canEdit}}
+        {{#if isEditing}}
+          Steps are seperated by '[x]' and formatted with Markdown
+          &middot;
+        {{/if}}
+        <a href='#' {{action 'toggleEdit'}}>
+          {{#if isEditing}}
+            Done Editing
+          {{else}}
+            Edit Checklist
+          {{/if}}
+        </a>
+      {{/if}}
     </div>
   </div>
 </div>
 
 <div class='content-width'>
-  {{outlet}}
+  {{#if showListItems}}
+  {{#each listItems itemController='list-items/item'}}
+    {{view 'list-items/item'}}
+  {{/each}}
+  {{/if}}
 
-{{#if canEdit}}
-<div>
-  <a {{action 'addItem'}} href='#' class='checklist-add-item-row block action-dormant'>
-    &#10010;
-    Add Item...
-  </a>
-
-  <div class='checklist-footer'>
-    <a {{action 'delete_'}} href='#' class='block right action-dormant-danger'>
-      Delete List
-    </a>
+  {{#if isEditing}}
+  <div class='checklist-body-edit-container'>
+    <div class='zebra-stripes'>
+      {{#each zebraStripes}}
+        <div class='zebra-stripe' {{bind-attr style=style}}></div>
+      {{/each}}
+    </div>
+    <div class='textarea-copy'>{{body}}&nbsp;</div>
+    {{focusable-textarea
+      value=body
+      action='bodyDidFocusOut'
+      focusOnInsert=true}}
   </div>
-</div>
-{{/if}}
+  {{/if}}
 
 </div>
-
-{{#if isEditing}}
-<div class='checklist-body-edit-container'>
-  {{textarea value=body}}
-</div>
-{{/if}}
