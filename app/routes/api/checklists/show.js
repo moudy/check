@@ -1,17 +1,23 @@
-var inherits = require('util').inherits;
+var RSVP = require('rsvp');
 var ShowRoute = require('project-router-mongoose').show;
 
-function ApiChecklitsShowRoute () {}
-inherits(ApiChecklitsShowRoute, ShowRoute);
-module.exports = ApiChecklitsShowRoute;
+module.exports = ShowRoute.extend({
 
-var p = ApiChecklitsShowRoute.prototype;
+  findRecord: function () {
+    return this.resource.findOneByWhatever(this.param('id')).exec();
+  }
 
-p.findRecord = function () {
-  return this.resource.findOneByWhatever(this.param('id')).exec();
-};
+, afterModel: function (model) {
+    if (!model) this.reject(404, 'Not found');
+    if (!model.listItems) return;
 
-p.afterModel = function (model) {
-  if (!model) this.reject(404, 'Not found');
-};
+    model.body = model.listItems.map(function (i) {
+      return i.description;
+    }).join('\n[x]\n');
 
+    model.listItems = null;
+    var save = RSVP.denodeify(model.save.bind(model));
+    return save();
+  }
+
+});

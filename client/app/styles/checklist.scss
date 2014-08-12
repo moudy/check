@@ -1,12 +1,15 @@
 @import 'base';
 
 .checklist-header {
-  margin: 30px 0 15px;
+  padding-top: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid $border-color;
+  background-color: white;
+}
 
-  .checklist-meta {
-    padding: 0 2px;
-  }
-
+.checklist-controls-bar {
+  padding: 10px;
+  margin-top: 10px;
 }
 
 .can-edit {
@@ -53,7 +56,6 @@
 }
 
 .checklist-description {
-  margin-top: 15px;
   padding: 4px 0;
 }
 
@@ -67,7 +69,10 @@
     }
   }
 
-
+  &.is-editing .checklist-list-items-container {
+    @include transform(translateX(-50%));
+    width: 50%;
+  }
 }
 
 .add-description-prompt {
@@ -86,30 +91,6 @@
   margin-bottom: 20px;
 }
 
-.checklist-status-bar {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  line-height: 50px;
-  background-color: white;
-  border-top: 1px solid $color-gray-medium;
-  @include transform(translateY(100%));
-  @include transition-property(transform);
-  @include transition-duration(200ms);
-  @include transition-timing-function(ease-out);
-
-  .button {
-    position: relative;
-    top: 10px;
-  }
-}
-
-.is-in-progress .checklist-status-bar {
-  @include transition-timing-function(ease-out);
-  @include transition-duration(100ms);
-  @include transform(translateY(0%));
-}
-
 .checklist-status-message {
   font-size:14px;
   color: $color-text-light-medium;
@@ -125,4 +106,47 @@
 
 .checklist-show {
   margin-top: 40px;
+}
+
+.checklist-body-edit-container {
+  $padding: 20px;
+  $line-height: 20px;
+  position: relative;
+  border: 1px solid $border-color;
+  background-color: white;
+  overflow: hidden;
+
+  textarea {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    display: block;
+    height: 100%;
+    resize: none;
+    border: 0 none;
+    background-color: transparent;
+    padding: 0;
+  }
+  .textarea-copy {
+    white-space: pre-wrap;
+    visibility: hidden;
+  }
+  textarea, .textarea-copy {
+    padding: $padding;
+    line-height: $line-height;
+  }
+
+  .zebra-stripes {
+    position: relative;
+    margin: $padding;
+  }
+  .zebra-stripe {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2000px;
+    border-top: 1px dashed $color-gray-medium;
+    &:first-of-type { border: 0 none; }
+  }
 }

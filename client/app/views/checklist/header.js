@@ -4,6 +4,10 @@ export default Ember.View.extend({
 
   templateName: 'checklist/header'
 
+, tagName: 'header'
+
+, classNames: ['checklist-header']
+
 , actions: {
     edit: function (property) {
       if (this.get('controller.canEdit')) this.toggleEditState(property, true);

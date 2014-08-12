@@ -1,47 +1,38 @@
-<header class='checklist-header'>
-  <div class='content-width'>
-    <div class='media'>
-      {{#link-to 'user' user class='avatar-medium media-left'}}
-        <img {{bind-attr src='user.profileImageUrl'}} {{bind-attr alt='user.username'}} />
-      {{/link-to}}
-
-      <div class='media-body'>
-        <h1 class='checklists-show-title editable-field' {{action 'edit' 'title' target=view}}>
-          {{#if title}}
-            {{title}}&nbsp;
-          {{else}}
-            <span class='add-description-prompt'>Add a Title...</span>
-          {{/if}}
-
-          {{#if isEditingTitle}}
-            {{view 'text-field' valueBinding='title' placeholder='List title' property='title' focusOnInsert=true}}
-          {{/if}}
-        </h1>
-        <div class='checklist-meta subtitle'>
-          by
-          {{#link-to 'user' user}}
-            {{user.username}}
-          {{/link-to}}
-          {{#if countSummary}}
-            &middot; {{countSummary}}
-          {{/if}}
-        </div>
-      </div>
-    </div>
-
-    {{#if showDescription}}
-      {{#view 'checklist/description'}}
-        {{#if description}}
-          {{autolink-text description target='_blank'}}&nbsp;
-        {{else}}
-          <span class='add-description-prompt'>Add a description...</span>
-        {{/if}}
-
-        {{#if isEditingDescription}}
-          {{view 'textarea' valueBinding='description' property='description' focusOnInsert=true}}
-        {{/if}}
-      {{/view}}
+<div class='content-width'>
+  <h1 class='checklists-show-title editable-field' {{action 'edit' 'title' target=view}}>
+    {{#if title}}
+      {{title}}&nbsp;
+    {{else}}
+      <span class='add-description-prompt'>Add a Title...</span>
     {{/if}}
+    {{#if isEditingTitle}}
+      {{view 'text-field'
+        valueBinding='title'
+        placeholder='List title'
+        property='title'
+        focusOnInsert=true}}
+    {{/if}}
+  </h1>
+  <span class='subtitle'>by {{#link-to 'user' user}}
+      {{user.username}}
+    {{/link-to}}
+  </span>
 
-  </div>
-</header>
+  {{#if showDescription}}
+    {{#view 'checklist/description'}}
+      {{#if description}}
+        {{autolink-text description target='_blank'}}&nbsp;
+      {{else}}
+        <span class='add-description-prompt'>Add a description...</span>
+      {{/if}}
+
+      {{#if isEditingDescription}}
+        {{view 'textarea'
+          valueBinding='description'
+          property='description'
+          focusOnInsert=true}}
+      {{/if}}
+    {{/view}}
+  {{/if}}
+
+</div>

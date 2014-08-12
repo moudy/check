@@ -1,11 +1,41 @@
 import DS from 'ember-data';
 import Ember from 'ember';
 
+var DEFAULT_BODY = '[x] Your first step...';
+
+function isNotBlank (str) {
+  return str && str.trim();
+}
+
 export default Ember.ObjectController.extend({
 
   canEdit: function () {
     return this.session.isCurrentUser(this.get('userId'));
   }.property('userId')
+
+, listItems: function () {
+    var body = this.get('body');
+    var items = body.split(/\[x\]/m).filter(isNotBlank);
+
+    return items.map(function (item) {
+      return Ember.Object.create({text: item, isCompleted: false});
+    });
+  }.property('body')
+
+, body: function () {
+    return this.get('model.body') || DEFAULT_BODY;
+  }.property('model.body')
+
+, zebraStripes: function () {
+    var base = 0;
+    return this.get('listItems').map((li) => {
+      var value = base;
+      base = base + ((li.get('text').split('\n').length - 1) * 20);
+      return {
+        style: `top: ${value}px;`
+      };
+    });
+  }.property('listItems.@each')
 
 , user: function () {
     return DS.PromiseObject.create({
@@ -13,43 +43,27 @@ export default Ember.ObjectController.extend({
     });
   }.property('userId')
 
-, showDescription: function () {
-    return this.get('description') || this.get('canEdit');
-  }.property('description', 'canEdit')
+, showListItems: Ember.computed.not('isEditing')
 
-, totalCount: function () {
-    return this.get('listItems.length');
-  }.property('listItems.@each.isCompleted')
+, showDescription: Ember.computed.or('description', 'canEdit')
 
-, countSummary: function () {
-    var len = this.get('listItems.length');
-    var word = len === 1 ? 'step' : 'steps';
-    if (len) return len+' '+word;
-  }.property('listItems.length')
+, totalCount: Ember.computed.alias('listItems.length')
 
-, uncompletedCount: function () {
-    return this.get('listItems').filter(function (i) {
-      return !i.get('isCompleted');
-    }).get('length');
-  }.property('listItems.@each.isCompleted')
+, uncompletedItems: Ember.computed.filterBy('listItems', 'isCompleted', false)
 
-, completedCount: function () {
-    return this.get('listItems').filter(function (i) {
-      return !!i.get('isCompleted');
-    }).get('length');
-  }.property('listItems.@each.isCompleted')
+, completedItems: Ember.computed.filterBy('listItems', 'isCompleted', true)
 
-, isCompleted: Ember.computed.equal('uncompletedCount', 0).property('listItems.@each.isCompleted')
+, uncompletedCount: Ember.computed.alias('uncompletedItems.length')
 
-, isInProgress: Ember.computed.gt('completedCount', 0).property('listItems.@each.isCompleted')
+, completedCount: Ember.computed.alias('completedItems.length')
 
-, isClearable: function () {
-    return this.get('isInProgress') && !this.get('isEditing');
-  }.property('isInProgress', 'isEditing')
+, isCompleted: Ember.computed.equal('uncompletedCount', 0)
 
-, isEditable: function () {
-    return this.session.isCurrentUser(this.get('userId'));
-  }.property()
+, isInProgress: Ember.computed.gt('completedCount', 0)
+
+, isNotEditing: Ember.computed.not('isEditing')
+
+, isClearable: Ember.computed.and('isInProgress', 'isNotEditing')
 
 , statusMessage: function () {
     var status = this.getProperties(
@@ -60,23 +74,23 @@ export default Ember.ObjectController.extend({
     , 'totalCount');
 
     if (status.isCompleted) {
-      return 'All '+status.completedCount+' items completed!';
+      return 'All '+status.completedCount+' steps completed!';
     } else if (!status.isInProgress) {
-      return status.uncompletedCount+' items';
+      return status.totalCount + ' ' + (status.totalCount === 1 ? 'step' : 'steps');
     } else {
       return +status.completedCount+' of '+status.totalCount + ' complete';
     }
   }.property('listItems.@each.isCompleted')
 
 , updateUrl: function () {
-    var pathname = '/'+[this.get('username'), this.get('slug')].join('/');
-    var windowPathname = window.location.pathname;
-    var title = this.get('title');
-    if (windowPathname !== pathname) {
-      Ember.run.once(function(){
+    Ember.run.once(this, function () {
+      var pathname = '/'+[this.get('username'), this.get('slug')].join('/');
+      var windowPathname = window.location.pathname;
+      var title = this.get('title');
+      if (windowPathname !== pathname) {
         window.history.replaceState( {} , title, pathname);
-      });
-    }
+      }
+    });
   }.observes('slug')
 
 , actions: {
@@ -92,15 +106,8 @@ export default Ember.ObjectController.extend({
       this.toggleProperty('isEditing');
     }
 
-  , childViewDidFocusOut: function () {
+  , bodyDidFocusOut: function () {
       if (this.get('model.isDirty')) this.send('save');
-    }
-
-  , addItem: function () {
-      var checklistId = this.get('id');
-      var attrs = {checklistId: checklistId, index: this.get('listItems.length')};
-      var listItem = this.store.createRecord('listItem', attrs);
-      this.get('model.listItems').pushObject(listItem);
     }
 
   }
