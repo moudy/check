@@ -31,10 +31,10 @@ export default Ember.Route.extend({
 , setupController: function (controller) {
     if (this.get('isAuthenticated')) {
     } else {
-      controller.setProperties({
-        listItems: EXAMPLE_LIST_ITEMS
-      , canEdit: true
-      });
+      //controller.setProperties({
+        //listItems: EXAMPLE_LIST_ITEMS
+      //, canEdit: true
+      //});
     }
   }
 
