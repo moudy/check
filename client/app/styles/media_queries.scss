@@ -2,19 +2,15 @@
 
 @media (max-width: $content-width)  {
   .checklist-list-item, .checklist-item {
-    border-right: 0 none;
   }
-}
-
-@media (min-width: $content-width*2)  {
-  .checklist-list-item.is-editing-md {
-    .md {
-      left: -50%;
-    }
-    textarea {
-      position: absolute;
-      left: 50%;
-      resize: none;
-    }
+  .checklist-list-item,
+  .checklists-list {
+    border-radius: 0;
+    border-right: 0 none;
+    border-left: 0 none;
+  }
+  .flush-padding {
+    padding-right: 10px;
+    padding-left: 10px;
   }
 }

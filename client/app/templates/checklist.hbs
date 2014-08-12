@@ -1,12 +1,14 @@
 {{view 'checklist/header'}}
 
 <div class='checklist-controls-bar'>
-  <div class='content-width'>
+  <div class='content-width cf'>
+    <div class='left'>
     <span class='checklist-status-message'>{{statusMessage}}</span>
     {{#if isClearable}}
     &middot;
       <a href='#' {{action 'clear'}}>Clear</a>
     {{/if}}
+    </div>
 
     <div class='right'>
       {{#if canEdit}}
