@@ -11,10 +11,7 @@ module.exports = function () {
       });
     });
 
-    this.resource('checklists', {only: ['show', 'update', 'destroy'], resource: Checklist}, function () {
-      this.member.put('/reorder');
-      this.resource('list-items', {only: ['update', 'create', 'destroy'] });
-    });
+    this.resource('checklists', {only: ['show', 'update', 'destroy'], resource: Checklist});
 
     this.resource('sessions', {only: 'destroy'});
   });

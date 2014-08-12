@@ -22,7 +22,10 @@ export default Ember.ObjectController.extend({
     });
   }.property('body')
 
-, body: function () {
+, body: function (key, value) {
+    if (arguments.length > 1) {
+      this.set('model.body', value);
+    }
     return this.get('model.body') || DEFAULT_BODY;
   }.property('model.body')
 

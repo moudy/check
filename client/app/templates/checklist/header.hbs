@@ -13,10 +13,10 @@
         focusOnInsert=true}}
     {{/if}}
   </h1>
-  <span class='subtitle'>by {{#link-to 'user' user}}
+  <div class='subtitle'>by {{#link-to 'user' user}}
       {{user.username}}
     {{/link-to}}
-  </span>
+  </div>
 
   {{#if showDescription}}
     {{#view 'checklist/description'}}

@@ -9,15 +9,6 @@ module.exports = ShowRoute.extend({
 
 , afterModel: function (model) {
     if (!model) this.reject(404, 'Not found');
-    if (!model.listItems) return;
-
-    model.body = model.listItems.map(function (i) {
-      return i.description;
-    }).join('\n[x]\n');
-
-    model.listItems = null;
-    var save = RSVP.denodeify(model.save.bind(model));
-    return save();
   }
 
 });

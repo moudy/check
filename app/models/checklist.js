@@ -1,9 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = mongoose.Schema.Types.ObjectId;
-var ListItemSchema = require('./list-item-schema');
 var getSlug = require('speakingurl');
-//var SlugSetter = require('app/services/slug-setter');
 
 var ChecklistSchema = new Schema({
   title: {type: String, required:true, trim:true}
@@ -11,8 +9,6 @@ var ChecklistSchema = new Schema({
 , username: {type: String, required:true, trim:true}
 , description: {type: String}
 , body: {type: String}
-, listItems: [ListItemSchema]
-, listItemsOrder: {type: String}
 , stepCount: {type: Number, default: 0}
 , userId: {type: ObjectId, required: true}
 });
