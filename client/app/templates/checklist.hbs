@@ -3,7 +3,7 @@
 <div class='checklist-controls-bar'>
   <div class='content-width'>
     <span class='checklist-status-message'>{{statusMessage}}</span>
-    {{#if isInProgress}}
+    {{#if isClearable}}
     &middot;
       <a href='#' {{action 'clear'}}>Clear</a>
     {{/if}}

@@ -6,10 +6,10 @@ export default DS.Model.extend({
   title: attr('string')
 , slug: attr('string')
 , body: attr('string')
-, listItems: DS.hasMany('listItem', {async:true})
 , userId: attr('string')
 , username: attr('string')
 , description: attr('string')
+, stepCount: attr('number')
 , user: DS.belongsTo('user', {async:true})
 });
 

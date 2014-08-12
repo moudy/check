@@ -13,6 +13,7 @@ var ChecklistSchema = new Schema({
 , body: {type: String}
 , listItems: [ListItemSchema]
 , listItemsOrder: {type: String}
+, stepCount: {type: Number, default: 0}
 , userId: {type: ObjectId, required: true}
 });
 
@@ -26,6 +27,11 @@ ChecklistSchema.set('toJSON', {virtuals: true});
 
 ChecklistSchema.pre('validate', function (next) {
   this.slug = getSlug(this.title);
+  next();
+});
+
+ChecklistSchema.pre('save', function (next) {
+  this.stepCount = (this.body || '').split('[x]').length;
   next();
 });
 
