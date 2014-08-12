@@ -63,7 +63,7 @@ module.exports = function (app) {
   if (process.env.NODE_ENV !== 'testing') {
     app.use(session({
       secret: env.COOKIE_SECRET
-    , cookie: { maxAge: (365 * 24 * 60 * 60 * 1000) }
+    , cookie: { maxAge: (14 * 24 * 60 * 60 * 1000) }
     , store: new MongoStore({ url: db.MONGO_URI })
     , resave: false
     , saveUninitialized: false

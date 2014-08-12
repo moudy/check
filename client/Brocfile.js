@@ -22,7 +22,6 @@ var app = new EmberApp({
 // along with the exports of each module as its value.
 app.import('vendor/modernizr.js');
 app.import('vendor/fastclick.js');
-app.import('vendor/jquery-ui.js');
 app.import('vendor/marked/lib/marked.js');
 app.import('vendor/highlight/highlight.pack.js');
 

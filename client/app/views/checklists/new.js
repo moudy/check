@@ -1,9 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.View.extend({
-  classNames: 'content-width checklists-show'
 
-, classNameBindings: [
+  classNameBindings: [
   , 'controller.canEdit'
   , 'controller.isLoading'
   ]

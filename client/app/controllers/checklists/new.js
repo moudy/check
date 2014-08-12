@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
     this.get('user.checklists').then(function (checklists) {
       checklists.pushObject(checklist);
       self.setProperties({title: null, description: null});
-      self.transitionToRoute('checklist.show', checklist);
+      self.transitionToRoute('checklist', checklist);
     });
   }
 
@@ -33,7 +33,14 @@ export default Ember.Controller.extend({
   }
 
 , actions: {
-    childViewDidFocusOut: function () {}
+
+    titleDidFocusOut: function () {}
+
+  , descriptionDidFocusOut: function () {}
+
+  , editTitle: function () {
+      this.set('isEditingTitle', true);
+    }
 
   , create: function () {
       if (this.get('title')) {

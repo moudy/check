@@ -57,6 +57,9 @@
 
 .checklist-description {
   padding: 4px 0;
+  .content {
+    white-space: pre-wrap;
+  }
 }
 
 .checklist-container {
@@ -149,4 +152,8 @@
     border-top: 1px dashed $color-gray-medium;
     &:first-of-type { border: 0 none; }
   }
+}
+
+.create-checklist-container {
+  padding: 30px 0 60px;
 }

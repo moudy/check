@@ -102,15 +102,25 @@ export default Ember.ObjectController.extend({
     }
 
   , save: function () {
-      this.get('model').save();
+      if (this.get('model.isDirty')) this.get('model').save();
     }
 
   , toggleEdit: function () {
       this.toggleProperty('isEditing');
     }
 
-  , bodyDidFocusOut: function () {
-      if (this.get('model.isDirty')) this.send('save');
+  , editTitle: function () {
+      this.set('isEditingTitle', true);
+    }
+
+  , titleDidFocusOut: function () {
+      this.set('isEditingTitle', false);
+      this.send('save');
+    }
+
+  , descriptionDidFocusOut: function () {
+      this.set('isEditingDescription', false);
+      this.send('save');
     }
 
   }

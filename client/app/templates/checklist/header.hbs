@@ -1,35 +1,33 @@
 <div class='content-width'>
-  <h1 class='checklists-show-title editable-field' {{action 'edit' 'title' target=view}}>
+  <h1 class='checklists-show-title editable-field' {{action 'editTitle'}}>
     {{#if title}}
       {{title}}&nbsp;
     {{else}}
       <span class='add-description-prompt'>Add a Title...</span>
     {{/if}}
     {{#if isEditingTitle}}
-      {{view 'text-field'
-        valueBinding='title'
-        placeholder='List title'
-        property='title'
+      {{focusable-textfield
+        value=title
+        action='titleDidFocusOut'
         focusOnInsert=true}}
     {{/if}}
   </h1>
-  <div class='subtitle'>by {{#link-to 'user' user}}
-      {{user.username}}
-    {{/link-to}}
+  <div class='subtitle'>
+    by {{#link-to 'user' user}}{{user.username}}{{/link-to}}
   </div>
 
   {{#if showDescription}}
     {{#view 'checklist/description'}}
       {{#if description}}
-        {{autolink-text description target='_blank'}}&nbsp;
+        <div class='content'>{{autolink-text description target='_blank'}}&nbsp;</div>
       {{else}}
         <span class='add-description-prompt'>Add a description...</span>
       {{/if}}
 
       {{#if isEditingDescription}}
-        {{view 'textarea'
-          valueBinding='description'
-          property='description'
+        {{focusable-textarea
+          value=description
+          action='descriptionDidFocusOut'
           focusOnInsert=true}}
       {{/if}}
     {{/view}}

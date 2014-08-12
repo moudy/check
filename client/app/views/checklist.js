@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.View.extend({
+
   classNames: ['checklist-container']
 
 , classNameBindings: [
@@ -13,11 +14,5 @@ export default Ember.View.extend({
     var c = this.get('controller');
     if (c.get('isNew') && c.get('isEditing')) this.$('.checklist-title input').focus();
   }.on('didInsertElement')
-
-, actions: {
-    childViewDidFocusOut: function () {
-      this.get('controller').send('save');
-    }
-  }
 
 });

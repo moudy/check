@@ -4,24 +4,6 @@ $color-border: $color-gray-light;
 $color-border-dark: $color-gray-medium;
 $checklists-list-item-padding: 10px;
 
-/*.button-nav-group {*/
-  /*display: inline-block;*/
-/*}*/
-
-/*.button-nav-item {*/
-  /*display: inline-block;*/
-  /*padding-left: $checklists-list-item-padding;*/
-  /*padding-right: $checklists-list-item-padding;*/
-  /*line-height: 26px;*/
-
-  /*&:hover, &.active { color: $color-brand-primary; }*/
-  /*&.active {*/
-    /*cursor: default;*/
-    /*color: $color-text-default;*/
-  /*}*/
-  /*&:active { color: lighten($color-brand-primary, 10%); }*/
-/*}*/
-
 .checklists-list-container {
   margin-bottom: 40px;
 }
@@ -51,14 +33,24 @@ $checklists-list-item-padding: 10px;
 
 .checklists-list-item {
   display: block;
+  position: relative;
   padding: $checklists-list-item-padding;
   border-top: 1px solid $color-border;
   background-color: white;
+  .checklists-list-item-title {
+    padding-right: 80px;
+  }
+  .checklists-list-item-list-count {
+    padding: $checklists-list-item-padding;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 }
 
 .checklists-list-item-title {
   @include h2();
-  display: inline-block;
   margin: 0;
   $line-height: 16px;
   min-height: $line-height;
