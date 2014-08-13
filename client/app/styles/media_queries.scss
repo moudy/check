@@ -1,9 +1,6 @@
 @import 'base';
 
-@media (max-width: $content-width)  {
-  .checklist-list-item, .checklist-item {
-  }
-  .checklist-list-item,
+@include bp-content-width {
   .checklists-list {
     border-radius: 0;
     border-right: 0 none;

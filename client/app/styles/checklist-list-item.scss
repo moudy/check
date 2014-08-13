@@ -36,6 +36,18 @@
   .md-container {
     margin-left: $checkbox-size;
   }
+
+
+  @include bp-content-width {
+    border-radius: 0;
+    border-right: 0 none;
+    border-left: 0 none;
+    border-top: 0 none;
+    &:first-of-type {
+      border-top: 1px solid $border-color;
+    }
+    margin-bottom: 0;
+  }
 }
 
 .is-completed .checkbox-container {

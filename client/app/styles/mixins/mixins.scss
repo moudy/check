@@ -1,15 +1,6 @@
 @import '../variables';
 @import '../vendor/bourbon/bourbon';
 
-@mixin cover-area($position: fixed, $overflow: scroll) {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: $overflow;
-  position: $position;
-}
-
 @mixin position-sticky {
   position: -webkit-sticky;
   position: -moz-sticky;
@@ -24,8 +15,8 @@
 }
 
 
-@mixin bp-double-content-width {
-  @media only screen and (min-width: ($content-width*2)) {
+@mixin bp-content-width {
+  @media (max-width: $content-width)  {
     @content;
   }
 }
