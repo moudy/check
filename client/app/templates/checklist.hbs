@@ -12,10 +12,6 @@
 
     <div class='right'>
       {{#if canEdit}}
-        {{#if isEditing}}
-          Steps are seperated by '[x]' and formatted with Markdown
-          &middot;
-        {{/if}}
         <a href='#' {{action 'toggleEdit'}}>
           {{#if isEditing}}
             Done Editing
@@ -30,19 +26,24 @@
 
 <div class='content-width'>
   {{#if showListItems}}
-  {{#each listItems itemController='list-items/item'}}
-    {{view 'list-items/item'}}
-  {{/each}}
+    {{#each listItems itemController='list-items/item'}}
+      {{view 'list-items/item'}}
+    {{/each}}
   {{/if}}
 
   {{#if isEditing}}
-  <div class='checklist-body-edit-container'>
-    <div class='textarea-copy'>{{body}}&nbsp;</div>
-    {{focusable-textarea
-      value=body
-      action='save'
-      focusOnInsert=true}}
-  </div>
+    <div class='checklist-body-edit-container'>
+      <div class='textarea-copy'>{{body}}&nbsp;</div>
+      {{focusable-textarea
+        value=body
+        action='save'
+        focusOnInsert=true}}
+    </div>
+
+    <div class='checklist-edit-info flush-padding'>
+      Steps are formatted with <a target='_blank' href='http://daringfireball.net/projects/markdown/'>Markdown</a>
+      and seperated by "[x]".
+    </div>
   {{/if}}
 
 </div>
