@@ -7,12 +7,10 @@ export default Ember.ArrayController.extend({
 , page: 1
 
 , showLoadMore: function () {
-    return this.get('count') > this.get('length');
-  }.property('length', 'count')
+    return this.get('total') > this.get('length');
+  }.property('length', 'total')
 
-, userBinding: 'controllers.user/index.model'
-
-, countBinding: 'controllers.user/index.checklistsTotal'
+, totalBinding: 'user.checklistsCount.total'
 
 , actions: {
 

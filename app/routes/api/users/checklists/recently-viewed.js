@@ -1,3 +1,4 @@
+var _ = require('underscore');
 var IndexRoute = require('project-router-mongoose').index;
 var Checklist = require('app/models/checklist');
 var authorize = require('app/services/route-authorization');
@@ -15,7 +16,7 @@ module.exports = IndexRoute.extend({
         ret[i] = doc;
       });
 
-      return ret;
+      return _.compact(ret);
     });
   }
 

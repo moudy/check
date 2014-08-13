@@ -1,0 +1,11 @@
+{{#if showConfirmation}}
+  <a class='button-danger left' {{action 'confirm'}} href='#'>{{confirmText}}</a>
+
+  <a class='button' {{action 'cancel'}} href='#'>{{cancelText}}</a>
+{{else}}
+
+  <a class='button' {{action 'deleteChecklist'}} href='#'>
+    {{buttonText}}
+  </a>
+
+{{/if}}

@@ -4,7 +4,7 @@
   {{else}}
     {{#if isCurrentUserProfile}}
       No lists yet.
-      {{#link-to 'checklist.new' class='button'}}
+      {{#link-to 'checklists.new' class='button'}}
         Create one
       {{/link-to}}
     {{else}}
@@ -14,16 +14,14 @@
 </ul>
 
 {{#if showLoadMore}}
-
-<div class='checklists-footer'>
-  <a href='#' class='button-text' {{action 'loadMore'}}>
-    {{#if isLoadingMore}}
-      Loading...
-    {{else}}
-      Load more
-    {{/if}}
-  </a>
-</div>
-
+  <div class='checklists-list-footer'>
+    <a href='#' class='button' {{action 'loadMore'}}>
+      {{#if isLoadingMore}}
+        Loading...
+      {{else}}
+        Load more
+      {{/if}}
+    </a>
+  </div>
 {{/if}}
 

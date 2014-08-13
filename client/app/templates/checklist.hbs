@@ -46,4 +46,13 @@
     </div>
   {{/if}}
 
+  {{#unless isEditing}}
+  <div class='checklist-footer'>
+    {{checklist-delete-button
+      checklist=this
+      action='deleteChecklist'
+    }}
+  </div>
+  {{/unless}}
+
 </div>

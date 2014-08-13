@@ -96,6 +96,12 @@ export default Ember.ObjectController.extend({
       if (this.get('model.isDirty')) this.get('model').save();
     }
 
+  , deleteChecklist: function () {
+      this.get('model').destroyRecord().then(() => {
+        this.transitionToRoute('index');
+      });
+    }
+
   , toggleEdit: function () {
       this.toggleProperty('isEditing');
     }

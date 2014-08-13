@@ -1,6 +1,11 @@
 <li>
   {{#link-to 'checklist' this class='checklists-list-item'}}
-    <h2 class='checklists-list-item-title truncate'>{{title}}</h2>
+    <h2 class='checklists-list-item-title truncate'>
+      {{title}}
+      <span class='subtitle'>
+        by {{username}}
+      </span>
+    </h2>
     <span class='checklists-list-item-list-count'>{{stepCount}} Steps</span>
   {{/link-to}}
 </li>
