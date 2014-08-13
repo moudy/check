@@ -9,8 +9,21 @@ function buildChecklistCreateUrl (record) {
 }
 
 export default ApplicationAdapter.extend({
+  recentlyCreatedUrl: function () {
+    var url = ['checklists'];
+    var host = get(this, 'host');
+    var prefix = this.urlPrefix();
+    url.push('recently-created');
 
-  userChecklistsUrl: function (userId) {
+    if (prefix) { url.unshift(prefix); }
+
+    url = url.join('/');
+    if (!host && url) { url = '/' + url; }
+
+    return url;
+  }
+
+, userChecklistsUrl: function (userId) {
     var url = ['users', userId];
     var host = get(this, 'host');
     var prefix = this.urlPrefix();
@@ -48,7 +61,10 @@ export default ApplicationAdapter.extend({
 
 , findQuery: function (store, type, query) {
     var userId;
-    if (query.recent && query.userId) {
+    if (query.recentlyCreated) {
+      delete query.recentlyCreated;
+      return this.ajax(this.recentlyCreatedUrl(), 'GET', { data: query });
+    } else if (query.recent && query.userId) {
       userId = query.userId;
       delete query.userId;
       delete query.recent;

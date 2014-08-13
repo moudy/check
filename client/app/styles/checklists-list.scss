@@ -23,6 +23,7 @@ $checklists-list-item-padding: 10px;
 }
 
 .checklists-list {
+  @include list-reset;
   border: 1px solid $color-border-dark;
   border-radius: 4px;
   overflow: hidden;

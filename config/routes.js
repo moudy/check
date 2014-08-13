@@ -11,7 +11,9 @@ module.exports = function () {
       });
     });
 
-    this.resource('checklists', {only: ['show', 'update', 'destroy'], resource: Checklist});
+    this.resource('checklists', {only: ['show', 'update', 'destroy'], resource: Checklist}, function () {
+        this.collection.get('recently-created');
+    });
 
     this.resource('sessions', {only: 'destroy'});
   });

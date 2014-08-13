@@ -4,9 +4,6 @@
 
     {{/link-to}}
 
-    <nav class='left'>
-    </nav>
-
     <nav class='right'>
       {{#if currentUser}}
         {{#link-to 'checklists.new' class='nav-button'}}
@@ -18,7 +15,7 @@
           {{currentUser.username}}
         {{/link-to}}
       {{else}}
-        <a class='button-text' href='/auth/github'>Login with GitHub</a>
+        <a class='nav-button' href='/auth/github'>Sign in with GitHub</a>
       {{/if}}
     </nav>
   </div>

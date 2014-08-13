@@ -1,5 +1,4 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
-  isCompleted: true
+export default Ember.ArrayController.extend({
 });

@@ -1,31 +1,25 @@
 <div class='foyer-hero'>
 
-  <div {{bind-attr class=':hero-heading :center isCompleted'}}>
-    <label class='checkbox-container'>
-      {{input type='checkbox' name='isCompleted' checked=isCompleted}}
-    </label>
+  <div class='content-width flush-padding'>
     <h1 class='hero-title'>
-      Just Checklists.
+      Create and Discover Checklists
     </h1>
-    <p class='hero-description center'>
-      Create &amp; manage your checkists in one place.
-    </p>
 
-    <div class='foyer-cta'>
-      <a href='/auth/github' class='button-signin'>
-        Sign in with GitHub
-      </a>
-      <p class='foyer-cta-or'>or</p>
-      <div class='foyer-cta-try'>
-        <p>
-          Try an exmaple
-        </p>
-        &#11015;
-      </div>
-    </div>
-
+    <a href='/auth/github' class='button-signin'>
+      Sign in with GitHub
+    </a>
   </div>
 
+</div>
 
+<div class='content-width'>
+  <h3 class='flush-padding center recently-created-header'>
+    Recently Created Checklists
+  </h3>
+  <ul class='checklists-list'>
+    {{#each}}
+      {{partial 'checklists/list-item'}}
+    {{/each}}
+  </ul>
 </div>
 

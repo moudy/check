@@ -10,8 +10,11 @@ export default Ember.Route.extend({
   isAuthenticated: Ember.computed.bool('session.user')
 
 , model: function () {
-    if (!this.get('isAuthenticated')) return;
+    if (this.get('isAuthenticated')) return this.loggedInModel();
+    return this.store.find('checklist', { recentlyCreated: true});
+  }
 
+, loggedInModel: function () {
     var user = this.session.get('user');
     var userId = user.get('id');
 
@@ -28,13 +31,9 @@ export default Ember.Route.extend({
     document.title = ['Check'].join(' | ');
   }
 
-, setupController: function (controller) {
-    if (this.get('isAuthenticated')) {
-    } else {
-      //controller.setProperties({
-        //listItems: EXAMPLE_LIST_ITEMS
-      //, canEdit: true
-      //});
+, setupController: function (controller, model) {
+    if (!this.get('isAuthenticated')) {
+      this._super(controller, model);
     }
   }
 
