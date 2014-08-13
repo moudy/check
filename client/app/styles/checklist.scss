@@ -139,19 +139,6 @@
     padding: $padding;
     line-height: $line-height;
   }
-
-  .zebra-stripes {
-    position: relative;
-    margin: $padding;
-  }
-  .zebra-stripe {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 2000px;
-    border-top: 1px dashed $color-gray-medium;
-    &:first-of-type { border: 0 none; }
-  }
 }
 
 .create-checklist-container {

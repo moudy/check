@@ -37,11 +37,6 @@
 
   {{#if isEditing}}
   <div class='checklist-body-edit-container'>
-    <div class='zebra-stripes'>
-      {{#each zebraStripes}}
-        <div class='zebra-stripe' {{bind-attr style=style}}></div>
-      {{/each}}
-    </div>
     <div class='textarea-copy'>{{body}}&nbsp;</div>
     {{focusable-textarea
       value=body

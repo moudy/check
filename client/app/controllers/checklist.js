@@ -29,17 +29,6 @@ export default Ember.ObjectController.extend({
     return this.get('model.body') || DEFAULT_BODY;
   }.property('model.body')
 
-, zebraStripes: function () {
-    var base = 0;
-    return this.get('listItems').map((li) => {
-      var value = base;
-      base = base + ((li.get('text').split('\n').length - 1) * 20);
-      return {
-        style: `top: ${value}px;`
-      };
-    });
-  }.property('listItems.@each')
-
 , user: function () {
     return DS.PromiseObject.create({
       promise: this.store.find('user', this.get('userId'))
