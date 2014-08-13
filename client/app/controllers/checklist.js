@@ -1,5 +1,6 @@
 import DS from 'ember-data';
 import Ember from 'ember';
+import ListItem from '../lib/list-item';
 
 var DEFAULT_BODY = '[x] Your first step...';
 
@@ -18,7 +19,7 @@ export default Ember.ObjectController.extend({
     var items = body.split(/\[x\]/m).filter(isNotBlank);
 
     return items.map(function (item) {
-      return Ember.Object.create({text: item, isCompleted: false});
+      return ListItem.create({text: item});
     });
   }.property('body')
 
@@ -62,17 +63,18 @@ export default Ember.ObjectController.extend({
       'completedCount'
     , 'uncompletedCount'
     , 'isCompleted'
+    , 'isEditing'
     , 'isInProgress'
     , 'totalCount');
 
-    if (status.isCompleted) {
+    if (status.isCompleted && !status.isEditing) {
       return 'All '+status.completedCount+' steps completed!';
-    } else if (!status.isInProgress) {
+    } else if (!status.isInProgress || status.isEditing) {
       return status.totalCount + ' ' + (status.totalCount === 1 ? 'step' : 'steps');
     } else {
       return +status.completedCount+' of '+status.totalCount + ' complete';
     }
-  }.property('listItems.@each.isCompleted')
+  }.property('listItems.@each.isCompleted', 'isEditing')
 
 , updateUrl: function () {
     Ember.run.once(this, function () {
