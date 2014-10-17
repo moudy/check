@@ -17,6 +17,8 @@ export default DS.Model.extend({
     return this.get('name').split(' ')[0];
   }.property('name')
 
+, countIsLoaded: Ember.computed.bool('checklistsCount.isFulfilled')
+
 , checklistsCount: function () {
     return DS.PromiseObject.create({
       promise: Ember.$.getJSON('/api/users/'+this.get('id')+'/checklists/count')

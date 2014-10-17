@@ -2,9 +2,7 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
 
-  needs: ['user/index']
-
-, page: 1
+  page: 1
 
 , showLoadMore: function () {
     return this.get('total') > this.get('length');
@@ -31,3 +29,4 @@ export default Ember.ArrayController.extend({
   }
 
 });
+

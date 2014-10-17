@@ -1,0 +1,14 @@
+<div class='checklists-list-container'>
+  <div class='checklists-list-header'>
+    <div class='checklists-list-header-text'>
+      {{checklistsTitle}}
+      {{#if countIsLoaded}}
+        <span class='count-bubble'>
+          {{checklistsCount.total}}
+        </span>
+      {{/if}}
+    </div>
+  </div>
+  {{outlet}}
+</div>
+

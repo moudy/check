@@ -11,7 +11,7 @@ Router.map(function() {
     this.resource('checklists', {path: '/'}, function () {
       //this.route('new');
     });
-    this.route('index', {path: '/'});
+    //this.route('index', {path: '/'});
   });
 
   this.resource('checklist', {path: '/:username/:slug'}, function () {
